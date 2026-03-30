@@ -682,19 +682,19 @@
         Tell us about your organization's goals and challenges. We'll propose a focused engagement designed around your situation.
       </p>
 
-      <form class="text-left max-w-lg mx-auto space-y-4" onsubmit="return false;">
+      <form id="contact-form" class="text-left max-w-lg mx-auto space-y-4">
         <div class="grid sm:grid-cols-2 gap-4">
           <div>
             <label class="text-xs uppercase tracking-widest font-semibold block mb-2"
                    style="color:rgba(245,244,239,0.40);">Name</label>
-            <input type="text" placeholder="Your name"
+            <input id="cf-name" type="text" placeholder="Your name" required
                    class="w-full rounded-lg px-4 py-3 text-sm text-warmwhite placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-teal"
                    style="background:#252525; border:1px solid rgba(255,255,255,0.08);" />
           </div>
           <div>
             <label class="text-xs uppercase tracking-widest font-semibold block mb-2"
                    style="color:rgba(245,244,239,0.40);">Organization</label>
-            <input type="text" placeholder="Your organization"
+            <input id="cf-org" type="text" placeholder="Your organization"
                    class="w-full rounded-lg px-4 py-3 text-sm text-warmwhite placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-teal"
                    style="background:#252525; border:1px solid rgba(255,255,255,0.08);" />
           </div>
@@ -702,14 +702,14 @@
         <div>
           <label class="text-xs uppercase tracking-widest font-semibold block mb-2"
                  style="color:rgba(245,244,239,0.40);">Email</label>
-          <input type="email" placeholder="you@organization.com"
+          <input id="cf-email" type="email" placeholder="you@organization.com" required
                  class="w-full rounded-lg px-4 py-3 text-sm text-warmwhite placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-teal"
                  style="background:#252525; border:1px solid rgba(255,255,255,0.08);" />
         </div>
         <div>
           <label class="text-xs uppercase tracking-widest font-semibold block mb-2"
                  style="color:rgba(245,244,239,0.40);">Area of interest</label>
-          <select class="w-full rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-teal appearance-none"
+          <select id="cf-area" class="w-full rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-teal appearance-none"
                   style="background:#252525; border:1px solid rgba(255,255,255,0.08); color:rgba(245,244,239,0.60);">
             <option value="">Select a practice area…</option>
             <option>Leadership</option>
@@ -721,11 +721,14 @@
         <div>
           <label class="text-xs uppercase tracking-widest font-semibold block mb-2"
                  style="color:rgba(245,244,239,0.40);">Message</label>
-          <textarea rows="4" placeholder="Tell us about your goals or challenges…"
+          <textarea id="cf-message" rows="4" placeholder="Tell us about your goals or challenges…"
                     class="w-full rounded-lg px-4 py-3 text-sm text-warmwhite placeholder-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-teal"
                     style="background:#252525; border:1px solid rgba(255,255,255,0.08);"></textarea>
         </div>
         <button type="submit" class="btn-primary w-full text-center">Send Message</button>
+        <p id="cf-sent" class="hidden text-sm text-center py-2" style="color:#00BFB3;">
+          Your email client should have opened — just hit send and we'll be in touch shortly.
+        </p>
       </form>
     </div>
   </section>
@@ -748,6 +751,27 @@
     const mobileMenu = document.getElementById('mobile-menu');
     menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
     mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+    // Contact form → mailto
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name    = document.getElementById('cf-name').value.trim();
+      const org     = document.getElementById('cf-org').value.trim();
+      const email   = document.getElementById('cf-email').value.trim();
+      const area    = document.getElementById('cf-area').value;
+      const message = document.getElementById('cf-message').value.trim();
+
+      const subject = encodeURIComponent('StratumCore Enquiry' + (area ? ' — ' + area : ''));
+      const body = encodeURIComponent(
+        'Name: ' + name + '\n' +
+        (org     ? 'Organisation: ' + org + '\n' : '') +
+        'Email: ' + email + '\n' +
+        (area    ? 'Area of interest: ' + area + '\n' : '') +
+        '\n' + message
+      );
+      window.location.href = 'mailto:wen@stratumcore.com.au?subject=' + subject + '&body=' + body;
+      document.getElementById('cf-sent').classList.remove('hidden');
+    });
 
     const fadeEls = document.querySelectorAll('.fade-up');
     const observer = new IntersectionObserver((entries) => {
