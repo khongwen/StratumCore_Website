@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:claude.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "Bash(node screenshot.mjs http://localhost:3000/training.html hero)",
+      "Bash(where puppeteer:*)",
+      "Read(//c/Users/khong/AppData/Local/Temp/**)",
+      "Bash(npm list:*)",
+      "Bash(mkdir -p \"C:/Users/khong/AppData/Local/Temp/puppeteer-test\")",
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Bash(node screenshot.mjs http://localhost:3000/training.html top)",
+      "Bash(node screenshot.mjs http://localhost:3000/training.html full)"
+    ]
+  }
+}
