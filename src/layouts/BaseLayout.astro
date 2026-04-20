@@ -52,8 +52,30 @@ const {
 
   <!-- JSON-LD Structured Data -->
   {jsonLd && <script type="application/ld+json" set:html={jsonLd} />}
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5BC78Z4WEB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5BC78Z4WEB');
+  </script>
 </head>
 <body>
   <slot />
+
+  <!-- GA4 contact_click conversion event -->
+  <script>
+    document.addEventListener('click', (e) => {
+      const link = (e.target as HTMLElement).closest('a[href^="mailto:"]');
+      if (link) {
+        gtag('event', 'contact_click', {
+          event_category: 'engagement',
+          event_label: (link as HTMLAnchorElement).href,
+        });
+      }
+    });
+  </script>
 </body>
 </html>
