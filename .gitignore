@@ -1,2 +1,10 @@
-temporary screenshots/
 node_modules/
+dist/
+.astro/
+temporary screenshots/
+screenshot-viewport.mjs
+screenshot-linkedin-logo.mjs
+linkedin-logo.html
+linkedin-logo.png
+.env
+.env.*

@@ -1,0 +1,386 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const modules = [
+  {
+    n: '01',
+    title: 'Financial Storytelling',
+    body: 'Turn data into narrative. Learn to communicate financial insights in a way that lands with operational and executive audiences.',
+  },
+  {
+    n: '02',
+    title: 'Influencing Without Authority',
+    body: 'Build the stakeholder skills to drive decisions even when you don\'t hold the budget.',
+  },
+  {
+    n: '03',
+    title: 'Value Driver Trees',
+    body: 'Map what actually moves the business — and connect finance activity directly to value creation.',
+  },
+  {
+    n: '04',
+    title: 'Diagnostic Problem Solving',
+    body: 'Apply structured problem-solving to commercial and operational challenges, not just financial ones.',
+  },
+  {
+    n: '05',
+    title: 'Planning & Execution',
+    body: 'Design planning processes that reflect operational reality, not just accounting periods.',
+  },
+];
+---
+
+<BaseLayout
+  title="Finance Business Partner Academy | StratumCore"
+  description="A five-module programme for finance professionals in mining who want to move beyond reporting into genuine commercial influence. StratumCore, Brisbane."
+  canonical="https://www.stratumcore.com.au/finance-business-partner-academy"
+  ogImage="https://www.stratumcore.com.au/og-image-training.png"
+  ogImageAlt="Finance Business Partner Academy — StratumCore"
+>
+
+  <Nav />
+
+  <!-- ══════════════════════════════════════════════════════════
+       1. PAGE HERO
+  ══════════════════════════════════════════════════════════ -->
+  <section
+    class="hero-dark flex items-end relative overflow-hidden"
+    style="min-height: 65vh;"
+    aria-label="Finance Business Partner Academy"
+  >
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="
+        background-image:
+          radial-gradient(ellipse 60% 65% at 95% 5%,  rgba(0,201,187,0.07) 0%, transparent 55%),
+          radial-gradient(ellipse 40% 45% at 0%  90%, rgba(212,117,26,0.04) 0%, transparent 50%),
+          linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+        background-size: auto, auto, 72px 72px, 72px 72px;
+      "
+      aria-hidden="true"
+    ></div>
+
+    <div class="relative z-10 max-w-site mx-auto px-6 lg:px-10 pb-20 pt-[72px] w-full">
+      <div class="max-w-4xl fade-up">
+
+        <p class="page-label mb-6">Finance Business Partner Academy</p>
+        <span class="teal-rule mb-8 block"></span>
+
+        <h1
+          class="font-serif font-bold text-white leading-none"
+          style="font-size: clamp(2.2rem, 5vw, 4.75rem); letter-spacing: -0.03em; max-width: 34rem; line-height: 1.05;"
+        >
+          Finance Business Partner Academy.
+        </h1>
+
+        <p
+          class="font-serif font-bold mt-6"
+          style="font-size: clamp(1rem, 1.6vw, 1.25rem); color: #00C9BB; letter-spacing: -0.01em;"
+        >
+          Five modules. One clear outcome: finance that drives decisions.
+        </p>
+
+        <p
+          class="font-serif mt-4 leading-relaxed"
+          style="font-size: clamp(0.9375rem, 1.2vw, 1.0625rem); color: rgba(255,255,255,0.50); max-width: 40rem; line-height: 1.75;"
+        >
+          A structured programme for finance professionals in mining and
+          asset-intensive industries who want to move beyond reporting and into
+          genuine commercial influence.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       2. THE PROGRAMME — Module cards
+  ══════════════════════════════════════════════════════════ -->
+  <section class="bg-white py-24 lg:py-32" aria-label="The curriculum">
+    <div class="max-w-site mx-auto px-6 lg:px-10">
+
+      <div class="mb-16 fade-up">
+        <p class="page-label mb-4" style="color: #00C9BB;">The curriculum</p>
+        <h2
+          class="font-serif font-bold text-body"
+          style="font-size: clamp(1.75rem, 3vw, 2.75rem); letter-spacing: -0.025em; line-height: 1.1; max-width: 28rem;"
+        >
+          What you'll work through.
+        </h2>
+      </div>
+
+      <!-- Module list — alternating layout with connecting line on desktop -->
+      <div class="relative">
+
+        <!-- Vertical progress line (desktop only) -->
+        <div
+          class="absolute left-[1.6rem] top-0 bottom-0 w-px hidden lg:block"
+          style="background: linear-gradient(to bottom, #00C9BB 0%, rgba(0,201,187,0.15) 100%);"
+          aria-hidden="true"
+        ></div>
+
+        <div class="space-y-0 divide-y" style="border-color: #EBEBEB;">
+          {modules.map((mod, i) => (
+            <article
+              class="module-row group grid lg:grid-cols-[auto_1fr] gap-8 lg:gap-16 py-10 fade-up"
+              style={`transition-delay: ${i * 60}ms;`}
+            >
+              <!-- Module number + dot on timeline -->
+              <div class="flex items-start gap-6 lg:gap-0 lg:flex-col lg:items-center" style="min-width: 3.5rem;">
+                <div
+                  class="module-dot flex-shrink-0 flex items-center justify-center font-serif font-bold"
+                  style="width: 3.25rem; height: 3.25rem; border-radius: 50%; background: rgba(0,201,187,0.10); border: 1.5px solid rgba(0,201,187,0.30); font-size: 0.6875rem; letter-spacing: 0.12em; color: #00C9BB; transition: background 0.22s ease, border-color 0.22s ease;"
+                >
+                  {mod.n}
+                </div>
+              </div>
+
+              <!-- Content -->
+              <div class="pt-1">
+                <h3
+                  class="font-serif font-bold text-body mb-3"
+                  style="font-size: clamp(1.2rem, 1.8vw, 1.5rem); letter-spacing: -0.02em; line-height: 1.2;"
+                >
+                  {mod.title}
+                </h3>
+                <p
+                  class="font-serif leading-relaxed"
+                  style="font-size: 0.9375rem; color: rgba(34,34,34,0.62); line-height: 1.75; max-width: 46rem;"
+                >
+                  {mod.body}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       3. HOW IT'S DIFFERENT — Stone bg, three differentiator cards
+  ══════════════════════════════════════════════════════════ -->
+  <section class="py-24 lg:py-32" style="background: #F2F2F2;" aria-label="Why this works">
+    <div class="max-w-site mx-auto px-6 lg:px-10">
+
+      <div class="mb-16 fade-up">
+        <p class="page-label mb-4">Why this works</p>
+        <h2
+          class="font-serif font-bold text-body"
+          style="font-size: clamp(1.75rem, 3vw, 2.75rem); letter-spacing: -0.025em; line-height: 1.1; max-width: 30rem;"
+        >
+          Taught the way finance leaders actually learn.
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-px" style="background: #DCDCDC;">
+
+        <!-- Differentiator 1 -->
+        <article class="diff-card bg-stone p-8 lg:p-10 flex flex-col fade-up" style="transition-delay: 0ms;">
+          <div class="mb-6" style="width: 2.5rem; height: 2px; background: #00C9BB; border-radius: 1px;"></div>
+          <h3
+            class="font-serif font-bold text-body mb-4"
+            style="font-size: 1.125rem; letter-spacing: -0.02em; line-height: 1.2;"
+          >
+            HBS case study method
+          </h3>
+          <p
+            class="font-serif leading-relaxed"
+            style="font-size: 0.9375rem; color: rgba(34,34,34,0.62); line-height: 1.75;"
+          >
+            Each module uses real business cases (HBS-style) to ground theory in
+            decision-making under pressure.
+          </p>
+        </article>
+
+        <!-- Differentiator 2 -->
+        <article class="diff-card bg-stone p-8 lg:p-10 flex flex-col fade-up" style="transition-delay: 80ms;">
+          <div class="mb-6" style="width: 2.5rem; height: 2px; background: #00C9BB; border-radius: 1px;"></div>
+          <h3
+            class="font-serif font-bold text-body mb-4"
+            style="font-size: 1.125rem; letter-spacing: -0.02em; line-height: 1.2;"
+          >
+            Mining-sector context
+          </h3>
+          <p
+            class="font-serif leading-relaxed"
+            style="font-size: 0.9375rem; color: rgba(34,34,34,0.62); line-height: 1.75;"
+          >
+            Scenarios and language drawn from mining and resource operations, not
+            generic corporate examples.
+          </p>
+        </article>
+
+        <!-- Differentiator 3 -->
+        <article class="diff-card bg-stone p-8 lg:p-10 flex flex-col fade-up" style="transition-delay: 160ms;">
+          <div class="mb-6" style="width: 2.5rem; height: 2px; background: #00C9BB; border-radius: 1px;"></div>
+          <h3
+            class="font-serif font-bold text-body mb-4"
+            style="font-size: 1.125rem; letter-spacing: -0.02em; line-height: 1.2;"
+          >
+            Applied, not academic
+          </h3>
+          <p
+            class="font-serif leading-relaxed"
+            style="font-size: 0.9375rem; color: rgba(34,34,34,0.62); line-height: 1.75;"
+          >
+            Every module ends with a tool or framework your team can use immediately
+            back in the business.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       4. WHO IT'S FOR — White, two-column
+  ══════════════════════════════════════════════════════════ -->
+  <section class="bg-white py-24 lg:py-32" aria-label="Who it's for">
+    <div class="max-w-site mx-auto px-6 lg:px-10">
+
+      <div class="mb-16 fade-up">
+        <p class="page-label mb-4" style="color: #00C9BB;">Participation</p>
+        <h2
+          class="font-serif font-bold text-body"
+          style="font-size: clamp(1.75rem, 3vw, 2.75rem); letter-spacing: -0.025em; line-height: 1.1; max-width: 26rem;"
+        >
+          Who it's for and how it's run.
+        </h2>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-0 lg:gap-px" style="background: #E8E8E8;">
+
+        <!-- Left: Ideal for -->
+        <div class="bg-white p-8 lg:p-12 fade-up" style="transition-delay: 0ms;">
+          <p
+            class="font-serif font-bold mb-8"
+            style="font-size: 0.6875rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(34,34,34,0.38);"
+          >
+            Ideal for
+          </p>
+          <ul class="space-y-0" role="list">
+            {[
+              'Finance managers stepping into business partner roles',
+              'CFOs building team capability',
+              'Finance teams in mining, energy, or infrastructure',
+            ].map((item) => (
+              <li
+                class="who-bullet font-serif py-5"
+                style="font-size: 1rem; color: rgba(34,34,34,0.80); line-height: 1.55; border-bottom: 1px solid #EBEBEB; display: flex; align-items: flex-start; gap: 0.875rem;"
+              >
+                <span style="display: inline-block; flex-shrink: 0; width: 5px; height: 5px; border-radius: 50%; background: #00C9BB; margin-top: 0.55em;" aria-hidden="true"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Right: Delivered as -->
+        <div class="bg-white p-8 lg:p-12 fade-up" style="transition-delay: 80ms;">
+          <p
+            class="font-serif font-bold mb-8"
+            style="font-size: 0.6875rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(34,34,34,0.38);"
+          >
+            Delivered as
+          </p>
+          <ul class="space-y-0" role="list">
+            {[
+              'In-house cohort (your team, your site, your schedule)',
+              'Open cohort (mixed-company intake — contact us for dates)',
+              'Modular — individual modules available as standalone workshops',
+            ].map((item) => (
+              <li
+                class="who-bullet font-serif py-5"
+                style="font-size: 1rem; color: rgba(34,34,34,0.80); line-height: 1.55; border-bottom: 1px solid #EBEBEB; display: flex; align-items: flex-start; gap: 0.875rem;"
+              >
+                <span style="display: inline-block; flex-shrink: 0; width: 5px; height: 5px; border-radius: 50%; background: #00C9BB; margin-top: 0.55em;" aria-hidden="true"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       5. CLOSING CTA
+  ══════════════════════════════════════════════════════════ -->
+  <section
+    class="py-24 lg:py-32 relative overflow-hidden"
+    aria-label="Contact"
+    style="background: #00C9BB;"
+  >
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 60px 60px;"
+      aria-hidden="true"
+    ></div>
+
+    <div class="relative z-10 max-w-site mx-auto px-6 lg:px-10 text-center fade-up">
+      <h2
+        class="font-serif font-bold mb-8 mx-auto"
+        style="font-size: clamp(1.75rem, 3.5vw, 3rem); color: #1C1C1E; letter-spacing: -0.025em; line-height: 1.2; max-width: 38rem;"
+      >
+        Interested in running the Academy with your team?
+      </h2>
+      <a
+        href="mailto:wen@stratumcore.com.au"
+        class="font-serif font-bold inline-flex items-center gap-3 px-8 py-4 rounded-sm"
+        style="background: #1C1C1E; color: #FFFFFF; font-size: 0.9375rem; letter-spacing: 0.02em; text-decoration: none; box-shadow: 0 4px 16px rgba(28,28,30,0.2); transition: background 0.18s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease;"
+        onmouseover="this.style.background='#2d2d30'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 24px rgba(28,28,30,0.35)'"
+        onmouseout="this.style.background='#1C1C1E'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 16px rgba(28,28,30,0.2)'"
+      >
+        Get in touch
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <p
+        class="font-serif mt-5"
+        style="font-size: 0.875rem; color: rgba(28,28,30,0.55);"
+      >
+        wen@stratumcore.com.au &nbsp;·&nbsp; Brisbane, QLD, Australia
+      </p>
+    </div>
+  </section>
+
+  <Footer />
+
+</BaseLayout>
+
+<style>
+  .module-row:hover .module-dot {
+    background: rgba(0,201,187,0.20);
+    border-color: #00C9BB;
+  }
+
+  .diff-card {
+    border-top: 2px solid transparent;
+    transition: border-color 0.22s ease;
+  }
+  .diff-card:hover {
+    border-top-color: #00C9BB;
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  setTimeout(() => document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible')), 80);
+</script>

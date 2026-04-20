@@ -1,0 +1,507 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["LocalBusiness", "ProfessionalService"],
+      "@id": "https://www.stratumcore.com.au/#organisation",
+      "name": "StratumCore",
+      "url": "https://www.stratumcore.com.au",
+      "email": "wen@stratumcore.com.au",
+      "telephone": "+61451954594",
+      "description": "StratumCore provides finance consulting, leadership development, and finance business partner training for mining and asset-intensive businesses across Brisbane and Australia.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Brisbane",
+        "addressRegion": "QLD",
+        "addressCountry": "AU"
+      }
+    }
+  ]
+});
+---
+
+<BaseLayout
+  title="Finance & Leadership Consulting, Brisbane | StratumCore"
+  description="StratumCore provides finance consulting, leadership development, and finance business partner training for mining and resource businesses across Brisbane and Australia."
+  canonical="https://www.stratumcore.com.au/"
+  ogImage="https://www.stratumcore.com.au/og-image-home.png"
+  ogImageAlt="StratumCore — Finance & Leadership Consulting, Brisbane"
+  jsonLd={jsonLd}
+>
+
+  <Nav />
+
+  <!-- ══════════════════════════════════════════════════════════
+       1. HERO
+  ══════════════════════════════════════════════════════════ -->
+  <section
+    class="hero-dark min-h-screen flex flex-col justify-end relative overflow-hidden"
+    aria-label="Hero"
+    style="
+      background-color: #1C1C1E;
+      background-image:
+        radial-gradient(ellipse 65% 70% at 90% 5%,  rgba(0,201,187,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 50% at 5%  90%, rgba(212,117,26,0.04) 0%, transparent 50%),
+        linear-gradient(rgba(255,255,255,0.013) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.013) 1px, transparent 1px);
+      background-size: auto, auto, 72px 72px, 72px 72px;
+    "
+  >
+    <!-- Horizontal accent line -->
+    <div class="absolute top-[38%] inset-x-0 h-px pointer-events-none"
+         style="background: linear-gradient(90deg, transparent 0%, rgba(0,201,187,0.18) 30%, rgba(0,201,187,0.18) 70%, transparent 100%);"></div>
+
+    <div class="relative z-10 max-w-site mx-auto px-6 lg:px-10 w-full pb-20 pt-[72px]">
+      <div class="max-w-4xl fade-up">
+
+        <p class="page-label mb-5">Independent advisory &nbsp;·&nbsp; Mining &amp; resource sector</p>
+        <span class="teal-rule mb-10 block"></span>
+
+        <!-- Main headline -->
+        <h1
+          class="font-serif font-bold text-white mb-0 leading-none"
+          style="font-size: clamp(2.8rem, 6.5vw, 6.25rem); letter-spacing: -0.03em;"
+        >
+          Sharper finance.<br />
+          Stronger leaders.<br />
+          <span style="color: rgba(255,255,255,0.45);">Better decisions.</span>
+        </h1>
+
+        <!-- Teal sub-line -->
+        <p
+          class="font-serif font-bold mt-6"
+          style="font-size: clamp(1rem, 1.8vw, 1.375rem); color: #00C9BB; letter-spacing: -0.01em;"
+        >
+          Independent advisory for mining and asset-intensive businesses.
+        </p>
+
+        <!-- Supporting copy -->
+        <p
+          class="font-serif mt-4 leading-relaxed max-w-xl"
+          style="font-size: clamp(0.9375rem, 1.2vw, 1.0625rem); color: rgba(255,255,255,0.48);"
+        >
+          StratumCore brings senior finance leadership and practical leadership development
+          to the resource sector — without the big-firm overhead.
+        </p>
+
+        <!-- CTAs -->
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a href="#services" class="btn-primary">Explore our services</a>
+          <a href="mailto:wen@stratumcore.com.au" class="btn-outline">Book a call</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom fade to next section -->
+    <div class="absolute bottom-0 inset-x-0 h-20 pointer-events-none"
+         style="background: linear-gradient(to bottom, transparent, rgba(28,28,30,0.6));"></div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       2. CREDIBILITY STRIP
+  ══════════════════════════════════════════════════════════ -->
+  <section class="bg-stone py-10 border-b" style="border-color: #E4E4E4;" aria-label="Credentials">
+    <div class="max-w-site mx-auto px-6 lg:px-10">
+
+      <p
+        class="font-serif text-center mb-5"
+        style="font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(34,34,34,0.38);"
+      >
+        Principal experience includes
+      </p>
+
+      <div
+        class="font-serif text-center flex flex-wrap justify-center items-center gap-x-6 gap-y-2"
+        style="font-size: clamp(0.8125rem, 1.2vw, 0.9375rem); color: rgba(34,34,34,0.42); letter-spacing: 0.04em;"
+      >
+        {['BHP', 'Wesfarmers', 'BUMA', 'BMA', 'Coles', 'Coles Express', 'MMG', 'Kestrel Resources'].map((name, i, arr) => (
+          <>
+            <span style="color: rgba(34,34,34,0.55); font-weight: 700;">{name}</span>
+            {i < arr.length - 1 && <span style="color: rgba(34,34,34,0.20);">·</span>}
+          </>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       3. WHAT WE DO — Services
+  ══════════════════════════════════════════════════════════ -->
+  <section id="services" class="bg-white py-24 lg:py-32" aria-label="Our services">
+    <div class="max-w-site mx-auto px-6 lg:px-10">
+
+      <!-- Section header -->
+      <div class="mb-16 fade-up">
+        <p class="page-label mb-4" style="color: #00C9BB;">Our services</p>
+        <h2
+          class="font-serif font-bold text-body"
+          style="font-size: clamp(1.75rem, 3.5vw, 3rem); letter-spacing: -0.025em; max-width: 28rem; line-height: 1.1;"
+        >
+          End-to-end advisory, built for the mining sector.
+        </h2>
+      </div>
+
+      <!-- Cards grid -->
+      <div class="grid md:grid-cols-3 gap-0 md:gap-px" style="background: #E8E8E8;">
+        <!-- Each card sits on white, gap-px between creates a hairline divider effect -->
+
+        <!-- Card 1: Finance Consulting -->
+        <article
+          class="service-card-home bg-white p-8 lg:p-10 flex flex-col fade-up group"
+          style="transition-delay: 0ms;"
+        >
+          <p
+            class="font-serif font-bold mb-6"
+            style="font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: #00C9BB;"
+          >01</p>
+          <h3
+            class="font-serif font-bold text-body mb-4"
+            style="font-size: clamp(1.2rem, 1.8vw, 1.5rem); letter-spacing: -0.02em; line-height: 1.15;"
+          >
+            Finance Consulting
+          </h3>
+          <p
+            class="font-serif leading-relaxed flex-1 mb-8"
+            style="font-size: 0.9375rem; color: rgba(34,34,34,0.62); line-height: 1.7;"
+          >
+            CFO advisory, cost diagnostics, and financial performance improvement
+            for mining and resource companies.
+          </p>
+          <a
+            href="/finance-consulting"
+            class="font-serif font-bold inline-flex items-center gap-2 group-hover:gap-3 card-link"
+            style="font-size: 0.875rem; color: #00C9BB; text-decoration: none; letter-spacing: 0.01em;"
+          >
+            Learn more
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="transition: transform 0.2s ease;">
+              <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
+
+        <!-- Card 2: Leadership Development -->
+        <article
+          class="service-card-home bg-white p-8 lg:p-10 flex flex-col fade-up group"
+          style="transition-delay: 80ms;"
+        >
+          <p
+            class="font-serif font-bold mb-6"
+            style="font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: #00C9BB;"
+          >02</p>
+          <h3
+            class="font-serif font-bold text-body mb-4"
+            style="font-size: clamp(1.2rem, 1.8vw, 1.5rem); letter-spacing: -0.02em; line-height: 1.15;"
+          >
+            Leadership Development
+          </h3>
+          <p
+            class="font-serif leading-relaxed flex-1 mb-8"
+            style="font-size: 0.9375rem; color: rgba(34,34,34,0.62); line-height: 1.7;"
+          >
+            Practical leadership programmes designed for finance leaders who need to
+            influence, not just report.
+          </p>
+          <a
+            href="/leadership-development"
+            class="font-serif font-bold inline-flex items-center gap-2 group-hover:gap-3 card-link"
+            style="font-size: 0.875rem; color: #00C9BB; text-decoration: none; letter-spacing: 0.01em;"
+          >
+            Learn more
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="transition: transform 0.2s ease;">
+              <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
+
+        <!-- Card 3: FBP Academy -->
+        <article
+          class="service-card-home bg-white p-8 lg:p-10 flex flex-col fade-up group"
+          style="transition-delay: 160ms;"
+        >
+          <p
+            class="font-serif font-bold mb-6"
+            style="font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: #00C9BB;"
+          >03</p>
+          <h3
+            class="font-serif font-bold text-body mb-4"
+            style="font-size: clamp(1.2rem, 1.8vw, 1.5rem); letter-spacing: -0.02em; line-height: 1.15;"
+          >
+            FBP Academy
+          </h3>
+          <p
+            class="font-serif leading-relaxed flex-1 mb-8"
+            style="font-size: 0.9375rem; color: rgba(34,34,34,0.62); line-height: 1.7;"
+          >
+            A structured five-module programme turning finance teams into genuine
+            business partners.
+          </p>
+          <a
+            href="/finance-business-partner-academy"
+            class="font-serif font-bold inline-flex items-center gap-2 group-hover:gap-3 card-link"
+            style="font-size: 0.875rem; color: #00C9BB; text-decoration: none; letter-spacing: 0.01em;"
+          >
+            Learn more
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="transition: transform 0.2s ease;">
+              <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       4. HOW WE WORK
+  ══════════════════════════════════════════════════════════ -->
+  <section
+    class="hero-dark py-24 lg:py-32 relative overflow-hidden"
+    aria-label="Our approach"
+    style="
+      background-color: #1C1C1E;
+      background-image: radial-gradient(ellipse 50% 60% at 50% 100%, rgba(0,201,187,0.05) 0%, transparent 60%);
+    "
+  >
+    <div class="max-w-site mx-auto px-6 lg:px-10 relative z-10">
+
+      <!-- Section header -->
+      <div class="mb-16 lg:mb-20 fade-up">
+        <p class="page-label mb-4">Our approach</p>
+        <h2
+          class="font-serif font-bold text-white"
+          style="font-size: clamp(1.75rem, 3.5vw, 3rem); letter-spacing: -0.025em; max-width: 32rem; line-height: 1.1;"
+        >
+          Senior expertise. No juniors. No overhead.
+        </h2>
+      </div>
+
+      <!-- Three steps -->
+      <div class="grid md:grid-cols-3 gap-12 lg:gap-16">
+
+        <!-- Step 1 -->
+        <div class="fade-up" style="transition-delay: 0ms;">
+          <p
+            class="font-serif font-bold mb-4 block"
+            style="font-size: 3.5rem; line-height: 1; letter-spacing: -0.04em; color: rgba(0,201,187,0.18);"
+            aria-hidden="true"
+          >01</p>
+          <h3
+            class="font-serif font-bold text-white mb-3"
+            style="font-size: clamp(1.125rem, 1.6vw, 1.375rem); letter-spacing: -0.015em;"
+          >
+            Understand
+          </h3>
+          <p
+            class="font-serif leading-relaxed"
+            style="font-size: 0.9375rem; color: rgba(255,255,255,0.48); line-height: 1.75;"
+          >
+            We start with your actual problem, not a packaged solution.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="fade-up" style="transition-delay: 90ms;">
+          <p
+            class="font-serif font-bold mb-4 block"
+            style="font-size: 3.5rem; line-height: 1; letter-spacing: -0.04em; color: rgba(0,201,187,0.18);"
+            aria-hidden="true"
+          >02</p>
+          <h3
+            class="font-serif font-bold text-white mb-3"
+            style="font-size: clamp(1.125rem, 1.6vw, 1.375rem); letter-spacing: -0.015em;"
+          >
+            Design
+          </h3>
+          <p
+            class="font-serif leading-relaxed"
+            style="font-size: 0.9375rem; color: rgba(255,255,255,0.48); line-height: 1.75;"
+          >
+            We build the approach around your business, team, and constraints.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="fade-up" style="transition-delay: 180ms;">
+          <p
+            class="font-serif font-bold mb-4 block"
+            style="font-size: 3.5rem; line-height: 1; letter-spacing: -0.04em; color: rgba(0,201,187,0.18);"
+            aria-hidden="true"
+          >03</p>
+          <h3
+            class="font-serif font-bold text-white mb-3"
+            style="font-size: clamp(1.125rem, 1.6vw, 1.375rem); letter-spacing: -0.015em;"
+          >
+            Deliver
+          </h3>
+          <p
+            class="font-serif leading-relaxed"
+            style="font-size: 0.9375rem; color: rgba(255,255,255,0.48); line-height: 1.75;"
+          >
+            We work alongside your people to make the change stick.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       5. ABOUT TEASER
+  ══════════════════════════════════════════════════════════ -->
+  <section class="bg-white py-24 lg:py-32" aria-label="About StratumCore">
+    <div class="max-w-site mx-auto px-6 lg:px-10">
+      <div class="grid lg:grid-cols-5 gap-12 lg:gap-20 items-center">
+
+        <!-- Text — left, wider col -->
+        <div class="lg:col-span-3 fade-up">
+          <p class="page-label mb-5" style="color: #00C9BB;">About StratumCore</p>
+          <h2
+            class="font-serif font-bold text-body mb-6"
+            style="font-size: clamp(1.75rem, 3vw, 2.5rem); letter-spacing: -0.025em; line-height: 1.15; max-width: 26rem;"
+          >
+            Led by someone who has sat in your chair.
+          </h2>
+          <div
+            class="font-serif leading-relaxed mb-8"
+            style="font-size: 1rem; color: rgba(34,34,34,0.68); line-height: 1.8; max-width: 30rem;"
+          >
+            <p class="mb-4">
+              Wen Khong is a senior finance executive with over two decades across BHP, Wesfarmers,
+              and BUMA. He has led finance transformation, cost improvement, and capability-building
+              programmes for some of Australia's largest resource businesses.
+            </p>
+            <p>
+              StratumCore was founded to give mid-market mining businesses access to that calibre
+              of thinking — directly, not through layers of consultants.
+            </p>
+          </div>
+          <a
+            href="/about"
+            class="font-serif font-bold inline-flex items-center gap-2 card-link"
+            style="font-size: 0.9375rem; color: #00C9BB; text-decoration: none; letter-spacing: 0.01em;"
+          >
+            Meet Wen
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Photo — right, narrower col -->
+        <div class="lg:col-span-2 fade-up" style="transition-delay: 100ms;">
+          <div
+            class="w-full rounded-sm overflow-hidden relative"
+            style="aspect-ratio: 3/4;"
+          >
+            <img
+              src="/profile/Wen Profile picture 2.png"
+              alt="Wen Khong, founder of StratumCore"
+              class="w-full h-full object-cover object-top"
+              loading="lazy"
+            />
+            <!-- Teal accent strip at bottom -->
+            <div class="absolute bottom-0 left-0 w-full h-1" style="background: #00C9BB;"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       6. CLOSING CTA
+  ══════════════════════════════════════════════════════════ -->
+  <section
+    class="py-24 lg:py-32 relative overflow-hidden"
+    aria-label="Contact"
+    style="background: #00C9BB;"
+  >
+    <!-- Subtle texture on teal -->
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 60px 60px;"
+      aria-hidden="true"
+    ></div>
+
+    <div class="relative z-10 max-w-site mx-auto px-6 lg:px-10 text-center fade-up">
+      <h2
+        class="font-serif font-bold mb-8 mx-auto"
+        style="font-size: clamp(1.75rem, 3.5vw, 3rem); color: #1C1C1E; letter-spacing: -0.025em; line-height: 1.15; max-width: 34rem;"
+      >
+        Ready to have a different kind of finance conversation?
+      </h2>
+      <a
+        href="mailto:wen@stratumcore.com.au"
+        class="font-serif font-bold inline-flex items-center gap-3 px-8 py-4 rounded-sm"
+        style="background: #1C1C1E; color: #FFFFFF; font-size: 0.9375rem; letter-spacing: 0.02em; text-decoration: none; box-shadow: 0 4px 16px rgba(28,28,30,0.2); transition: background 0.18s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease;"
+        onmouseover="this.style.background='#2d2d30'; this.style.boxShadow='0 8px 24px rgba(28,28,30,0.35)'"
+        onmouseout="this.style.background='#1C1C1E'; this.style.boxShadow='0 4px 16px rgba(28,28,30,0.2)'"
+      >
+        Book a call
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <p
+        class="font-serif mt-5"
+        style="font-size: 0.875rem; color: rgba(28,28,30,0.55);"
+      >
+        wen@stratumcore.com.au &nbsp;·&nbsp; Brisbane, QLD, Australia
+      </p>
+    </div>
+  </section>
+
+  <Footer />
+
+</BaseLayout>
+
+<style>
+  /* Text links with arrow — specific transitions only */
+  .card-link {
+    transition: gap 0.2s ease, color 0.15s ease;
+  }
+  .card-link svg {
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+  .card-link:hover svg,
+  .service-card-home:hover .card-link svg {
+    transform: translateX(3px);
+  }
+
+  /* Service card top-border reveal on hover */
+  .service-card-home {
+    border-top: 2px solid #E8E8E8;
+    transition: border-color 0.22s ease;
+  }
+  .service-card-home:hover {
+    border-top-color: #00C9BB;
+  }
+  .service-card-home:hover a svg {
+    transform: translateX(3px);
+  }
+</style>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  setTimeout(() => document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible')), 80);
+</script>

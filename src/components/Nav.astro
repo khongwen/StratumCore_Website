@@ -1,0 +1,141 @@
+---
+const pathname = Astro.url.pathname;
+
+const isHome      = pathname === '/';
+const isServices  = ['/finance-consulting', '/leadership-development', '/finance-business-partner-academy'].some(p => pathname.startsWith(p));
+const isAbout     = pathname.startsWith('/about');
+---
+
+<header id="site-nav" class="fixed inset-x-0 top-0 z-50">
+  <div class="max-w-site mx-auto px-6 lg:px-10 h-full flex items-center justify-between gap-8">
+
+    <!-- Wordmark -->
+    <a href="/" class="wordmark" aria-label="StratumCore home">
+      <span class="part-stratum">Stratum</span><span class="part-core">Core</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden lg:flex items-center gap-7" aria-label="Main navigation">
+
+      <a href="/" class={`nav-link${isHome ? ' is-active' : ''}`}>Home</a>
+
+      <!-- Services dropdown -->
+      <div class="dropdown-parent flex items-center">
+        <button
+          class={`nav-link flex items-center cursor-default select-none${isServices ? ' is-active' : ''}`}
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Services
+          <svg class="chevron" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+            <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <div class="dropdown-menu" role="menu">
+          <a href="/finance-consulting"
+             class={`dropdown-link${pathname.startsWith('/finance-consulting') ? ' is-active' : ''}`}
+             role="menuitem">Finance Consulting</a>
+          <a href="/leadership-development"
+             class={`dropdown-link${pathname.startsWith('/leadership-development') ? ' is-active' : ''}`}
+             role="menuitem">Leadership Development</a>
+          <a href="/finance-business-partner-academy"
+             class={`dropdown-link${pathname.startsWith('/finance-business-partner-academy') ? ' is-active' : ''}`}
+             role="menuitem">FBP Academy</a>
+        </div>
+      </div>
+
+      <a href="/about" class={`nav-link${isAbout ? ' is-active' : ''}`}>About</a>
+
+    </nav>
+
+    <!-- Right: CTA + hamburger -->
+    <div class="flex items-center gap-4">
+      <a href="mailto:wen@stratumcore.com.au" class="hidden lg:inline-block btn-book-call">
+        Book a Call
+      </a>
+
+      <button id="mob-toggle" class="hamburger lg:hidden" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Mobile menu (collapsed by default) -->
+  <div id="mob-menu" class="hidden lg:hidden" aria-hidden="true">
+
+    <a href="/" class={`mob-nav-link${isHome ? ' is-active' : ''}`}>Home</a>
+
+    <!-- Services accordion -->
+    <button class="mob-services-toggle" id="mob-services-toggle" aria-expanded="false">
+      Services
+      <svg class="mob-services-chevron" width="14" height="14" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+        <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div id="mob-services-submenu" class="hidden">
+      <a href="/finance-consulting">Finance Consulting</a>
+      <a href="/leadership-development">Leadership Development</a>
+      <a href="/finance-business-partner-academy">FBP Academy</a>
+    </div>
+
+    <a href="/about" class={`mob-nav-link${isAbout ? ' is-active' : ''}`}>About</a>
+
+    <div class="mob-cta-wrap">
+      <a href="mailto:wen@stratumcore.com.au" class="btn-book-call block text-center">Book a Call</a>
+    </div>
+
+  </div>
+</header>
+
+<script>
+  // ── Scroll effect ──────────────────────────────────────────────
+  const nav = document.getElementById('site-nav')!;
+  const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 24);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // ── Mobile hamburger toggle ────────────────────────────────────
+  const toggle  = document.getElementById('mob-toggle')!;
+  const mobMenu = document.getElementById('mob-menu')!;
+
+  toggle.addEventListener('click', () => {
+    const isOpen = !mobMenu.classList.contains('hidden');
+    mobMenu.classList.toggle('hidden', isOpen);
+    mobMenu.setAttribute('aria-hidden', String(isOpen));
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+    toggle.classList.toggle('open', !isOpen);
+  });
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (!nav.contains(e.target as Node)) {
+      mobMenu.classList.add('hidden');
+      mobMenu.setAttribute('aria-hidden', 'true');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.classList.remove('open');
+    }
+  });
+
+  // ── Mobile Services accordion ─────────────────────────────────
+  const servicesToggle  = document.getElementById('mob-services-toggle')!;
+  const servicesSubmenu = document.getElementById('mob-services-submenu')!;
+
+  servicesToggle.addEventListener('click', () => {
+    const isOpen = !servicesSubmenu.classList.contains('hidden');
+    servicesSubmenu.classList.toggle('hidden', isOpen);
+    servicesToggle.setAttribute('aria-expanded', String(!isOpen));
+    servicesToggle.classList.toggle('open', !isOpen);
+  });
+
+  // Close mobile menu when a link is clicked
+  mobMenu.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => {
+      mobMenu.classList.add('hidden');
+      toggle.classList.remove('open');
+    })
+  );
+</script>
