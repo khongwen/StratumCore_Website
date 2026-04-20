@@ -2,6 +2,19 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home",               "item": "https://www.stratumcore.com.au/" },
+        { "@type": "ListItem", "position": 2, "name": "Finance Consulting",  "item": "https://www.stratumcore.com.au/finance-consulting" }
+      ]
+    }
+  ]
+});
 ---
 
 <BaseLayout
@@ -9,6 +22,7 @@ import Footer from '../components/Footer.astro';
   description="Fractional CFO, cost diagnostics, and financial performance improvement for Australian mining operators and contractors. Senior expertise, no overhead."
   canonical="https://www.stratumcore.com.au/finance-consulting"
   ogImageAlt="Finance Consulting — StratumCore"
+  jsonLd={jsonLd}
 >
 
   <Nav />

@@ -7,19 +7,54 @@ const jsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": ["LocalBusiness", "ProfessionalService"],
+      "@type": "ProfessionalService",
       "@id": "https://www.stratumcore.com.au/#organisation",
       "name": "StratumCore",
       "url": "https://www.stratumcore.com.au",
       "email": "wen@stratumcore.com.au",
       "telephone": "+61451954594",
-      "description": "StratumCore provides finance consulting, leadership development, and finance business partner training for mining and asset-intensive businesses across Brisbane and Australia.",
+      "description": "Independent finance consulting and leadership development advisory for Australian mining and resource businesses.",
+      "founder": {
+        "@type": "Person",
+        "name": "Wen Khong"
+      },
+      "areaServed": "Australia",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Brisbane",
         "addressRegion": "QLD",
         "addressCountry": "AU"
-      }
+      },
+      "knowsAbout": [
+        "mining finance",
+        "CFO advisory",
+        "finance consulting",
+        "leadership development",
+        "finance business partnering"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.stratumcore.com.au/about/#wen-khong",
+      "name": "Wen Khong",
+      "jobTitle": "Principal",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "StratumCore"
+      },
+      "alumniOf": ["BHP", "Wesfarmers", "BUMA"],
+      "url": "https://www.stratumcore.com.au/about"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.stratumcore.com.au/"
+        }
+      ]
     }
   ]
 });
