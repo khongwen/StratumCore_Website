@@ -38,11 +38,17 @@ const jsonLd = JSON.stringify({
       "@id": "https://www.stratumcore.com.au/about/#wen-khong",
       "name": "Wen Khong",
       "jobTitle": "Principal",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "StratumCore"
-      },
-      "alumniOf": ["BHP", "Wesfarmers", "BUMA"],
+      "worksFor": { "@type": "Organization", "name": "StratumCore" },
+      "alumniOf": ["BHP", "Wesfarmers", "BUMA", "Ernst & Young"],
+      "url": "https://www.stratumcore.com.au/about"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.stratumcore.com.au/about/#calvin-yong",
+      "name": "Calvin Yong",
+      "jobTitle": "Principal",
+      "worksFor": { "@type": "Organization", "name": "StratumCore" },
+      "alumniOf": ["BMA", "BHP", "Bankwest", "CS Gas"],
       "url": "https://www.stratumcore.com.au/about"
     },
     {
@@ -367,29 +373,26 @@ const jsonLd = JSON.stringify({
   ══════════════════════════════════════════════════════════ -->
   <section class="bg-white py-24 lg:py-32" aria-label="About StratumCore">
     <div class="max-w-site mx-auto px-6 lg:px-10">
-      <div class="grid lg:grid-cols-5 gap-12 lg:gap-20 items-center">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start fade-up">
 
-        <!-- Text — left, wider col -->
-        <div class="lg:col-span-3 fade-up">
+        <!-- Left -->
+        <div>
           <p class="page-label mb-5" style="color: #00C9BB;">About StratumCore</p>
           <h2
             class="font-serif font-bold text-body mb-6"
             style="font-size: clamp(1.75rem, 3vw, 2.5rem); letter-spacing: -0.025em; line-height: 1.15; max-width: 26rem;"
           >
-            Led by someone who has sat in your chair.
+            Led by people who have sat in your chair.
           </h2>
           <div
             class="font-serif leading-relaxed mb-8"
-            style="font-size: 1rem; color: rgba(34,34,34,0.68); line-height: 1.8; max-width: 30rem;"
+            style="font-size: 1rem; color: rgba(34,34,34,0.68); line-height: 1.8;"
           >
-            <p class="mb-4">
-              Wen Khong is a senior finance executive with over two decades across BHP, Wesfarmers,
-              and BUMA. He has led finance transformation, cost improvement, and capability-building
-              programmes for some of Australia's largest resource businesses.
-            </p>
             <p>
-              StratumCore was founded to give mid-market mining businesses access to that calibre
-              of thinking — directly, not through layers of consultants.
+              StratumCore is led by two principals — Wen Khong and Calvin Yong — each with decades
+              of hands-on experience inside mining and resource businesses. Between them, they bring
+              senior finance leadership, operational insight, and a proven track record of delivering
+              real change.
             </p>
           </div>
           <a
@@ -397,28 +400,34 @@ const jsonLd = JSON.stringify({
             class="font-serif font-bold inline-flex items-center gap-2 card-link"
             style="font-size: 0.9375rem; color: #00C9BB; text-decoration: none; letter-spacing: 0.01em;"
           >
-            Meet Wen
+            Meet the team
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
               <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
         </div>
 
-        <!-- Photo — right, narrower col -->
-        <div class="lg:col-span-2 fade-up" style="transition-delay: 100ms;">
-          <div
-            class="w-full rounded-sm overflow-hidden relative"
-            style="aspect-ratio: 3/4;"
-          >
-            <img
-              src="/profile/Wen Khong Profile Pic 3.jpg"
-              alt="Wen Khong, Principal at StratumCore"
-              class="w-full h-full object-cover object-top"
-              loading="lazy"
-            />
-            <!-- Teal accent strip at bottom -->
-            <div class="absolute bottom-0 left-0 w-full h-1" style="background: #00C9BB;"></div>
+        <!-- Right — two principal credentials -->
+        <div class="flex flex-col gap-6">
+
+          <div class="p-6 rounded-sm" style="background: #F2F2F2; border-left: 2px solid #00C9BB;">
+            <p class="font-serif font-bold text-body mb-1" style="font-size: 1rem; letter-spacing: -0.01em;">Wen Khong</p>
+            <p class="font-serif mb-3" style="font-size: 0.8125rem; color: #00C9BB; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 700;">Principal</p>
+            <p class="font-serif" style="font-size: 0.9375rem; color: rgba(34,34,34,0.65); line-height: 1.7;">
+              Two decades in senior finance roles across BHP, Wesfarmers, BUMA, and Ernst &amp; Young.
+              Deep expertise in finance transformation and CFO advisory.
+            </p>
           </div>
+
+          <div class="p-6 rounded-sm" style="background: #F2F2F2; border-left: 2px solid #00C9BB;">
+            <p class="font-serif font-bold text-body mb-1" style="font-size: 1rem; letter-spacing: -0.01em;">Calvin Yong</p>
+            <p class="font-serif mb-3" style="font-size: 0.8125rem; color: #00C9BB; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 700;">Principal</p>
+            <p class="font-serif" style="font-size: 0.9375rem; color: rgba(34,34,34,0.65); line-height: 1.7;">
+              Extensive experience across BMA, BHP, Bankwest, and CS Gas. Specialist in leadership
+              development and finance business partnering.
+            </p>
+          </div>
+
         </div>
 
       </div>
