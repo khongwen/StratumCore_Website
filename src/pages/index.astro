@@ -147,21 +147,18 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
         <!-- 3. Hero proof asset (proof 1) — eager-loaded -->
         <div class="lg:col-span-6 fade-up" style="transition-delay: 90ms;">
           <figure class="chart-exhibit chart-exhibit--hero">
-            <a href="/Hero-proof1.png" target="_blank" rel="noopener" class="chart-link" aria-label="Open the full-size cost waterfall chart">
-              <img
-                src="/Hero-proof1.png"
-                width="1280"
-                height="720"
-                alt="Cost waterfall showing a clear pathway to a 29% reduction in FY26 unit cost, from 1.37 to 1.06 US$/lb across named initiatives."
-                loading="eager"
-                fetchpriority="high"
-                decoding="async"
-                class="chart-img"
-              />
-            </a>
+            <img
+              src="/Hero-proof1.png"
+              width="1280"
+              height="720"
+              alt="Illustrative cost waterfall showing a pathway to a lower unit cost across a set of named initiatives."
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+              class="chart-img"
+            />
             <figcaption class="chart-cap">
               Example output: a costed, initiative-by-initiative pathway to lower unit cost.
-              <a href="/Hero-proof1.png" target="_blank" rel="noopener" class="chart-cap__full">Tap to enlarge&nbsp;&#8599;</a>
             </figcaption>
           </figure>
         </div>
@@ -240,20 +237,17 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
 
         <div class="lg:col-span-7 fade-up" style="transition-delay: 90ms;">
           <figure class="chart-exhibit chart-exhibit--light">
-            <a href="/Hero-proof2.png" target="_blank" rel="noopener" class="chart-link" aria-label="Open the full-size initiatives prioritisation chart">
-              <img
-                src="/Hero-proof2.png"
-                width="1280"
-                height="720"
-                alt="Initiatives prioritisation map plotting each savings initiative by risk against difficulty of implementation, with bubble size showing the size of savings."
-                loading="lazy"
-                decoding="async"
-                class="chart-img"
-              />
-            </a>
+            <img
+              src="/Hero-proof2.png"
+              width="1280"
+              height="720"
+              alt="Illustrative initiatives prioritisation map plotting savings initiatives by risk against difficulty, with bubble size showing the size of savings."
+              loading="lazy"
+              decoding="async"
+              class="chart-img"
+            />
             <figcaption class="chart-cap">
               Savings initiatives ranked by value, effort and risk.
-              <a href="/Hero-proof2.png" target="_blank" rel="noopener" class="chart-cap__full">Tap to enlarge&nbsp;&#8599;</a>
             </figcaption>
           </figure>
         </div>
@@ -436,23 +430,13 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
                 0 14px 36px -10px rgba(28,28,30,0.18);
     border: 1px solid #EBEBEB;
   }
-  .chart-link {
-    display: block;
-    border-radius: 5px;
-    overflow: hidden;
-    cursor: zoom-in;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .chart-link:focus-visible { outline: 2px solid #00C9BB; outline-offset: 3px; }
   .chart-img {
     display: block;
     width: 100%;
     max-width: 100%;
     height: auto;
     border-radius: 5px;
-    transition: transform 0.3s cubic-bezier(0.34,1.1,0.64,1);
   }
-  .chart-link:hover .chart-img { transform: scale(1.015); }
   .chart-cap {
     font-family: Georgia, serif;
     font-size: 0.8125rem;
@@ -462,14 +446,6 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
   }
   /* hero exhibit caption sits on dark bg */
   .chart-exhibit--hero .chart-cap { color: rgba(255,255,255,0.42); }
-  .chart-cap__full {
-    color: #0e8f86;
-    text-decoration: none;
-    white-space: nowrap;
-    font-weight: 700;
-  }
-  .chart-exhibit--hero .chart-cap__full { color: #00C9BB; }
-  .chart-cap__full:hover { text-decoration: underline; text-underline-offset: 2px; }
 
   /* ── "What you get" deliverables ───────────────────────────── */
   .deliverable { border-top: 2px solid #E8E8E8; transition: border-color 0.22s ease; }
