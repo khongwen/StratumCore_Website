@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { graph, organization, founder, service, faqPage, breadcrumb } from '../lib/seo';
 
 const tiles = [
   {
@@ -36,28 +37,41 @@ const tiles = [
   },
 ];
 
-const jsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Service",
-      "@id": "https://www.stratumcore.com.au/financial-control-governance/#service",
-      "name": "Financial Control & Governance",
-      "serviceType": "Financial control, governance and process improvement",
-      "provider": { "@type": "Organization", "name": "StratumCore", "url": "https://www.stratumcore.com.au" },
-      "areaServed": "Australia",
-      "description": "Helping fast-growing businesses get control of operational spend, visibility into performance, and the policies and governance needed to scale without bottlenecks."
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home",                            "item": "https://www.stratumcore.com.au/" },
-        { "@type": "ListItem", "position": 2, "name": "Corporate Advisory",               "item": "https://www.stratumcore.com.au/corporate-advisory" },
-        { "@type": "ListItem", "position": 3, "name": "Financial Control & Governance",   "item": "https://www.stratumcore.com.au/financial-control-governance" }
-      ]
-    }
-  ]
-});
+const faqs = [
+  {
+    q: 'What is financial control and governance advisory?',
+    a: 'It is the work of putting the right controls, reporting and decision rights in place so a business can scale without losing visibility or control. StratumCore helps fast-grown businesses get a real handle on operational spend, clear visibility into performance, and the policies and processes that remove bottlenecks. We stay involved so the changes land and hold.',
+  },
+  {
+    q: 'How do I get control of spending in a fast-growing business?',
+    a: 'Start with approval thresholds, commitment controls and procurement discipline that hold as volumes rise, rather than spend approved on trust. We then make sure reporting gives the board and executive a timely, trusted view of where the money is going. The aim is to move quickly and stay in control at the same time.',
+  },
+  {
+    q: 'When does a growing business need stronger financial governance?',
+    a: 'Usually when decisions bottleneck around one or two people, month-end is a scramble, or a board, investor or lender starts asking for rigour you do not yet have. If two or three of those ring true, it is time to put the foundations in place before the next stage of growth.',
+  },
+  {
+    q: 'What does StratumCore put in place?',
+    a: 'Spend controls and procurement discipline, financial reporting and visibility, policies, processes and delegations of authority, board-grade governance, a practical planning and forecasting rhythm, and a finance function sized for where the business is going. Each engagement is scoped to the few changes that will matter most first.',
+  },
+];
+
+const schema = graph(
+  organization,
+  founder,
+  service({
+    id: 'https://www.stratumcore.com.au/financial-control-governance/#service',
+    name: 'Financial Control & Governance',
+    serviceType: 'Financial control advisory',
+    description: 'Helping fast-grown businesses get control of operational spend, visibility into performance, and the policies and governance needed to scale without bottlenecks.',
+  }),
+  faqPage(faqs),
+  breadcrumb([
+    { name: 'Home',                           url: 'https://www.stratumcore.com.au/' },
+    { name: 'Corporate Advisory',             url: 'https://www.stratumcore.com.au/corporate-advisory' },
+    { name: 'Financial Control & Governance', url: 'https://www.stratumcore.com.au/financial-control-governance' },
+  ]),
+);
 ---
 
 <BaseLayout
@@ -65,7 +79,7 @@ const jsonLd = JSON.stringify({
   description="Grown fast? We help businesses get control of operational spend, clear visibility into financial performance, and the policies and governance needed to scale without bottlenecks."
   canonical="https://www.stratumcore.com.au/financial-control-governance"
   ogImageAlt="Financial Control & Governance — StratumCore"
-  jsonLd={jsonLd}
+  schema={schema}
 >
 
   <Nav />
@@ -261,6 +275,28 @@ const jsonLd = JSON.stringify({
           </ul>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       4b. FAQ — answer-shaped, drives FAQPage schema
+  ══════════════════════════════════════════════════════════ -->
+  <section class="bg-white py-24 lg:py-32" aria-label="Common questions">
+    <div class="max-w-site mx-auto px-6 lg:px-10">
+      <p class="page-label mb-12 lg:mb-14 fade-up" style="color:#00C9BB;">Common questions</p>
+      <div class="divide-y" style="border-color:#EBEBEB;">
+        {faqs.map((f) => (
+          <div class="grid lg:grid-cols-12 gap-4 lg:gap-12 py-9 lg:py-11 fade-up">
+            <h2 class="lg:col-span-5 font-serif font-bold text-body" style="font-size: clamp(1.2rem, 1.7vw, 1.55rem); letter-spacing: -0.02em; line-height: 1.25;">
+              {f.q}
+            </h2>
+            <p class="lg:col-span-7 font-serif" style="font-size: 1.0625rem; color: rgba(34,34,34,0.72); line-height: 1.8;">
+              {f.a}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   </section>

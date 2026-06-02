@@ -7,7 +7,8 @@ interface Props {
   canonical: string;
   ogImage?: string;
   ogImageAlt?: string;
-  jsonLd?: string;
+  /** A schema.org object (or @graph) — rendered as JSON-LD in the head. */
+  schema?: object;
 }
 
 const {
@@ -16,7 +17,7 @@ const {
   canonical,
   ogImage = 'https://www.stratumcore.com.au/og-image-home.png',
   ogImageAlt,
-  jsonLd,
+  schema,
 } = Astro.props;
 ---
 
@@ -51,7 +52,7 @@ const {
   <meta name="twitter:image"       content={ogImage} />
 
   <!-- JSON-LD Structured Data -->
-  {jsonLd && <script type="application/ld+json" set:html={jsonLd} />}
+  {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
 
   <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-5BC78Z4WEB"></script>

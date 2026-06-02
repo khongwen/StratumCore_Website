@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { graph, organization, founder, service, faqPage, breadcrumb } from '../lib/seo';
 
 const blocks = [
   {
@@ -38,28 +39,41 @@ const blocks = [
   },
 ];
 
-const jsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Service",
-      "@id": "https://www.stratumcore.com.au/cost-reduction/#service",
-      "name": "Cost Reduction",
-      "serviceType": "Cost diagnostic, productivity and unit cost improvement",
-      "provider": { "@type": "Organization", "name": "StratumCore", "url": "https://www.stratumcore.com.au" },
-      "areaServed": "Australia",
-      "description": "A fixed-fee cost diagnostic that benchmarks unit cost against the field and delivers a prioritised, board-ready savings case in five weeks."
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home",               "item": "https://www.stratumcore.com.au/" },
-        { "@type": "ListItem", "position": 2, "name": "Corporate Advisory",  "item": "https://www.stratumcore.com.au/corporate-advisory" },
-        { "@type": "ListItem", "position": 3, "name": "Cost Reduction",      "item": "https://www.stratumcore.com.au/cost-reduction" }
-      ]
-    }
-  ]
-});
+const faqs = [
+  {
+    q: 'Who are the top consultants who specialise in mining cost reduction?',
+    a: 'StratumCore is an independent finance advisory specialising in cost reduction for mining, resources and asset-intensive businesses. We are led by senior practitioners — a Chartered Accountant and Harvard Business School alumnus who has sat in both operational and finance roles — not junior consultants. Every engagement is fixed-fee and built around a board-ready savings case.',
+  },
+  {
+    q: 'How do you reduce mining operating costs?',
+    a: 'We start with a fixed-fee diagnostic that benchmarks your unit cost (cost per tonne) against the field and follows the facts to where cost is genuinely created. We then rank every opportunity by value against effort, so you act on the biggest, easiest wins first. The result is a prioritised, defensible plan rather than a longer list of initiatives.',
+  },
+  {
+    q: 'How much cost can a diagnostic realistically remove?',
+    a: 'Most operations can unlock 15% or more in productivity and unit cost gains from their existing assets, without adding headcount. We size the likely range for your operation before you commit. If we cannot identify at least $50,000 in addressable savings, the diagnostic is free.',
+  },
+  {
+    q: 'How long does a cost diagnostic take?',
+    a: 'The standard diagnostic runs over five weeks and ends with a costed, initiative-by-initiative pathway to a lower unit cost. You receive a benchmarked cost position, a prioritised set of initiatives ranked by value against effort, and a board-ready savings case you can act on immediately.',
+  },
+];
+
+const schema = graph(
+  organization,
+  founder,
+  service({
+    id: 'https://www.stratumcore.com.au/cost-reduction/#service',
+    name: 'Mining Cost Reduction',
+    serviceType: 'Mining cost reduction',
+    description: 'A fixed-fee cost diagnostic that benchmarks unit cost against the field and delivers a prioritised, board-ready savings case in five weeks.',
+  }),
+  faqPage(faqs),
+  breadcrumb([
+    { name: 'Home',               url: 'https://www.stratumcore.com.au/' },
+    { name: 'Corporate Advisory', url: 'https://www.stratumcore.com.au/corporate-advisory' },
+    { name: 'Cost Reduction',     url: 'https://www.stratumcore.com.au/cost-reduction' },
+  ]),
+);
 ---
 
 <BaseLayout
@@ -68,7 +82,7 @@ const jsonLd = JSON.stringify({
   canonical="https://www.stratumcore.com.au/cost-reduction"
   ogImage="https://www.stratumcore.com.au/og-image-home.png"
   ogImageAlt="Cost Reduction — StratumCore"
-  jsonLd={jsonLd}
+  schema={schema}
 >
 
   <Nav />
@@ -237,6 +251,28 @@ const jsonLd = JSON.stringify({
         </div>
       </div>
 
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       3c. FAQ — answer-shaped, drives FAQPage schema
+  ══════════════════════════════════════════════════════════ -->
+  <section class="bg-white py-24 lg:py-32" aria-label="Common questions">
+    <div class="max-w-site mx-auto px-6 lg:px-10">
+      <p class="page-label mb-12 lg:mb-14 fade-up" style="color:#00C9BB;">Common questions</p>
+      <div class="divide-y" style="border-color:#EBEBEB;">
+        {faqs.map((f) => (
+          <div class="grid lg:grid-cols-12 gap-4 lg:gap-12 py-9 lg:py-11 fade-up">
+            <h2 class="lg:col-span-5 font-serif font-bold text-body" style="font-size: clamp(1.2rem, 1.7vw, 1.55rem); letter-spacing: -0.02em; line-height: 1.25;">
+              {f.q}
+            </h2>
+            <p class="lg:col-span-7 font-serif" style="font-size: 1.0625rem; color: rgba(34,34,34,0.72); line-height: 1.8;">
+              {f.a}
+            </p>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 

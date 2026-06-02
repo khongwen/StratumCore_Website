@@ -2,19 +2,43 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { graph, organization, founder, service, faqPage, breadcrumb } from '../lib/seo';
 
-const jsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home",                    "item": "https://www.stratumcore.com.au/" },
-        { "@type": "ListItem", "position": 2, "name": "Leadership Development",  "item": "https://www.stratumcore.com.au/leadership-development" }
-      ]
-    }
-  ]
-});
+const faqs = [
+  {
+    q: 'How do I upskill my finance team?',
+    a: 'StratumCore runs practical leadership development for finance professionals — one-on-one executive coaching and team-based workshops on influence, communication and commercial thinking. The focus is the gap between technical competence and the ability to shape decisions, and it works for finance teams in any industry.',
+  },
+  {
+    q: 'What is the difference between technical finance skills and leadership?',
+    a: 'Most finance professionals are promoted for being technically excellent, then expected to influence strategy and lead through uncertainty with no training for it. We build the skills to walk into an operational review and change the conversation, not just report on it. That is a different skill set, and it can be taught.',
+  },
+  {
+    q: 'How is the coaching delivered?',
+    a: 'One-on-one coaching is structured over three to six months with a clear development agenda from the first session. Workshops are half-day or full-day, delivered in formats that work around busy schedules and distributed teams.',
+  },
+  {
+    q: 'Who is leadership development for?',
+    a: 'Senior finance leaders navigating complexity or new roles, and finance teams that need to work better with the business rather than just within it. It is grounded in real finance scenarios, not generic MBA theory.',
+  },
+];
+
+const schema = graph(
+  organization,
+  founder,
+  service({
+    id: 'https://www.stratumcore.com.au/leadership-development/#service',
+    name: 'Finance Leadership Development',
+    serviceType: 'Finance team training',
+    description: 'Practical leadership development for finance professionals — executive coaching and team-based workshops on influence, communication and commercial thinking.',
+  }),
+  faqPage(faqs),
+  breadcrumb([
+    { name: 'Home',                  url: 'https://www.stratumcore.com.au/' },
+    { name: 'Finance Team Building', url: 'https://www.stratumcore.com.au/finance-team-building' },
+    { name: 'Leadership Development', url: 'https://www.stratumcore.com.au/leadership-development' },
+  ]),
+);
 ---
 
 <BaseLayout
@@ -22,7 +46,7 @@ const jsonLd = JSON.stringify({
   description="Practical leadership programmes for finance leaders in any industry. Build influence, drive decisions, and step beyond the scorekeeper role."
   canonical="https://www.stratumcore.com.au/leadership-development"
   ogImageAlt="Leadership Development — StratumCore"
-  jsonLd={jsonLd}
+  schema={schema}
 >
 
   <Nav />
@@ -321,6 +345,28 @@ const jsonLd = JSON.stringify({
           </p>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       4b. FAQ — answer-shaped, drives FAQPage schema
+  ══════════════════════════════════════════════════════════ -->
+  <section class="bg-white py-24 lg:py-32" aria-label="Common questions">
+    <div class="max-w-site mx-auto px-6 lg:px-10">
+      <p class="page-label mb-12 lg:mb-14 fade-up" style="color:#00C9BB;">Common questions</p>
+      <div class="divide-y" style="border-color:#EBEBEB;">
+        {faqs.map((f) => (
+          <div class="grid lg:grid-cols-12 gap-4 lg:gap-12 py-9 lg:py-11 fade-up">
+            <h2 class="lg:col-span-5 font-serif font-bold text-body" style="font-size: clamp(1.2rem, 1.7vw, 1.55rem); letter-spacing: -0.02em; line-height: 1.25;">
+              {f.q}
+            </h2>
+            <p class="lg:col-span-7 font-serif" style="font-size: 1.0625rem; color: rgba(34,34,34,0.72); line-height: 1.8;">
+              {f.a}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   </section>

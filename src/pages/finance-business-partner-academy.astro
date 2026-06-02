@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { graph, organization, founder, service, faqPage, breadcrumb, ORG_ID } from '../lib/seo';
 
 const modules = [
   {
@@ -30,30 +31,51 @@ const modules = [
     body: 'Design planning processes that reflect operational reality, not just accounting periods.',
   },
 ];
-const jsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Course",
-      "name": "Finance Business Partner Academy",
-      "description": "A five-module programme for finance professionals in any industry. Covers financial storytelling, influencing, value driver trees, diagnostic problem solving, and planning.",
-      "provider": {
-        "@type": "Organization",
-        "name": "StratumCore",
-        "url": "https://www.stratumcore.com.au"
-      },
-      "educationalLevel": "Professional development",
-      "url": "https://www.stratumcore.com.au/finance-business-partner-academy"
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home",                           "item": "https://www.stratumcore.com.au/" },
-        { "@type": "ListItem", "position": 2, "name": "Finance Business Partner Academy", "item": "https://www.stratumcore.com.au/finance-business-partner-academy" }
-      ]
-    }
-  ]
-});
+const faqs = [
+  {
+    q: 'How do I train my finance team to become finance business partners?',
+    a: 'The Finance Business Partner Academy is a structured five-module programme that closes the gap between technical accounting competence and genuine business partnering. It covers financial storytelling, influencing without authority, value driver trees, diagnostic problem solving, and planning and execution. It is built for finance teams in any industry.',
+  },
+  {
+    q: 'What does the FBP Academy cover?',
+    a: 'Five sequenced modules, each ending with a tool or framework your team can use immediately. Modules use a real-world, case-study method so theory is grounded in decisions made under pressure rather than abstract textbook cases.',
+  },
+  {
+    q: 'How is the Academy delivered?',
+    a: 'As an in-house cohort for your team, an open mixed-company cohort, or as individual modules run as standalone workshops. It is designed to fit around how finance teams actually work.',
+  },
+  {
+    q: 'Who is the FBP Academy for?',
+    a: 'Finance managers stepping into business partner roles, CFOs building team capability, and finance teams in any industry or sector who want to move beyond reporting into genuine commercial influence.',
+  },
+];
+
+const course = {
+  '@type': 'Course',
+  name: 'Finance Business Partner Academy',
+  description: 'A five-module programme for finance professionals in any industry. Covers financial storytelling, influencing, value driver trees, diagnostic problem solving, and planning.',
+  provider: { '@id': ORG_ID },
+  educationalLevel: 'Professional development',
+  url: 'https://www.stratumcore.com.au/finance-business-partner-academy',
+};
+
+const schema = graph(
+  organization,
+  founder,
+  course,
+  service({
+    id: 'https://www.stratumcore.com.au/finance-business-partner-academy/#service',
+    name: 'Finance Business Partner Training',
+    serviceType: 'Finance business partnering',
+    description: 'A five-module programme that turns finance teams into genuine business partners — storytelling, influence, value drivers, problem solving and planning.',
+  }),
+  faqPage(faqs),
+  breadcrumb([
+    { name: 'Home',                            url: 'https://www.stratumcore.com.au/' },
+    { name: 'Finance Team Building',           url: 'https://www.stratumcore.com.au/finance-team-building' },
+    { name: 'Finance Business Partner Academy', url: 'https://www.stratumcore.com.au/finance-business-partner-academy' },
+  ]),
+);
 ---
 
 <BaseLayout
@@ -62,7 +84,7 @@ const jsonLd = JSON.stringify({
   canonical="https://www.stratumcore.com.au/finance-business-partner-academy"
   ogImage="https://www.stratumcore.com.au/og-image-training.png"
   ogImageAlt="Finance Business Partner Academy — StratumCore"
-  jsonLd={jsonLd}
+  schema={schema}
 >
 
   <Nav />
@@ -332,6 +354,28 @@ const jsonLd = JSON.stringify({
           </ul>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       4b. FAQ — answer-shaped, drives FAQPage schema
+  ══════════════════════════════════════════════════════════ -->
+  <section class="py-24 lg:py-32" style="background: #F2F2F2;" aria-label="Common questions">
+    <div class="max-w-site mx-auto px-6 lg:px-10">
+      <p class="page-label mb-12 lg:mb-14 fade-up" style="color:#00C9BB;">Common questions</p>
+      <div class="divide-y" style="border-color:#E0E0E0;">
+        {faqs.map((f) => (
+          <div class="grid lg:grid-cols-12 gap-4 lg:gap-12 py-9 lg:py-11 fade-up">
+            <h2 class="lg:col-span-5 font-serif font-bold text-body" style="font-size: clamp(1.2rem, 1.7vw, 1.55rem); letter-spacing: -0.02em; line-height: 1.25;">
+              {f.q}
+            </h2>
+            <p class="lg:col-span-7 font-serif" style="font-size: 1.0625rem; color: rgba(34,34,34,0.72); line-height: 1.8;">
+              {f.a}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   </section>

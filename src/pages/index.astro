@@ -2,68 +2,16 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { graph, organization, founder, coPrincipal, breadcrumb } from '../lib/seo';
 
-const jsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://www.stratumcore.com.au/#organisation",
-      "name": "StratumCore",
-      "url": "https://www.stratumcore.com.au",
-      "email": "wen@stratumcore.com.au",
-      "telephone": "+61451954594",
-      "description": "Independent advisory for mining and asset-intensive businesses — cost reduction, financial control and governance, and finance team building.",
-      "founder": {
-        "@type": "Person",
-        "name": "Wen Khong"
-      },
-      "areaServed": "Australia",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Brisbane",
-        "addressRegion": "QLD",
-        "addressCountry": "AU"
-      },
-      "knowsAbout": [
-        "cost reduction",
-        "unit cost improvement",
-        "financial control and governance",
-        "mining finance",
-        "finance business partnering"
-      ]
-    },
-    {
-      "@type": "Person",
-      "@id": "https://www.stratumcore.com.au/about/#wen-khong",
-      "name": "Wen Khong",
-      "jobTitle": "Principal",
-      "worksFor": { "@type": "Organization", "name": "StratumCore" },
-      "alumniOf": ["BHP", "Wesfarmers", "BUMA", "Ernst & Young"],
-      "url": "https://www.stratumcore.com.au/about"
-    },
-    {
-      "@type": "Person",
-      "@id": "https://www.stratumcore.com.au/about/#calvin-yong",
-      "name": "Calvin Yong",
-      "jobTitle": "Principal",
-      "worksFor": { "@type": "Organization", "name": "StratumCore" },
-      "alumniOf": ["BMA", "BHP", "Bankwest", "CS Gas"],
-      "url": "https://www.stratumcore.com.au/about"
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://www.stratumcore.com.au/"
-        }
-      ]
-    }
-  ]
-});
+const schema = graph(
+  organization,
+  founder,
+  coPrincipal,
+  breadcrumb([
+    { name: 'Home', url: 'https://www.stratumcore.com.au/' },
+  ]),
+);
 
 // Web3Forms access key (same key used in the redesign contact form)
 const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
@@ -75,7 +23,7 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
   canonical="https://www.stratumcore.com.au/"
   ogImage="https://www.stratumcore.com.au/og-image-home.png"
   ogImageAlt="StratumCore — Finance & Leadership Consulting, Brisbane"
-  jsonLd={jsonLd}
+  schema={schema}
 >
 
   <Nav />
