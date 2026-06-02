@@ -258,6 +258,104 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
 
 
   <!-- ══════════════════════════════════════════════════════════
+       2b. TWO STREAMS — the full offering
+  ══════════════════════════════════════════════════════════ -->
+  <section class="py-20 lg:py-28" style="background: #F2F2F2;" aria-label="How we help">
+    <div class="max-w-site mx-auto px-6 lg:px-10">
+
+      <div class="max-w-3xl fade-up">
+        <p class="page-label mb-4" style="color: #00C9BB;">How we help</p>
+        <h2
+          class="font-serif font-bold text-body"
+          style="font-size: clamp(1.75rem, 3.5vw, 3rem); letter-spacing: -0.025em; line-height: 1.12;"
+        >
+          The cost diagnostic is where many clients start. It&rsquo;s not all we do.
+        </h2>
+        <p
+          class="font-serif mt-6 leading-relaxed"
+          style="font-size: 1.0625rem; color: rgba(34,34,34,0.66); line-height: 1.8;"
+        >
+          StratumCore works across two focused streams &mdash; helping leaders take cost out and
+          tighten control of the business, and building finance teams that drive decisions.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-px mt-14 fade-up" style="background: #DCDCDC;">
+
+        <!-- Corporate Advisory -->
+        <div class="bg-white p-8 lg:p-12 stream-panel flex flex-col">
+          <p class="tile-number mb-4">Stream 01</p>
+          <h3
+            class="font-serif font-bold text-body mb-3"
+            style="font-size: clamp(1.375rem, 2vw, 1.75rem); letter-spacing: -0.02em; line-height: 1.15;"
+          >
+            Corporate Advisory
+          </h3>
+          <p
+            class="font-serif leading-relaxed mb-7"
+            style="font-size: 0.9688rem; color: rgba(34,34,34,0.62); line-height: 1.75; max-width: 28rem;"
+          >
+            Senior, independent advisory to take cost out of the operation and put the
+            financial controls in place to hold the gains.
+          </p>
+          <div class="mt-auto space-y-px" style="background:#ECECEC;">
+            <a href="/cost-reduction" class="sub-link bg-white">
+              <span>
+                <span class="sub-link__t">Cost Reduction</span>
+                <span class="sub-link__d">Unlock 15%+ productivity and unit cost gains.</span>
+              </span>
+              <svg class="sub-link__a" width="15" height="15" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/financial-control-governance" class="sub-link bg-white">
+              <span>
+                <span class="sub-link__t">Financial Control &amp; Governance</span>
+                <span class="sub-link__d">Scale without bottlenecks. Stay in control.</span>
+              </span>
+              <svg class="sub-link__a" width="15" height="15" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Finance Team Building -->
+        <div class="bg-white p-8 lg:p-12 stream-panel flex flex-col">
+          <p class="tile-number mb-4">Stream 02</p>
+          <h3
+            class="font-serif font-bold text-body mb-3"
+            style="font-size: clamp(1.375rem, 2vw, 1.75rem); letter-spacing: -0.02em; line-height: 1.15;"
+          >
+            Finance Team Building
+          </h3>
+          <p
+            class="font-serif leading-relaxed mb-7"
+            style="font-size: 0.9688rem; color: rgba(34,34,34,0.62); line-height: 1.75; max-width: 28rem;"
+          >
+            Practical programmes that move finance teams beyond reporting and into genuine
+            commercial influence.
+          </p>
+          <div class="mt-auto space-y-px" style="background:#ECECEC;">
+            <a href="/leadership-development" class="sub-link bg-white">
+              <span>
+                <span class="sub-link__t">Leadership Development</span>
+                <span class="sub-link__d">Coaching and workshops for finance leaders.</span>
+              </span>
+              <svg class="sub-link__a" width="15" height="15" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/finance-business-partner-academy" class="sub-link bg-white">
+              <span>
+                <span class="sub-link__t">FBP Academy</span>
+                <span class="sub-link__d">A five-module finance business partner programme.</span>
+              </span>
+              <svg class="sub-link__a" width="15" height="15" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
        3. TRUST STRIP — experienced partners (reinforces the offer)
   ══════════════════════════════════════════════════════════ -->
   <section
@@ -415,6 +513,32 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
     display: inline-flex;
     align-items: center;
   }
+
+  /* ── Two-streams section ───────────────────────────────────── */
+  .tile-number {
+    font-family: Georgia, serif; font-size: 0.6875rem; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase; color: #00C9BB;
+  }
+  .stream-panel { border-top: 2px solid transparent; transition: border-color 0.22s ease; }
+  .stream-panel:hover { border-top-color: #00C9BB; }
+
+  .sub-link {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 1.05rem 1.2rem;
+    text-decoration: none;
+    transition: background 0.16s ease;
+  }
+  .sub-link:hover { background: #FAFAFA; }
+  .sub-link__t {
+    display: block; font-family: Georgia, serif; font-weight: 700; color: #1C1C1E;
+    font-size: 1rem; letter-spacing: -0.01em; line-height: 1.25; margin-bottom: 0.2rem;
+  }
+  .sub-link__d {
+    display: block; font-family: Georgia, serif; font-size: 0.8438rem;
+    color: rgba(34,34,34,0.55); line-height: 1.45;
+  }
+  .sub-link__a { color: #00C9BB; flex-shrink: 0; transition: transform 0.2s ease; }
+  .sub-link:hover .sub-link__a { transform: translateX(3px); }
 
   /* ── Chart exhibit ─────────────────────────────────────────── */
   .chart-exhibit {

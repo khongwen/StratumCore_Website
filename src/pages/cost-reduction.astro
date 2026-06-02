@@ -1,0 +1,360 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const blocks = [
+  {
+    n: '01',
+    thesis: 'Most organisations don’t have a cost problem. They have a clarity problem.',
+    points: [
+      'Day-to-day demands make it difficult to see the operation clearly.',
+      'Teams are busy solving today’s issues, managing today’s priorities and responding to today’s pressures.',
+      'The result is often more activity, more initiatives and more reporting — but not necessarily better outcomes.',
+    ],
+    action: 'We help leaders step back, follow the facts, and identify the few things that genuinely drive performance.',
+    because: 'Because better outcomes start with better clarity.',
+  },
+  {
+    n: '02',
+    thesis: 'Most organisations don’t need more initiatives. They need better priorities.',
+    points: [
+      'Every operation has a list of opportunities. The challenge is rarely finding things to do.',
+      'The real challenge is knowing which opportunities will create meaningful value — and which will simply consume time, resources and attention.',
+    ],
+    action: 'We help leaders focus on the few changes that genuinely move productivity, cost and performance.',
+    because: 'Because value comes from execution, not activity.',
+  },
+  {
+    n: '03',
+    thesis: 'Most organisations are capable of more than they realise.',
+    points: [
+      'The pressure of day-to-day operations can make it difficult to step back and see what is truly possible.',
+      'The people, assets and opportunities are often already there.',
+      'The question is not whether improvement is possible. The question is: what is this organisation truly capable of becoming?',
+    ],
+    action: 'Our role is to help leaders answer that question — by uncovering constraints, challenging conventional thinking, and identifying the opportunities that will have the greatest impact.',
+    because: 'Because the highest-performing organisations are not always the ones with the most resources. They’re the ones that understand their potential and have the discipline to pursue it.',
+  },
+];
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.stratumcore.com.au/cost-reduction/#service",
+      "name": "Cost Reduction",
+      "serviceType": "Cost diagnostic, productivity and unit cost improvement",
+      "provider": { "@type": "Organization", "name": "StratumCore", "url": "https://www.stratumcore.com.au" },
+      "areaServed": "Australia",
+      "description": "A fixed-fee cost diagnostic that benchmarks unit cost against the field and delivers a prioritised, board-ready savings case in five weeks."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home",               "item": "https://www.stratumcore.com.au/" },
+        { "@type": "ListItem", "position": 2, "name": "Corporate Advisory",  "item": "https://www.stratumcore.com.au/corporate-advisory" },
+        { "@type": "ListItem", "position": 3, "name": "Cost Reduction",      "item": "https://www.stratumcore.com.au/cost-reduction" }
+      ]
+    }
+  ]
+});
+---
+
+<BaseLayout
+  title="Cost Reduction — Unlock 15%+ Productivity & Unit Cost Gains | StratumCore"
+  description="Unlock 15%+ productivity and unit cost gains from your existing operation. A fixed-fee cost diagnostic that benchmarks your unit cost and delivers a board-ready savings case in 5 weeks."
+  canonical="https://www.stratumcore.com.au/cost-reduction"
+  ogImage="https://www.stratumcore.com.au/og-image-home.png"
+  ogImageAlt="Cost Reduction — StratumCore"
+  jsonLd={jsonLd}
+>
+
+  <Nav />
+
+  <!-- ══════════════════════════════════════════════════════════
+       1. PAGE HERO
+  ══════════════════════════════════════════════════════════ -->
+  <section
+    class="hero-dark flex items-end relative overflow-hidden"
+    style="min-height: 72vh;"
+    aria-label="Cost Reduction"
+  >
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="
+        background-image:
+          radial-gradient(ellipse 60% 65% at 95% 5%,  rgba(0,201,187,0.07) 0%, transparent 55%),
+          radial-gradient(ellipse 40% 50% at 0%  90%, rgba(212,117,26,0.04) 0%, transparent 50%),
+          linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+        background-size: auto, auto, 72px 72px, 72px 72px;
+      "
+      aria-hidden="true"
+    ></div>
+
+    <div class="relative z-10 max-w-site mx-auto px-6 lg:px-10 pb-20 pt-[calc(72px+2.5rem)] w-full">
+      <div class="max-w-4xl fade-up">
+
+        <p class="page-label mb-6">Corporate Advisory &nbsp;·&nbsp; Cost Reduction</p>
+        <span class="teal-rule mb-8 block"></span>
+
+        <h1
+          class="font-serif font-bold text-white mb-0"
+          style="font-size: clamp(2.1rem, 4.4vw, 4.25rem); letter-spacing: -0.03em; max-width: 40rem; line-height: 1.06;"
+        >
+          Unlock <span style="color:#00C9BB;">15%+ productivity and unit cost gains</span> from your existing operation.
+        </h1>
+
+        <p
+          class="font-serif mt-7 leading-relaxed"
+          style="font-size: clamp(1rem, 1.35vw, 1.1875rem); color: rgba(255,255,255,0.62); line-height: 1.7; max-width: 36rem;"
+        >
+          A fixed-fee cost diagnostic that benchmarks your unit cost against the field and
+          hands you a board-ready savings case in
+          <strong style="color: rgba(255,255,255,0.92); font-weight: 700;">5 weeks</strong>.
+          Run by experienced partners &mdash; not junior staff.
+        </p>
+
+        <div class="mt-9 flex flex-wrap items-center gap-x-5 gap-y-4">
+          <a href="/#contact" class="btn-primary cta-lg">Book my cost review</a>
+          <span class="font-serif" style="font-size: 0.875rem; color: rgba(255,255,255,0.45); line-height: 1.5; max-width: 18rem;">
+            30&nbsp;minutes. No obligation. We come prepared with a savings range for your operation.
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       2. THE THESIS — three editorial narrative blocks
+  ══════════════════════════════════════════════════════════ -->
+  <section class="bg-white py-24 lg:py-32" aria-label="How we think about cost">
+    <div class="max-w-site mx-auto px-6 lg:px-10">
+
+      <div class="mb-16 lg:mb-20 fade-up">
+        <p class="page-label mb-4" style="color: #00C9BB;">How we think about cost</p>
+        <h2
+          class="font-serif font-bold text-body"
+          style="font-size: clamp(1.75rem, 3vw, 2.75rem); letter-spacing: -0.025em; line-height: 1.1; max-width: 30rem;"
+        >
+          The gains are already in your operation. We help you see them.
+        </h2>
+      </div>
+
+      <div class="divide-y" style="border-color: #EBEBEB;">
+        {blocks.map((b, i) => (
+          <article
+            class="thesis-row grid lg:grid-cols-12 gap-8 lg:gap-16 py-12 lg:py-16 fade-up"
+            style={`transition-delay: ${i * 60}ms;`}
+          >
+            <!-- Left: number + thesis -->
+            <div class="lg:col-span-5">
+              <p class="thesis-num mb-5">{b.n}</p>
+              <h3
+                class="font-serif font-bold text-body"
+                style="font-size: clamp(1.375rem, 2.2vw, 2rem); letter-spacing: -0.025em; line-height: 1.18; max-width: 24rem;"
+              >
+                {b.thesis}
+              </h3>
+            </div>
+
+            <!-- Right: supporting points + action + because -->
+            <div class="lg:col-span-7 lg:pt-2">
+              <ul class="space-y-4 mb-8" role="list">
+                {b.points.map((p) => (
+                  <li class="font-serif flex items-start gap-3.5" style="font-size: 1.0625rem; color: rgba(34,34,34,0.70); line-height: 1.75; max-width: 38rem;">
+                    <span aria-hidden="true" style="display:inline-block; flex-shrink:0; width:6px; height:6px; border-radius:50%; background:#00C9BB; margin-top:0.7em;"></span>
+                    {p}
+                  </li>
+                ))}
+              </ul>
+
+              <p
+                class="font-serif font-bold text-body mb-6"
+                style="font-size: clamp(1.0625rem, 1.4vw, 1.1875rem); letter-spacing: -0.01em; line-height: 1.6; max-width: 38rem;"
+              >
+                {b.action}
+              </p>
+
+              <blockquote
+                class="font-serif pl-6"
+                style="border-left: 3px solid #00C9BB; font-size: clamp(1.0625rem, 1.4vw, 1.25rem); color: #1C1C1E; font-style: italic; letter-spacing: -0.01em; line-height: 1.5; max-width: 36rem;"
+              >
+                {b.because}
+              </blockquote>
+            </div>
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       3. THE DIAGNOSTIC — what you get (proof assets)
+  ══════════════════════════════════════════════════════════ -->
+  <section class="py-24 lg:py-32" style="background: #F2F2F2;" aria-label="The cost diagnostic">
+    <div class="max-w-site mx-auto px-6 lg:px-10">
+
+      <div class="max-w-3xl fade-up">
+        <p class="page-label mb-4" style="color: #00C9BB;">The cost diagnostic</p>
+        <h2
+          class="font-serif font-bold text-body"
+          style="font-size: clamp(1.75rem, 3.5vw, 3rem); letter-spacing: -0.025em; line-height: 1.12;"
+        >
+          Know where your savings are before you spend a dollar.
+        </h2>
+        <p
+          class="font-serif mt-6 leading-relaxed"
+          style="font-size: 1.0625rem; color: rgba(34,34,34,0.66); line-height: 1.8;"
+        >
+          A fixed-fee, five-week diagnostic that turns the facts into a prioritised, defensible
+          plan. If we don&rsquo;t identify at least $50K in addressable savings, the diagnostic is free.
+        </p>
+      </div>
+
+      <!-- Three deliverables -->
+      <div class="grid sm:grid-cols-3 gap-px mt-14 fade-up" style="background: #DCDCDC;">
+        <div class="bg-stone p-7 lg:p-8 deliverable">
+          <p class="deliverable__k">01</p>
+          <h3 class="deliverable__h">Benchmarked unit cost</h3>
+          <p class="deliverable__b">Your cost per tonne placed against the field, broken down to where you actually sit high.</p>
+        </div>
+        <div class="bg-stone p-7 lg:p-8 deliverable">
+          <p class="deliverable__k">02</p>
+          <h3 class="deliverable__h">Prioritised initiatives</h3>
+          <p class="deliverable__b">Every saving ranked by dollar value against the effort to capture it — biggest wins first.</p>
+        </div>
+        <div class="bg-stone p-7 lg:p-8 deliverable">
+          <p class="deliverable__k">03</p>
+          <h3 class="deliverable__h">Board-ready case</h3>
+          <p class="deliverable__b">A defensible savings case in 5 weeks — numbers that withstand executive and board scrutiny.</p>
+        </div>
+      </div>
+
+      <!-- Proof exhibits -->
+      <div class="mt-20 lg:mt-24 grid lg:grid-cols-2 gap-8 lg:gap-10 items-start fade-up">
+        <figure class="chart-exhibit chart-exhibit--light">
+          <img
+            src="/Hero-proof1.png"
+            width="1280" height="720"
+            alt="Illustrative cost waterfall showing a pathway to a lower unit cost across a set of named initiatives."
+            loading="lazy" decoding="async" class="chart-img"
+          />
+          <figcaption class="chart-cap">Example output: a costed, initiative-by-initiative pathway to lower unit cost.</figcaption>
+        </figure>
+        <figure class="chart-exhibit chart-exhibit--light">
+          <img
+            src="/Hero-proof2.png"
+            width="1280" height="720"
+            alt="Illustrative initiatives prioritisation map plotting savings initiatives by risk against difficulty, with bubble size showing the size of savings."
+            loading="lazy" decoding="async" class="chart-img"
+          />
+          <figcaption class="chart-cap">Savings initiatives ranked by value, effort and risk.</figcaption>
+        </figure>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       4. CLOSING CTA
+  ══════════════════════════════════════════════════════════ -->
+  <section
+    class="py-24 lg:py-32 relative overflow-hidden"
+    aria-label="Contact"
+    style="background: #00C9BB;"
+  >
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 60px 60px;"
+      aria-hidden="true"
+    ></div>
+
+    <div class="relative z-10 max-w-site mx-auto px-6 lg:px-10 text-center fade-up">
+      <h2
+        class="font-serif font-bold mb-8 mx-auto"
+        style="font-size: clamp(1.75rem, 3.5vw, 3rem); color: #1C1C1E; letter-spacing: -0.025em; line-height: 1.2; max-width: 36rem;"
+      >
+        Find out what your operation is truly capable of.
+      </h2>
+      <a
+        href="/#contact"
+        class="font-serif font-bold inline-flex items-center gap-3 px-8 py-4 rounded-sm"
+        style="background: #1C1C1E; color: #FFFFFF; font-size: 0.9375rem; letter-spacing: 0.02em; text-decoration: none; box-shadow: 0 4px 16px rgba(28,28,30,0.2); transition: background 0.18s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease;"
+        onmouseover="this.style.background='#2d2d30'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 24px rgba(28,28,30,0.35)'"
+        onmouseout="this.style.background='#1C1C1E'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 16px rgba(28,28,30,0.2)'"
+      >
+        Book my cost review
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <p
+        class="font-serif mt-5"
+        style="font-size: 0.875rem; color: rgba(28,28,30,0.55);"
+      >
+        wen@stratumcore.com.au &nbsp;·&nbsp; Brisbane, QLD, Australia
+      </p>
+    </div>
+  </section>
+
+  <Footer />
+
+</BaseLayout>
+
+<style>
+  .cta-lg {
+    padding: 0.95rem 2.1rem; font-size: 1rem; min-height: 48px;
+    display: inline-flex; align-items: center;
+  }
+
+  .thesis-num {
+    font-family: Georgia, serif; font-weight: 700; font-size: 0.75rem;
+    letter-spacing: 0.16em; text-transform: uppercase; color: #00C9BB;
+  }
+
+  /* Deliverables */
+  .deliverable { border-top: 2px solid #E0E0E0; transition: border-color 0.22s ease; }
+  .deliverable:hover { border-top-color: #00C9BB; }
+  .deliverable__k {
+    font-family: Georgia, serif; font-weight: 700; font-size: 0.6875rem;
+    letter-spacing: 0.14em; text-transform: uppercase; color: #00C9BB; margin-bottom: 1.1rem;
+  }
+  .deliverable__h {
+    font-family: Georgia, serif; font-weight: 700; color: #222; margin-bottom: 0.6rem;
+    font-size: 1.1875rem; letter-spacing: -0.015em; line-height: 1.2;
+  }
+  .deliverable__b {
+    font-family: Georgia, serif; font-size: 0.9375rem; color: rgba(34,34,34,0.62); line-height: 1.7;
+  }
+
+  /* Chart exhibit */
+  .chart-exhibit {
+    background: #FFFFFF; border-radius: 8px; padding: 0.5rem;
+    box-shadow: 0 1px 1px rgba(28,28,30,0.04), 0 14px 36px -10px rgba(28,28,30,0.18);
+    border: 1px solid #EBEBEB;
+  }
+  .chart-img { display: block; width: 100%; max-width: 100%; height: auto; border-radius: 5px; }
+  .chart-cap {
+    font-family: Georgia, serif; font-size: 0.8125rem; line-height: 1.5;
+    color: rgba(34,34,34,0.5); padding: 0.7rem 0.6rem 0.4rem;
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  setTimeout(() => document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible')), 80);
+</script>

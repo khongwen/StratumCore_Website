@@ -2,8 +2,13 @@
 const pathname = Astro.url.pathname;
 
 const isHome      = pathname === '/';
-const isServices  = ['/finance-consulting', '/leadership-development', '/finance-business-partner-academy'].some(p => pathname.startsWith(p));
+const isCorporate = ['/corporate-advisory', '/cost-reduction', '/financial-control-governance']
+  .some(p => pathname.startsWith(p));
+const isTeam      = ['/finance-team-building', '/leadership-development', '/finance-business-partner-academy']
+  .some(p => pathname.startsWith(p));
 const isAbout     = pathname.startsWith('/about');
+
+const start = (p) => pathname.startsWith(p);
 ---
 
 <header id="site-nav" class="fixed inset-x-0 top-0 z-50">
@@ -19,28 +24,50 @@ const isAbout     = pathname.startsWith('/about');
 
       <a href="/" class={`nav-link${isHome ? ' is-active' : ''}`}>Home</a>
 
-      <!-- Services dropdown -->
+      <!-- Corporate Advisory dropdown -->
       <div class="dropdown-parent flex items-center">
-        <button
-          class={`nav-link flex items-center cursor-default select-none${isServices ? ' is-active' : ''}`}
+        <a
+          href="/corporate-advisory"
+          class={`nav-link flex items-center${isCorporate ? ' is-active' : ''}`}
           aria-haspopup="true"
           aria-expanded="false"
         >
-          Services
+          Corporate Advisory
           <svg class="chevron" viewBox="0 0 10 10" fill="none" aria-hidden="true">
             <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-        </button>
+        </a>
 
         <div class="dropdown-menu" role="menu">
-          <a href="/finance-consulting"
-             class={`dropdown-link${pathname.startsWith('/finance-consulting') ? ' is-active' : ''}`}
-             role="menuitem">Finance Consulting</a>
+          <a href="/cost-reduction"
+             class={`dropdown-link${start('/cost-reduction') ? ' is-active' : ''}`}
+             role="menuitem">Cost Reduction</a>
+          <a href="/financial-control-governance"
+             class={`dropdown-link${start('/financial-control-governance') ? ' is-active' : ''}`}
+             role="menuitem">Financial Control &amp; Governance</a>
+        </div>
+      </div>
+
+      <!-- Finance Team Building dropdown -->
+      <div class="dropdown-parent flex items-center">
+        <a
+          href="/finance-team-building"
+          class={`nav-link flex items-center${isTeam ? ' is-active' : ''}`}
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Finance Team Building
+          <svg class="chevron" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+            <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+
+        <div class="dropdown-menu" role="menu">
           <a href="/leadership-development"
-             class={`dropdown-link${pathname.startsWith('/leadership-development') ? ' is-active' : ''}`}
+             class={`dropdown-link${start('/leadership-development') ? ' is-active' : ''}`}
              role="menuitem">Leadership Development</a>
           <a href="/finance-business-partner-academy"
-             class={`dropdown-link${pathname.startsWith('/finance-business-partner-academy') ? ' is-active' : ''}`}
+             class={`dropdown-link${start('/finance-business-partner-academy') ? ' is-active' : ''}`}
              role="menuitem">FBP Academy</a>
         </div>
       </div>
@@ -69,15 +96,28 @@ const isAbout     = pathname.startsWith('/about');
 
     <a href="/" class={`mob-nav-link${isHome ? ' is-active' : ''}`}>Home</a>
 
-    <!-- Services accordion -->
-    <button class="mob-services-toggle" id="mob-services-toggle" aria-expanded="false">
-      Services
+    <!-- Corporate Advisory accordion -->
+    <button class="mob-services-toggle js-mob-acc" aria-expanded="false">
+      Corporate Advisory
       <svg class="mob-services-chevron" width="14" height="14" viewBox="0 0 10 10" fill="none" aria-hidden="true">
         <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </button>
-    <div id="mob-services-submenu" class="hidden">
-      <a href="/finance-consulting">Finance Consulting</a>
+    <div class="mob-submenu hidden">
+      <a href="/corporate-advisory">Overview</a>
+      <a href="/cost-reduction">Cost Reduction</a>
+      <a href="/financial-control-governance">Financial Control &amp; Governance</a>
+    </div>
+
+    <!-- Finance Team Building accordion -->
+    <button class="mob-services-toggle js-mob-acc" aria-expanded="false">
+      Finance Team Building
+      <svg class="mob-services-chevron" width="14" height="14" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+        <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div class="mob-submenu hidden">
+      <a href="/finance-team-building">Overview</a>
       <a href="/leadership-development">Leadership Development</a>
       <a href="/finance-business-partner-academy">FBP Academy</a>
     </div>
@@ -120,15 +160,16 @@ const isAbout     = pathname.startsWith('/about');
     }
   });
 
-  // ── Mobile Services accordion ─────────────────────────────────
-  const servicesToggle  = document.getElementById('mob-services-toggle')!;
-  const servicesSubmenu = document.getElementById('mob-services-submenu')!;
-
-  servicesToggle.addEventListener('click', () => {
-    const isOpen = !servicesSubmenu.classList.contains('hidden');
-    servicesSubmenu.classList.toggle('hidden', isOpen);
-    servicesToggle.setAttribute('aria-expanded', String(!isOpen));
-    servicesToggle.classList.toggle('open', !isOpen);
+  // ── Mobile accordions (generalised for both streams) ──────────
+  document.querySelectorAll<HTMLButtonElement>('.js-mob-acc').forEach((btn) => {
+    const submenu = btn.nextElementSibling as HTMLElement | null;
+    if (!submenu) return;
+    btn.addEventListener('click', () => {
+      const isOpen = !submenu.classList.contains('hidden');
+      submenu.classList.toggle('hidden', isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      btn.classList.toggle('open', !isOpen);
+    });
   });
 
   // Close mobile menu when a link is clicked

@@ -190,10 +190,10 @@ body {
 .mob-services-chevron { transition: transform 0.22s ease; }
 .mob-services-toggle.open .mob-services-chevron { transform: rotate(180deg); }
 
-#mob-services-submenu {
+.mob-submenu {
   padding: 0.25rem 0 0.25rem 1rem;
 }
-#mob-services-submenu a {
+.mob-submenu a {
   display: block;
   font-family: Georgia, serif;
   font-size: 0.875rem;
@@ -202,7 +202,7 @@ body {
   padding: 0.45rem 0;
   transition: color 0.15s;
 }
-#mob-services-submenu a:hover { color: var(--teal); }
+.mob-submenu a:hover { color: var(--teal); }
 
 .mob-cta-wrap { margin-top: 1.25rem; }
 
