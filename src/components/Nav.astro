@@ -1,12 +1,18 @@
 ---
 const pathname = Astro.url.pathname;
 
-const isHome      = pathname === '/';
-const isCorporate = ['/corporate-advisory', '/cost-reduction', '/financial-control-governance']
-  .some(p => pathname.startsWith(p));
-const isTeam      = ['/finance-team-building', '/leadership-development', '/finance-business-partner-academy']
-  .some(p => pathname.startsWith(p));
-const isAbout     = pathname.startsWith('/about');
+const servicePaths = [
+  '/cost-reduction',
+  '/financial-control-governance',
+  '/finance-team-building',
+  '/leadership-development',
+  '/finance-business-partner-academy',
+  '/corporate-advisory',
+];
+
+const isHome     = pathname === '/';
+const isServices = servicePaths.some(p => pathname.startsWith(p));
+const isAbout    = pathname.startsWith('/about');
 
 const start = (p) => pathname.startsWith(p);
 ---
@@ -24,19 +30,18 @@ const start = (p) => pathname.startsWith(p);
 
       <a href="/" class={`nav-link${isHome ? ' is-active' : ''}`}>Home</a>
 
-      <!-- Corporate Advisory dropdown -->
+      <!-- Services dropdown -->
       <div class="dropdown-parent flex items-center">
-        <a
-          href="/corporate-advisory"
-          class={`nav-link flex items-center${isCorporate ? ' is-active' : ''}`}
+        <button
+          class={`nav-link flex items-center cursor-default select-none${isServices ? ' is-active' : ''}`}
           aria-haspopup="true"
           aria-expanded="false"
         >
-          Corporate Advisory
+          Services
           <svg class="chevron" viewBox="0 0 10 10" fill="none" aria-hidden="true">
             <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-        </a>
+        </button>
 
         <div class="dropdown-menu" role="menu">
           <a href="/cost-reduction"
@@ -44,31 +49,10 @@ const start = (p) => pathname.startsWith(p);
              role="menuitem">Cost Reduction</a>
           <a href="/financial-control-governance"
              class={`dropdown-link${start('/financial-control-governance') ? ' is-active' : ''}`}
-             role="menuitem">Financial Control &amp; Governance</a>
-        </div>
-      </div>
-
-      <!-- Finance Team Building dropdown -->
-      <div class="dropdown-parent flex items-center">
-        <a
-          href="/finance-team-building"
-          class={`nav-link flex items-center${isTeam ? ' is-active' : ''}`}
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          Finance Team Building
-          <svg class="chevron" viewBox="0 0 10 10" fill="none" aria-hidden="true">
-            <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-
-        <div class="dropdown-menu" role="menu">
-          <a href="/leadership-development"
-             class={`dropdown-link${start('/leadership-development') ? ' is-active' : ''}`}
-             role="menuitem">Leadership Development</a>
-          <a href="/finance-business-partner-academy"
-             class={`dropdown-link${start('/finance-business-partner-academy') ? ' is-active' : ''}`}
-             role="menuitem">FBP Academy</a>
+             role="menuitem">Financial Control</a>
+          <a href="/finance-team-building"
+             class={`dropdown-link${(start('/finance-team-building') || start('/leadership-development') || start('/finance-business-partner-academy')) ? ' is-active' : ''}`}
+             role="menuitem">Finance Team Building</a>
         </div>
       </div>
 
@@ -96,30 +80,17 @@ const start = (p) => pathname.startsWith(p);
 
     <a href="/" class={`mob-nav-link${isHome ? ' is-active' : ''}`}>Home</a>
 
-    <!-- Corporate Advisory accordion -->
+    <!-- Services accordion -->
     <button class="mob-services-toggle js-mob-acc" aria-expanded="false">
-      Corporate Advisory
+      Services
       <svg class="mob-services-chevron" width="14" height="14" viewBox="0 0 10 10" fill="none" aria-hidden="true">
         <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </button>
     <div class="mob-submenu hidden">
-      <a href="/corporate-advisory">Overview</a>
       <a href="/cost-reduction">Cost Reduction</a>
-      <a href="/financial-control-governance">Financial Control &amp; Governance</a>
-    </div>
-
-    <!-- Finance Team Building accordion -->
-    <button class="mob-services-toggle js-mob-acc" aria-expanded="false">
-      Finance Team Building
-      <svg class="mob-services-chevron" width="14" height="14" viewBox="0 0 10 10" fill="none" aria-hidden="true">
-        <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-    <div class="mob-submenu hidden">
-      <a href="/finance-team-building">Overview</a>
-      <a href="/leadership-development">Leadership Development</a>
-      <a href="/finance-business-partner-academy">FBP Academy</a>
+      <a href="/financial-control-governance">Financial Control</a>
+      <a href="/finance-team-building">Finance Team Building</a>
     </div>
 
     <a href="/about" class={`mob-nav-link${isAbout ? ' is-active' : ''}`}>About</a>
@@ -160,7 +131,7 @@ const start = (p) => pathname.startsWith(p);
     }
   });
 
-  // ── Mobile accordions (generalised for both streams) ──────────
+  // ── Mobile accordions ─────────────────────────────────────────
   document.querySelectorAll<HTMLButtonElement>('.js-mob-acc').forEach((btn) => {
     const submenu = btn.nextElementSibling as HTMLElement | null;
     if (!submenu) return;

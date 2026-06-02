@@ -13,8 +13,11 @@ const jsonLd = JSON.stringify({
       "url": "https://www.stratumcore.com.au",
       "email": "wen@stratumcore.com.au",
       "telephone": "+61451954594",
-      "description": "Fixed-fee mining cost diagnostic that benchmarks your cost per tonne and delivers a board-ready savings case in five weeks.",
-      "founder": { "@type": "Person", "name": "Wen Khong" },
+      "description": "Independent advisory for mining and asset-intensive businesses — cost reduction, financial control and governance, and finance team building.",
+      "founder": {
+        "@type": "Person",
+        "name": "Wen Khong"
+      },
       "areaServed": "Australia",
       "address": {
         "@type": "PostalAddress",
@@ -23,21 +26,12 @@ const jsonLd = JSON.stringify({
         "addressCountry": "AU"
       },
       "knowsAbout": [
-        "mining cost reduction",
-        "cost per tonne benchmarking",
-        "cost diagnostic",
+        "cost reduction",
+        "unit cost improvement",
+        "financial control and governance",
         "mining finance",
-        "CFO advisory"
+        "finance business partnering"
       ]
-    },
-    {
-      "@type": "Service",
-      "@id": "https://www.stratumcore.com.au/#cost-diagnostic",
-      "name": "Mining Cost Diagnostic",
-      "serviceType": "Cost diagnostic and savings benchmarking",
-      "provider": { "@id": "https://www.stratumcore.com.au/#organisation" },
-      "areaServed": "Australia",
-      "description": "A fixed-fee, five-week diagnostic that benchmarks your cost per tonne against the field and delivers a prioritised, board-ready savings case."
     },
     {
       "@type": "Person",
@@ -60,35 +54,36 @@ const jsonLd = JSON.stringify({
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.stratumcore.com.au/" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.stratumcore.com.au/"
+        }
       ]
     }
   ]
 });
-
-// Web3Forms access key — replace this placeholder with your own free key from https://web3forms.com
-const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
 ---
 
 <BaseLayout
-  title="Cut Your Cost per Tonne 15–29% | Mining Cost Diagnostic | StratumCore"
-  description="A fixed-fee mining cost diagnostic that benchmarks your $/tonne against the field and delivers a board-ready savings case in 5 weeks. Run by experienced partners. Book a 30-minute cost review."
+  title="Mining Finance & Cost Reduction Advisory | StratumCore"
+  description="StratumCore delivers senior, independent advisory for mining and asset-intensive businesses — cost reduction, financial control and governance, and finance team building. No juniors."
   canonical="https://www.stratumcore.com.au/"
   ogImage="https://www.stratumcore.com.au/og-image-home.png"
-  ogImageAlt="StratumCore — Mining Cost Diagnostic"
+  ogImageAlt="StratumCore — Finance & Leadership Consulting, Brisbane"
   jsonLd={jsonLd}
 >
 
   <Nav />
 
   <!-- ══════════════════════════════════════════════════════════
-       1. HERO — single offer: the cost diagnostic
+       1. HERO
   ══════════════════════════════════════════════════════════ -->
   <section
-    class="hero-dark relative overflow-hidden flex flex-col justify-center"
-    aria-label="Take 15 to 29 percent out of your cost per tonne"
+    class="hero-dark min-h-screen flex flex-col justify-end relative overflow-hidden"
+    aria-label="Hero"
     style="
-      min-height: 100svh;
       background-color: #1C1C1E;
       background-image:
         radial-gradient(ellipse 65% 70% at 90% 5%,  rgba(0,201,187,0.07) 0%, transparent 55%),
@@ -98,69 +93,47 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
       background-size: auto, auto, 72px 72px, 72px 72px;
     "
   >
-    <div class="relative z-10 max-w-site mx-auto px-6 lg:px-10 w-full pt-[calc(72px+2.5rem)] pb-16 lg:pb-20">
+    <!-- Horizontal accent line -->
+    <div class="absolute top-[38%] inset-x-0 h-px pointer-events-none"
+         style="background: linear-gradient(90deg, transparent 0%, rgba(0,201,187,0.18) 30%, rgba(0,201,187,0.18) 70%, transparent 100%);"></div>
 
-      <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+    <div class="relative z-10 max-w-site mx-auto px-6 lg:px-10 w-full pb-20 pt-[72px]">
+      <div class="max-w-4xl fade-up">
 
-        <!-- Left: message -->
-        <div class="lg:col-span-6 fade-up">
-          <p class="page-label mb-5">Fixed-fee cost diagnostic &nbsp;·&nbsp; Mining &amp; resources</p>
-          <span class="teal-rule mb-8 block"></span>
+        <p class="page-label mb-5">Independent advisory &nbsp;·&nbsp; Mining &amp; resource sector</p>
+        <span class="teal-rule mb-10 block"></span>
 
-          <!-- 1. Headline -->
-          <h1
-            class="font-serif font-bold text-white mb-0"
-            style="font-size: clamp(2.35rem, 4.6vw, 4.25rem); letter-spacing: -0.03em; line-height: 1.04;"
-          >
-            Take 15&ndash;29% out of your cost per tonne&mdash;<span style="color: #00C9BB;">without adding headcount.</span>
-          </h1>
+        <!-- Main headline -->
+        <h1
+          class="font-serif font-bold text-white mb-0 leading-none"
+          style="font-size: clamp(2.8rem, 6.5vw, 6.25rem); letter-spacing: -0.03em;"
+        >
+          Sharper finance.<br />
+          Stronger leaders.<br />
+          <span style="color: rgba(255,255,255,0.45);">Better decisions.</span>
+        </h1>
 
-          <!-- 2. Sub-headline -->
-          <p
-            class="font-serif mt-7 leading-relaxed"
-            style="font-size: clamp(1rem, 1.35vw, 1.1875rem); color: rgba(255,255,255,0.62); line-height: 1.7; max-width: 34rem;"
-          >
-            A fixed-fee cost diagnostic that benchmarks your $/t against the field and hands you a
-            board-ready savings case in <strong style="color: rgba(255,255,255,0.92); font-weight: 700;">5 weeks</strong>.
-            Run by experienced partners&mdash;not junior staff.
-          </p>
+        <!-- Teal sub-line -->
+        <p
+          class="font-serif font-bold mt-6"
+          style="font-size: clamp(1rem, 1.8vw, 1.375rem); color: #00C9BB; letter-spacing: -0.01em;"
+        >
+          Independent advisory for mining and asset-intensive businesses.
+        </p>
 
-          <!-- 5. Primary CTA → scrolls to contact form -->
-          <div class="mt-9 flex flex-wrap items-center gap-x-5 gap-y-4">
-            <a href="#contact" class="btn-primary cta-lg">Book my cost review</a>
-            <span class="font-serif" style="font-size: 0.875rem; color: rgba(255,255,255,0.45); line-height: 1.5; max-width: 18rem;">
-              30&nbsp;minutes. No obligation. We come prepared with a savings range for your operation.
-            </span>
-          </div>
+        <!-- Supporting copy -->
+        <p
+          class="font-serif mt-4 leading-relaxed max-w-xl"
+          style="font-size: clamp(0.9375rem, 1.2vw, 1.0625rem); color: rgba(255,255,255,0.48);"
+        >
+          StratumCore brings senior finance leadership and practical capability building
+          to the resource sector — without the big-firm overhead.
+        </p>
 
-          <p
-            class="font-serif mt-6 inline-flex items-start gap-2.5"
-            style="font-size: 0.875rem; color: rgba(255,255,255,0.78); line-height: 1.5;"
-          >
-            <span aria-hidden="true" style="color: #00C9BB; flex-shrink: 0; margin-top: 0.05em;">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5l3.5 3.5L14 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <span>If we don&rsquo;t identify at least <strong style="font-weight:700;">$50K in addressable savings</strong>, the diagnostic is free.</span>
-          </p>
-        </div>
-
-        <!-- 3. Hero proof asset (proof 1) — eager-loaded -->
-        <div class="lg:col-span-6 fade-up" style="transition-delay: 90ms;">
-          <figure class="chart-exhibit chart-exhibit--hero">
-            <img
-              src="/Hero-proof1.png"
-              width="1280"
-              height="720"
-              alt="Illustrative cost waterfall showing a pathway to a lower unit cost across a set of named initiatives."
-              loading="eager"
-              fetchpriority="high"
-              decoding="async"
-              class="chart-img"
-            />
-            <figcaption class="chart-cap">
-              Example output: a costed, initiative-by-initiative pathway to lower unit cost.
-            </figcaption>
-          </figure>
+        <!-- CTAs -->
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a href="#services" class="btn-primary">Explore our services</a>
+          <a href="mailto:wen@stratumcore.com.au" class="btn-outline">Book a call</a>
         </div>
 
       </div>
@@ -173,182 +146,127 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
 
 
   <!-- ══════════════════════════════════════════════════════════
-       2. CTA BLOCK + HOW WE FIND THE SAVINGS (proof 2)
+       2. WHAT WE DO — Services
   ══════════════════════════════════════════════════════════ -->
-  <section class="bg-white py-20 lg:py-28" aria-label="How it works">
+  <section id="services" class="bg-white py-24 lg:py-32" aria-label="Our services">
     <div class="max-w-site mx-auto px-6 lg:px-10">
 
-      <!-- 4a. CTA block -->
-      <div class="max-w-3xl fade-up">
-        <p class="page-label mb-4" style="color: #00C9BB;">What you get</p>
+      <!-- Section header -->
+      <div class="mb-16 fade-up">
+        <p class="page-label mb-4" style="color: #00C9BB;">Our services</p>
         <h2
           class="font-serif font-bold text-body"
-          style="font-size: clamp(1.75rem, 3.5vw, 3rem); letter-spacing: -0.025em; line-height: 1.12;"
+          style="font-size: clamp(1.75rem, 3.5vw, 3rem); letter-spacing: -0.025em; max-width: 28rem; line-height: 1.1;"
         >
-          Know where your savings are before you spend a dollar.
+          End-to-end advisory, built for the mining sector.
         </h2>
-        <p
-          class="font-serif mt-6 leading-relaxed"
-          style="font-size: 1.0625rem; color: rgba(34,34,34,0.66); line-height: 1.8;"
+      </div>
+
+      <!-- Cards grid -->
+      <div class="grid md:grid-cols-3 gap-0 md:gap-px" style="background: #E8E8E8;">
+        <!-- Each card sits on white, gap-px between creates a hairline divider effect -->
+
+        <!-- Card 1: Cost Reduction -->
+        <article
+          class="service-card-home bg-white p-8 lg:p-10 flex flex-col fade-up group"
+          style="transition-delay: 0ms;"
         >
-          Book a 30-minute cost review. We&rsquo;ll show you the likely savings range for your operation and
-          exactly how the diagnostic works. If we don&rsquo;t identify at least $50K in addressable savings,
-          the diagnostic is free.
-        </p>
-      </div>
-
-      <!-- Three quick "what you get" beats -->
-      <div class="grid sm:grid-cols-3 gap-px mt-14 fade-up" style="background: #E8E8E8;">
-        <div class="bg-white p-7 lg:p-8 deliverable">
-          <p class="deliverable__k">01</p>
-          <h3 class="deliverable__h">Benchmarked $/t</h3>
-          <p class="deliverable__b">Your cost per tonne placed against the field, broken down to where you actually sit high.</p>
-        </div>
-        <div class="bg-white p-7 lg:p-8 deliverable">
-          <p class="deliverable__k">02</p>
-          <h3 class="deliverable__h">Prioritised initiatives</h3>
-          <p class="deliverable__b">Every saving ranked by dollar value against the effort to capture it&mdash;biggest wins first.</p>
-        </div>
-        <div class="bg-white p-7 lg:p-8 deliverable">
-          <p class="deliverable__k">03</p>
-          <h3 class="deliverable__h">Board-ready case</h3>
-          <p class="deliverable__b">A defensible savings case in 5 weeks&mdash;numbers that withstand executive and board scrutiny.</p>
-        </div>
-      </div>
-
-      <!-- 4b. Second proof beat (proof 2) — lazy-loaded, below the fold -->
-      <div class="mt-20 lg:mt-28 grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-        <div class="lg:col-span-5 fade-up">
-          <p class="page-label mb-4" style="color: #00C9BB;">How we find the savings</p>
-          <h2
-            class="font-serif font-bold text-body"
-            style="font-size: clamp(1.6rem, 3vw, 2.5rem); letter-spacing: -0.025em; line-height: 1.14; max-width: 22rem;"
-          >
-            We rank every initiative by value against effort.
-          </h2>
           <p
-            class="font-serif mt-5 leading-relaxed"
-            style="font-size: 1rem; color: rgba(34,34,34,0.64); line-height: 1.8; max-width: 28rem;"
-          >
-            We rank every initiative by dollar value against the effort to capture it&mdash;so you act on
-            the biggest, easiest wins first, and see exactly what each one is worth before committing.
-          </p>
-        </div>
-
-        <div class="lg:col-span-7 fade-up" style="transition-delay: 90ms;">
-          <figure class="chart-exhibit chart-exhibit--light">
-            <img
-              src="/Hero-proof2.png"
-              width="1280"
-              height="720"
-              alt="Illustrative initiatives prioritisation map plotting savings initiatives by risk against difficulty, with bubble size showing the size of savings."
-              loading="lazy"
-              decoding="async"
-              class="chart-img"
-            />
-            <figcaption class="chart-cap">
-              Savings initiatives ranked by value, effort and risk.
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════════════════════
-       2b. TWO STREAMS — the full offering
-  ══════════════════════════════════════════════════════════ -->
-  <section class="py-20 lg:py-28" style="background: #F2F2F2;" aria-label="How we help">
-    <div class="max-w-site mx-auto px-6 lg:px-10">
-
-      <div class="max-w-3xl fade-up">
-        <p class="page-label mb-4" style="color: #00C9BB;">How we help</p>
-        <h2
-          class="font-serif font-bold text-body"
-          style="font-size: clamp(1.75rem, 3.5vw, 3rem); letter-spacing: -0.025em; line-height: 1.12;"
-        >
-          The cost diagnostic is where many clients start. It&rsquo;s not all we do.
-        </h2>
-        <p
-          class="font-serif mt-6 leading-relaxed"
-          style="font-size: 1.0625rem; color: rgba(34,34,34,0.66); line-height: 1.8;"
-        >
-          StratumCore works across two focused streams &mdash; helping leaders take cost out and
-          tighten control of the business, and building finance teams that drive decisions.
-        </p>
-      </div>
-
-      <div class="grid lg:grid-cols-2 gap-px mt-14 fade-up" style="background: #DCDCDC;">
-
-        <!-- Corporate Advisory -->
-        <div class="bg-white p-8 lg:p-12 stream-panel flex flex-col">
-          <p class="tile-number mb-4">Stream 01</p>
+            class="font-serif font-bold mb-6"
+            style="font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: #00C9BB;"
+          >01</p>
           <h3
-            class="font-serif font-bold text-body mb-3"
-            style="font-size: clamp(1.375rem, 2vw, 1.75rem); letter-spacing: -0.02em; line-height: 1.15;"
+            class="font-serif font-bold text-body mb-4"
+            style="font-size: clamp(1.2rem, 1.8vw, 1.5rem); letter-spacing: -0.02em; line-height: 1.15;"
           >
-            Corporate Advisory
+            Cost Reduction
           </h3>
           <p
-            class="font-serif leading-relaxed mb-7"
-            style="font-size: 0.9688rem; color: rgba(34,34,34,0.62); line-height: 1.75; max-width: 28rem;"
+            class="font-serif leading-relaxed flex-1 mb-8"
+            style="font-size: 0.9375rem; color: rgba(34,34,34,0.62); line-height: 1.7;"
           >
-            Senior, independent advisory to take cost out of the operation and put the
-            financial controls in place to hold the gains.
+            Unlock 15%+ productivity and unit cost gains from your existing operation —
+            clarity, priorities, and a board-ready savings case.
           </p>
-          <div class="mt-auto space-y-px" style="background:#ECECEC;">
-            <a href="/cost-reduction" class="sub-link bg-white">
-              <span>
-                <span class="sub-link__t">Cost Reduction</span>
-                <span class="sub-link__d">Unlock 15%+ productivity and unit cost gains.</span>
-              </span>
-              <svg class="sub-link__a" width="15" height="15" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            <a href="/financial-control-governance" class="sub-link bg-white">
-              <span>
-                <span class="sub-link__t">Financial Control &amp; Governance</span>
-                <span class="sub-link__d">Scale without bottlenecks. Stay in control.</span>
-              </span>
-              <svg class="sub-link__a" width="15" height="15" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-          </div>
-        </div>
+          <a
+            href="/cost-reduction"
+            class="font-serif font-bold inline-flex items-center gap-2 group-hover:gap-3 card-link"
+            style="font-size: 0.875rem; color: #00C9BB; text-decoration: none; letter-spacing: 0.01em;"
+          >
+            Learn more
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="transition: transform 0.2s ease;">
+              <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
 
-        <!-- Finance Team Building -->
-        <div class="bg-white p-8 lg:p-12 stream-panel flex flex-col">
-          <p class="tile-number mb-4">Stream 02</p>
+        <!-- Card 2: Financial Control -->
+        <article
+          class="service-card-home bg-white p-8 lg:p-10 flex flex-col fade-up group"
+          style="transition-delay: 80ms;"
+        >
+          <p
+            class="font-serif font-bold mb-6"
+            style="font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: #00C9BB;"
+          >02</p>
           <h3
-            class="font-serif font-bold text-body mb-3"
-            style="font-size: clamp(1.375rem, 2vw, 1.75rem); letter-spacing: -0.02em; line-height: 1.15;"
+            class="font-serif font-bold text-body mb-4"
+            style="font-size: clamp(1.2rem, 1.8vw, 1.5rem); letter-spacing: -0.02em; line-height: 1.15;"
+          >
+            Financial Control
+          </h3>
+          <p
+            class="font-serif leading-relaxed flex-1 mb-8"
+            style="font-size: 0.9375rem; color: rgba(34,34,34,0.62); line-height: 1.7;"
+          >
+            Get control of operational spend, real visibility into performance, and the
+            governance to scale without bottlenecks.
+          </p>
+          <a
+            href="/financial-control-governance"
+            class="font-serif font-bold inline-flex items-center gap-2 group-hover:gap-3 card-link"
+            style="font-size: 0.875rem; color: #00C9BB; text-decoration: none; letter-spacing: 0.01em;"
+          >
+            Learn more
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="transition: transform 0.2s ease;">
+              <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
+
+        <!-- Card 3: Finance Team Building -->
+        <article
+          class="service-card-home bg-white p-8 lg:p-10 flex flex-col fade-up group"
+          style="transition-delay: 160ms;"
+        >
+          <p
+            class="font-serif font-bold mb-6"
+            style="font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: #00C9BB;"
+          >03</p>
+          <h3
+            class="font-serif font-bold text-body mb-4"
+            style="font-size: clamp(1.2rem, 1.8vw, 1.5rem); letter-spacing: -0.02em; line-height: 1.15;"
           >
             Finance Team Building
           </h3>
           <p
-            class="font-serif leading-relaxed mb-7"
-            style="font-size: 0.9688rem; color: rgba(34,34,34,0.62); line-height: 1.75; max-width: 28rem;"
+            class="font-serif leading-relaxed flex-1 mb-8"
+            style="font-size: 0.9375rem; color: rgba(34,34,34,0.62); line-height: 1.7;"
           >
-            Practical programmes that move finance teams beyond reporting and into genuine
-            commercial influence.
+            Build a finance team that drives decisions — leadership development and the
+            Finance Business Partner Academy.
           </p>
-          <div class="mt-auto space-y-px" style="background:#ECECEC;">
-            <a href="/leadership-development" class="sub-link bg-white">
-              <span>
-                <span class="sub-link__t">Leadership Development</span>
-                <span class="sub-link__d">Coaching and workshops for finance leaders.</span>
-              </span>
-              <svg class="sub-link__a" width="15" height="15" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            <a href="/finance-business-partner-academy" class="sub-link bg-white">
-              <span>
-                <span class="sub-link__t">FBP Academy</span>
-                <span class="sub-link__d">A five-module finance business partner programme.</span>
-              </span>
-              <svg class="sub-link__a" width="15" height="15" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-          </div>
-        </div>
+          <a
+            href="/finance-team-building"
+            class="font-serif font-bold inline-flex items-center gap-2 group-hover:gap-3 card-link"
+            style="font-size: 0.875rem; color: #00C9BB; text-decoration: none; letter-spacing: 0.01em;"
+          >
+            Learn more
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="transition: transform 0.2s ease;">
+              <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
 
       </div>
     </div>
@@ -356,146 +274,207 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
 
 
   <!-- ══════════════════════════════════════════════════════════
-       3. TRUST STRIP — experienced partners (reinforces the offer)
+       3. HOW WE WORK
   ══════════════════════════════════════════════════════════ -->
   <section
-    class="hero-dark py-16 lg:py-20 relative overflow-hidden"
-    aria-label="Who runs the diagnostic"
-    style="background-color: #1C1C1E; background-image: radial-gradient(ellipse 50% 60% at 50% 100%, rgba(0,201,187,0.05) 0%, transparent 60%);"
+    class="hero-dark py-24 lg:py-32 relative overflow-hidden"
+    aria-label="Our approach"
+    style="
+      background-color: #1C1C1E;
+      background-image: radial-gradient(ellipse 50% 60% at 50% 100%, rgba(0,201,187,0.05) 0%, transparent 60%);
+    "
   >
     <div class="max-w-site mx-auto px-6 lg:px-10 relative z-10">
-      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center fade-up">
-        <div class="lg:col-span-4">
-          <p class="page-label mb-3">Run by partners</p>
-          <p class="font-serif font-bold text-white" style="font-size: clamp(1.25rem, 2vw, 1.6rem); letter-spacing: -0.02em; line-height: 1.2;">
-            Senior people only. No juniors learning on your site.
+
+      <!-- Section header -->
+      <div class="mb-16 lg:mb-20 fade-up">
+        <p class="page-label mb-4">Our approach</p>
+        <h2
+          class="font-serif font-bold text-white"
+          style="font-size: clamp(1.75rem, 3.5vw, 3rem); letter-spacing: -0.025em; max-width: 32rem; line-height: 1.1;"
+        >
+          Senior expertise. No juniors. No overhead.
+        </h2>
+      </div>
+
+      <!-- Three steps -->
+      <div class="grid md:grid-cols-3 gap-12 lg:gap-16">
+
+        <!-- Step 1 -->
+        <div class="fade-up" style="transition-delay: 0ms;">
+          <p
+            class="font-serif font-bold mb-4 block"
+            style="font-size: 3.5rem; line-height: 1; letter-spacing: -0.04em; color: rgba(0,201,187,0.18);"
+            aria-hidden="true"
+          >01</p>
+          <h3
+            class="font-serif font-bold text-white mb-3"
+            style="font-size: clamp(1.125rem, 1.6vw, 1.375rem); letter-spacing: -0.015em;"
+          >
+            Understand
+          </h3>
+          <p
+            class="font-serif leading-relaxed"
+            style="font-size: 0.9375rem; color: rgba(255,255,255,0.48); line-height: 1.75;"
+          >
+            We start with your actual problem, not a packaged solution.
           </p>
         </div>
-        <div class="lg:col-span-8 grid sm:grid-cols-2 gap-x-10 gap-y-6">
-          <div>
-            <p class="font-serif font-bold text-white" style="font-size: 1rem;">Wen Khong</p>
-            <p class="font-serif" style="font-size: 0.9375rem; color: rgba(255,255,255,0.5); line-height: 1.65;">
-              Two decades in senior finance across BHP, Wesfarmers, BUMA and Ernst &amp; Young.
-            </p>
-          </div>
-          <div>
-            <p class="font-serif font-bold text-white" style="font-size: 1rem;">Calvin Yong</p>
-            <p class="font-serif" style="font-size: 0.9375rem; color: rgba(255,255,255,0.5); line-height: 1.65;">
-              Operational and commercial experience across BMA, BHP, Bankwest and CS Gas.
-            </p>
-          </div>
+
+        <!-- Step 2 -->
+        <div class="fade-up" style="transition-delay: 90ms;">
+          <p
+            class="font-serif font-bold mb-4 block"
+            style="font-size: 3.5rem; line-height: 1; letter-spacing: -0.04em; color: rgba(0,201,187,0.18);"
+            aria-hidden="true"
+          >02</p>
+          <h3
+            class="font-serif font-bold text-white mb-3"
+            style="font-size: clamp(1.125rem, 1.6vw, 1.375rem); letter-spacing: -0.015em;"
+          >
+            Design
+          </h3>
+          <p
+            class="font-serif leading-relaxed"
+            style="font-size: 0.9375rem; color: rgba(255,255,255,0.48); line-height: 1.75;"
+          >
+            We build the approach around your business, team, and constraints.
+          </p>
         </div>
+
+        <!-- Step 3 -->
+        <div class="fade-up" style="transition-delay: 180ms;">
+          <p
+            class="font-serif font-bold mb-4 block"
+            style="font-size: 3.5rem; line-height: 1; letter-spacing: -0.04em; color: rgba(0,201,187,0.18);"
+            aria-hidden="true"
+          >03</p>
+          <h3
+            class="font-serif font-bold text-white mb-3"
+            style="font-size: clamp(1.125rem, 1.6vw, 1.375rem); letter-spacing: -0.015em;"
+          >
+            Deliver
+          </h3>
+          <p
+            class="font-serif leading-relaxed"
+            style="font-size: 0.9375rem; color: rgba(255,255,255,0.48); line-height: 1.75;"
+          >
+            We work alongside your people to make the change stick.
+          </p>
+        </div>
+
       </div>
     </div>
   </section>
 
 
   <!-- ══════════════════════════════════════════════════════════
-       4. CONTACT FORM
+       4. ABOUT TEASER
   ══════════════════════════════════════════════════════════ -->
-  <section id="contact" class="py-20 lg:py-28" style="background: #F2F2F2;" aria-label="Book your cost review">
+  <section class="bg-white py-24 lg:py-32" aria-label="About StratumCore">
     <div class="max-w-site mx-auto px-6 lg:px-10">
-      <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start fade-up">
 
-        <!-- Left: pitch -->
-        <div class="lg:col-span-5 fade-up">
-          <p class="page-label mb-4" style="color: #00C9BB;">Book your cost review</p>
+        <!-- Left -->
+        <div>
+          <p class="page-label mb-5" style="color: #00C9BB;">About StratumCore</p>
           <h2
-            class="font-serif font-bold text-body"
-            style="font-size: clamp(1.85rem, 3.5vw, 3rem); letter-spacing: -0.025em; line-height: 1.12;"
+            class="font-serif font-bold text-body mb-6"
+            style="font-size: clamp(1.75rem, 3vw, 2.5rem); letter-spacing: -0.025em; line-height: 1.15; max-width: 26rem;"
           >
-            Book my cost review.
+            Led by people who have sat in your chair.
           </h2>
-          <p class="font-serif mt-6 leading-relaxed" style="font-size: 1.0625rem; color: rgba(34,34,34,0.66); line-height: 1.8; max-width: 30rem;">
-            Tell us a little about your operation and we&rsquo;ll come to the call with a likely savings
-            range and a clear walk-through of the diagnostic.
-          </p>
-
-          <ul class="mt-8 space-y-3" role="list">
-            {[
-              '30-minute call, no obligation',
-              'A savings range for your operation',
-              '$50K in addressable savings — or it’s free',
-            ].map((item) => (
-              <li class="font-serif flex items-start gap-3" style="font-size: 0.9688rem; color: rgba(34,34,34,0.78); line-height: 1.55;">
-                <span aria-hidden="true" style="color:#00C9BB; flex-shrink:0; margin-top:0.1em;">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5l3.5 3.5L14 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
-
-          <p class="font-serif mt-8" style="font-size: 0.875rem; color: rgba(34,34,34,0.5);">
-            Prefer email? <a href="mailto:wen@stratumcore.com.au" style="color:#0e8f86; text-decoration: underline; text-underline-offset: 2px;">wen@stratumcore.com.au</a>
-          </p>
+          <div
+            class="font-serif leading-relaxed mb-8"
+            style="font-size: 1rem; color: rgba(34,34,34,0.68); line-height: 1.8;"
+          >
+            <p>
+              StratumCore is led by two principals — Wen Khong and Calvin Yong — each with decades
+              of hands-on experience inside mining and resource businesses. Between them, they bring
+              senior finance leadership, operational insight, and a proven track record of delivering
+              real change.
+            </p>
+          </div>
+          <a
+            href="/about"
+            class="font-serif font-bold inline-flex items-center gap-2 card-link"
+            style="font-size: 0.9375rem; color: #00C9BB; text-decoration: none; letter-spacing: 0.01em;"
+          >
+            Meet the team
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
         </div>
 
-        <!-- Right: form card -->
-        <div class="lg:col-span-7 fade-up" style="transition-delay: 80ms;">
-          <div class="form-card">
+        <!-- Right — two principal credentials -->
+        <div class="flex flex-col gap-6">
 
-            <form id="cost-review-form" novalidate>
-              <!-- Web3Forms config -->
-              <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
-              <input type="hidden" name="subject" value="New cost review request — stratumcore.com.au" />
-              <input type="hidden" name="from_name" value="StratumCore website" />
-              <!-- Honeypot (spam trap) -->
-              <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
-
-              <div class="grid sm:grid-cols-2 gap-5">
-                <div class="field">
-                  <label for="f-name">Name <span class="req" aria-hidden="true">*</span></label>
-                  <input id="f-name" name="name" type="text" autocomplete="name" required aria-required="true" />
-                  <p class="err" data-err-for="f-name" hidden>Please enter your name.</p>
-                </div>
-
-                <div class="field">
-                  <label for="f-company">Company</label>
-                  <input id="f-company" name="company" type="text" autocomplete="organization" />
-                </div>
-
-                <div class="field">
-                  <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
-                  <input id="f-email" name="email" type="email" autocomplete="email" required aria-required="true" inputmode="email" />
-                  <p class="err" data-err-for="f-email" hidden>Please enter a valid email address.</p>
-                </div>
-
-                <div class="field">
-                  <label for="f-phone">Phone</label>
-                  <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" />
-                </div>
-
-                <div class="field sm:col-span-2">
-                  <label for="f-message">Tell me more&hellip;</label>
-                  <textarea id="f-message" name="message" rows="4" placeholder="Commodity, rough production rate, and what&rsquo;s driving the cost question."></textarea>
-                </div>
-              </div>
-
-              <button type="submit" class="form-submit" id="form-submit-btn">
-                <span class="form-submit__label">Book my cost review</span>
-                <svg class="form-submit__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </button>
-
-              <p class="form-fineprint">We&rsquo;ll only use your details to arrange the call. No lists, no spam.</p>
-
-              <!-- Live region for form-level status -->
-              <p class="form-status form-status--error" id="form-error" role="alert" hidden></p>
-            </form>
-
-            <!-- Success state (revealed after submit) -->
-            <div class="form-success" id="form-success" hidden role="status">
-              <div class="form-success__icon" aria-hidden="true">
-                <svg width="28" height="28" viewBox="0 0 16 16" fill="none"><path d="M2 8.5l3.5 3.5L14 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              <h3 class="form-success__h">Request received.</h3>
-              <p class="form-success__b">Thanks&mdash;we&rsquo;ll be in touch within one business day to lock in your 30-minute cost review.</p>
-            </div>
-
+          <div class="p-6 rounded-sm" style="background: #F2F2F2; border-left: 2px solid #00C9BB;">
+            <p class="font-serif font-bold text-body mb-1" style="font-size: 1rem; letter-spacing: -0.01em;">Wen Khong</p>
+            <p class="font-serif mb-3" style="font-size: 0.8125rem; color: #00C9BB; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 700;">Principal</p>
+            <p class="font-serif" style="font-size: 0.9375rem; color: rgba(34,34,34,0.65); line-height: 1.7;">
+              Two decades in senior finance roles across BHP, Wesfarmers, BUMA, and Ernst &amp; Young.
+              Deep expertise in finance transformation and CFO advisory.
+            </p>
           </div>
+
+          <div class="p-6 rounded-sm" style="background: #F2F2F2; border-left: 2px solid #00C9BB;">
+            <p class="font-serif font-bold text-body mb-1" style="font-size: 1rem; letter-spacing: -0.01em;">Calvin Yong</p>
+            <p class="font-serif mb-3" style="font-size: 0.8125rem; color: #00C9BB; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 700;">Principal</p>
+            <p class="font-serif" style="font-size: 0.9375rem; color: rgba(34,34,34,0.65); line-height: 1.7;">
+              Extensive experience across BMA, BHP, Bankwest, and CS Gas. Specialist in leadership
+              development and finance business partnering.
+            </p>
+          </div>
+
         </div>
 
       </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       5. CLOSING CTA
+  ══════════════════════════════════════════════════════════ -->
+  <section
+    class="py-24 lg:py-32 relative overflow-hidden"
+    aria-label="Contact"
+    style="background: #00C9BB;"
+  >
+    <!-- Subtle texture on teal -->
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 60px 60px;"
+      aria-hidden="true"
+    ></div>
+
+    <div class="relative z-10 max-w-site mx-auto px-6 lg:px-10 text-center fade-up">
+      <h2
+        class="font-serif font-bold mb-8 mx-auto"
+        style="font-size: clamp(1.75rem, 3.5vw, 3rem); color: #1C1C1E; letter-spacing: -0.025em; line-height: 1.15; max-width: 34rem;"
+      >
+        Ready to have a different kind of finance conversation?
+      </h2>
+      <a
+        href="mailto:wen@stratumcore.com.au"
+        class="font-serif font-bold inline-flex items-center gap-3 px-8 py-4 rounded-sm"
+        style="background: #1C1C1E; color: #FFFFFF; font-size: 0.9375rem; letter-spacing: 0.02em; text-decoration: none; box-shadow: 0 4px 16px rgba(28,28,30,0.2); transition: background 0.18s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease;"
+        onmouseover="this.style.background='#2d2d30'; this.style.boxShadow='0 8px 24px rgba(28,28,30,0.35)'"
+        onmouseout="this.style.background='#1C1C1E'; this.style.boxShadow='0 4px 16px rgba(28,28,30,0.2)'"
+      >
+        Book a call
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <p
+        class="font-serif mt-5"
+        style="font-size: 0.875rem; color: rgba(28,28,30,0.55);"
+      >
+        wen@stratumcore.com.au &nbsp;·&nbsp; Brisbane, QLD, Australia
+      </p>
     </div>
   </section>
 
@@ -503,265 +482,41 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
 
 </BaseLayout>
 
-
 <style>
-  /* Larger hero CTA — meets ≥44px tap target */
-  .cta-lg {
-    padding: 0.95rem 2.1rem;
-    font-size: 1rem;
-    min-height: 48px;
-    display: inline-flex;
-    align-items: center;
+  /* Text links with arrow — specific transitions only */
+  .card-link {
+    transition: gap 0.2s ease, color 0.15s ease;
+  }
+  .card-link svg {
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+  .card-link:hover svg,
+  .service-card-home:hover .card-link svg {
+    transform: translateX(3px);
   }
 
-  /* ── Two-streams section ───────────────────────────────────── */
-  .tile-number {
-    font-family: Georgia, serif; font-size: 0.6875rem; font-weight: 700;
-    letter-spacing: 0.14em; text-transform: uppercase; color: #00C9BB;
+  /* Service card top-border reveal on hover */
+  .service-card-home {
+    border-top: 2px solid #E8E8E8;
+    transition: border-color 0.22s ease;
   }
-  .stream-panel { border-top: 2px solid transparent; transition: border-color 0.22s ease; }
-  .stream-panel:hover { border-top-color: #00C9BB; }
-
-  .sub-link {
-    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-    padding: 1.05rem 1.2rem;
-    text-decoration: none;
-    transition: background 0.16s ease;
+  .service-card-home:hover {
+    border-top-color: #00C9BB;
   }
-  .sub-link:hover { background: #FAFAFA; }
-  .sub-link__t {
-    display: block; font-family: Georgia, serif; font-weight: 700; color: #1C1C1E;
-    font-size: 1rem; letter-spacing: -0.01em; line-height: 1.25; margin-bottom: 0.2rem;
-  }
-  .sub-link__d {
-    display: block; font-family: Georgia, serif; font-size: 0.8438rem;
-    color: rgba(34,34,34,0.55); line-height: 1.45;
-  }
-  .sub-link__a { color: #00C9BB; flex-shrink: 0; transition: transform 0.2s ease; }
-  .sub-link:hover .sub-link__a { transform: translateX(3px); }
-
-  /* ── Chart exhibit ─────────────────────────────────────────── */
-  .chart-exhibit {
-    background: #FFFFFF;
-    border-radius: 8px;
-    padding: 0.5rem;
-    box-shadow: 0 1px 1px rgba(28,28,30,0.04),
-                0 12px 32px -8px rgba(28,28,30,0.28),
-                0 2px 8px -2px rgba(0,201,187,0.10);
-  }
-  .chart-exhibit--light {
-    box-shadow: 0 1px 1px rgba(28,28,30,0.04),
-                0 14px 36px -10px rgba(28,28,30,0.18);
-    border: 1px solid #EBEBEB;
-  }
-  .chart-img {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-  }
-  .chart-cap {
-    font-family: Georgia, serif;
-    font-size: 0.8125rem;
-    line-height: 1.5;
-    color: rgba(34,34,34,0.5);
-    padding: 0.7rem 0.6rem 0.4rem;
-  }
-  /* hero exhibit caption sits on dark bg */
-  .chart-exhibit--hero .chart-cap { color: rgba(255,255,255,0.42); }
-
-  /* ── "What you get" deliverables ───────────────────────────── */
-  .deliverable { border-top: 2px solid #E8E8E8; transition: border-color 0.22s ease; }
-  .deliverable:hover { border-top-color: #00C9BB; }
-  .deliverable__k {
-    font-family: Georgia, serif; font-weight: 700; font-size: 0.6875rem;
-    letter-spacing: 0.14em; text-transform: uppercase; color: #00C9BB; margin-bottom: 1.1rem;
-  }
-  .deliverable__h {
-    font-family: Georgia, serif; font-weight: 700; color: #222; margin-bottom: 0.6rem;
-    font-size: 1.1875rem; letter-spacing: -0.015em; line-height: 1.2;
-  }
-  .deliverable__b {
-    font-family: Georgia, serif; font-size: 0.9375rem; color: rgba(34,34,34,0.62); line-height: 1.7;
-  }
-
-  /* ── Form ──────────────────────────────────────────────────── */
-  .form-card {
-    background: #FFFFFF;
-    border: 1px solid #E8E8E8;
-    border-top: 3px solid #00C9BB;
-    border-radius: 8px;
-    padding: 1.75rem 1.5rem 1.5rem;
-    box-shadow: 0 1px 2px rgba(28,28,30,0.03), 0 18px 40px -16px rgba(28,28,30,0.18);
-  }
-  @media (min-width: 640px) { .form-card { padding: 2.25rem; } }
-
-  .field { display: flex; flex-direction: column; }
-  .field label {
-    font-family: Georgia, serif; font-size: 0.8125rem; font-weight: 700;
-    letter-spacing: 0.02em; color: #1C1C1E; margin-bottom: 0.4rem;
-  }
-  .field .req { color: #00C9BB; }
-  .field input,
-  .field textarea {
-    font-family: Georgia, serif;
-    font-size: 0.9688rem;
-    color: #1C1C1E;
-    background: #F7F7F5;
-    border: 1px solid #E0E0E0;
-    border-radius: 5px;
-    padding: 0.72rem 0.85rem;
-    min-height: 46px;
-    width: 100%;
-    transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
-  }
-  .field textarea { min-height: 110px; resize: vertical; line-height: 1.6; }
-  .field input::placeholder,
-  .field textarea::placeholder { color: rgba(34,34,34,0.38); }
-  .field input:hover,
-  .field textarea:hover { border-color: #C9C9C9; }
-  .field input:focus,
-  .field textarea:focus {
-    outline: none;
-    background: #FFFFFF;
-    border-color: #00C9BB;
-    box-shadow: 0 0 0 3px rgba(0,201,187,0.16);
-  }
-  .field input[aria-invalid="true"],
-  .field textarea[aria-invalid="true"] {
-    border-color: #C0392B;
-    box-shadow: 0 0 0 3px rgba(192,57,43,0.12);
-  }
-  .field .err {
-    font-family: Georgia, serif; font-size: 0.8125rem; color: #C0392B; margin-top: 0.35rem;
-  }
-
-  /* Honeypot — visually hidden */
-  .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
-
-  .form-submit {
-    margin-top: 1.6rem;
-    width: 100%;
-    min-height: 52px;
-    font-family: Georgia, serif; font-weight: 700; font-size: 1rem; letter-spacing: 0.01em;
-    color: #1C1C1E; background: #00C9BB;
-    border: none; border-radius: 5px; cursor: pointer;
-    display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
-    transition: background 0.18s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease;
-    box-shadow: 0 4px 14px rgba(0,201,187,0.22);
-  }
-  .form-submit:hover { background: #00dfd0; transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0,201,187,0.3); }
-  .form-submit:active { transform: translateY(0); }
-  .form-submit:focus-visible { outline: 2px solid #1C1C1E; outline-offset: 3px; }
-  .form-submit[disabled] { opacity: 0.6; cursor: progress; transform: none; }
-  .form-submit__arrow { transition: transform 0.2s ease; }
-  .form-submit:hover .form-submit__arrow { transform: translateX(3px); }
-
-  .form-fineprint {
-    font-family: Georgia, serif; font-size: 0.8125rem; color: rgba(34,34,34,0.45);
-    text-align: center; margin-top: 0.95rem; line-height: 1.5;
-  }
-  .form-status { font-family: Georgia, serif; font-size: 0.9rem; margin-top: 1rem; text-align: center; }
-  .form-status--error { color: #C0392B; }
-
-  /* Success state */
-  .form-success { text-align: center; padding: 2.5rem 1rem; }
-  .form-success__icon {
-    width: 56px; height: 56px; margin: 0 auto 1.1rem;
-    display: flex; align-items: center; justify-content: center;
-    color: #00C9BB; background: rgba(0,201,187,0.12); border-radius: 50%;
-  }
-  .form-success__h {
-    font-family: Georgia, serif; font-weight: 700; color: #1C1C1E;
-    font-size: 1.5rem; letter-spacing: -0.02em; margin-bottom: 0.6rem;
-  }
-  .form-success__b {
-    font-family: Georgia, serif; font-size: 1rem; color: rgba(34,34,34,0.66);
-    line-height: 1.7; max-width: 26rem; margin: 0 auto;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .form-submit, .form-submit__arrow { transition: none; }
+  .service-card-home:hover a svg {
+    transform: translateX(3px);
   }
 </style>
 
-
 <script>
-  // ── Scroll reveal (matches existing site behaviour) ──────────
+  // Scroll reveal
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
     });
   }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
   setTimeout(() => document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible')), 80);
-
-  // ── Contact form: validation + Web3Forms submit + success ────
-  const form = document.getElementById('cost-review-form') as HTMLFormElement | null;
-  if (form) {
-    const nameEl    = document.getElementById('f-name')    as HTMLInputElement;
-    const emailEl   = document.getElementById('f-email')   as HTMLInputElement;
-    const submitBtn = document.getElementById('form-submit-btn') as HTMLButtonElement;
-    const errBox    = document.getElementById('form-error') as HTMLParagraphElement;
-    const successEl = document.getElementById('form-success') as HTMLDivElement;
-
-    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    const showFieldError = (el: HTMLInputElement, show: boolean) => {
-      el.setAttribute('aria-invalid', String(show));
-      const msg = document.querySelector(`[data-err-for="${el.id}"]`) as HTMLElement | null;
-      if (msg) msg.hidden = !show;
-    };
-
-    // Clear a field's error as the user corrects it
-    [nameEl, emailEl].forEach(el =>
-      el.addEventListener('input', () => { if (el.getAttribute('aria-invalid') === 'true') showFieldError(el, false); })
-    );
-
-    const validate = () => {
-      let ok = true;
-      if (!nameEl.value.trim()) { showFieldError(nameEl, true); ok = false; }
-      if (!emailRe.test(emailEl.value.trim())) { showFieldError(emailEl, true); ok = false; }
-      return ok;
-    };
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      errBox.hidden = true;
-
-      if (!validate()) {
-        const firstBad = form.querySelector('[aria-invalid="true"]') as HTMLElement | null;
-        firstBad?.focus();
-        return;
-      }
-
-      submitBtn.disabled = true;
-      const original = submitBtn.querySelector('.form-submit__label')!.textContent;
-      submitBtn.querySelector('.form-submit__label')!.textContent = 'Sending…';
-
-      try {
-        const data = new FormData(form);
-        const res = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: { Accept: 'application/json' },
-          body: data,
-        });
-        const json = await res.json().catch(() => ({}));
-
-        if (res.ok && (json as any).success) {
-          form.hidden = true;
-          successEl.hidden = false;
-          successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-          throw new Error((json as any).message || 'Submission failed');
-        }
-      } catch (err) {
-        errBox.textContent = 'Something went wrong sending your request. Please email wen@stratumcore.com.au and we’ll sort it out.';
-        errBox.hidden = false;
-        submitBtn.disabled = false;
-        submitBtn.querySelector('.form-submit__label')!.textContent = original;
-      }
-    });
-  }
 </script>
