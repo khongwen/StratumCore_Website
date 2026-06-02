@@ -64,6 +64,9 @@ const jsonLd = JSON.stringify({
     }
   ]
 });
+
+// Web3Forms access key (same key used in the redesign contact form)
+const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
 ---
 
 <BaseLayout
@@ -133,7 +136,7 @@ const jsonLd = JSON.stringify({
         <!-- CTAs -->
         <div class="mt-10 flex flex-wrap gap-4">
           <a href="#services" class="btn-primary">Explore our services</a>
-          <a href="mailto:wen@stratumcore.com.au" class="btn-outline">Book a call</a>
+          <a href="#contact" class="btn-outline">Book a call</a>
         </div>
 
       </div>
@@ -436,9 +439,10 @@ const jsonLd = JSON.stringify({
 
 
   <!-- ══════════════════════════════════════════════════════════
-       5. CLOSING CTA
+       5. CONTACT — form (Web3Forms)
   ══════════════════════════════════════════════════════════ -->
   <section
+    id="contact"
     class="py-24 lg:py-32 relative overflow-hidden"
     aria-label="Contact"
     style="background: #00C9BB;"
@@ -450,31 +454,98 @@ const jsonLd = JSON.stringify({
       aria-hidden="true"
     ></div>
 
-    <div class="relative z-10 max-w-site mx-auto px-6 lg:px-10 text-center fade-up">
-      <h2
-        class="font-serif font-bold mb-8 mx-auto"
-        style="font-size: clamp(1.75rem, 3.5vw, 3rem); color: #1C1C1E; letter-spacing: -0.025em; line-height: 1.15; max-width: 34rem;"
-      >
-        Ready to have a different kind of finance conversation?
-      </h2>
-      <a
-        href="mailto:wen@stratumcore.com.au"
-        class="font-serif font-bold inline-flex items-center gap-3 px-8 py-4 rounded-sm"
-        style="background: #1C1C1E; color: #FFFFFF; font-size: 0.9375rem; letter-spacing: 0.02em; text-decoration: none; box-shadow: 0 4px 16px rgba(28,28,30,0.2); transition: background 0.18s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease;"
-        onmouseover="this.style.background='#2d2d30'; this.style.boxShadow='0 8px 24px rgba(28,28,30,0.35)'"
-        onmouseout="this.style.background='#1C1C1E'; this.style.boxShadow='0 4px 16px rgba(28,28,30,0.2)'"
-      >
-        Book a call
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-      <p
-        class="font-serif mt-5"
-        style="font-size: 0.875rem; color: rgba(28,28,30,0.55);"
-      >
-        wen@stratumcore.com.au &nbsp;·&nbsp; Brisbane, QLD, Australia
-      </p>
+    <div class="relative z-10 max-w-site mx-auto px-6 lg:px-10">
+      <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+
+        <!-- Left: pitch -->
+        <div class="lg:col-span-5 fade-up">
+          <h2
+            class="font-serif font-bold"
+            style="font-size: clamp(1.75rem, 3.5vw, 3rem); color: #1C1C1E; letter-spacing: -0.025em; line-height: 1.15; max-width: 30rem;"
+          >
+            Ready to have a different kind of finance conversation?
+          </h2>
+          <p
+            class="font-serif mt-6 leading-relaxed"
+            style="font-size: 1.0625rem; color: rgba(28,28,30,0.72); line-height: 1.8; max-width: 28rem;"
+          >
+            Tell us a little about your business and what&rsquo;s prompting the conversation.
+            We&rsquo;ll come back to you within one business day to set up a call.
+          </p>
+          <p class="font-serif mt-8" style="font-size: 0.9375rem; color: rgba(28,28,30,0.72);">
+            Prefer email?
+            <a href="mailto:wen@stratumcore.com.au" style="color:#1C1C1E; font-weight:700; text-decoration: underline; text-underline-offset: 2px;">wen@stratumcore.com.au</a>
+          </p>
+          <p class="font-serif mt-2" style="font-size: 0.875rem; color: rgba(28,28,30,0.55);">
+            Brisbane, QLD, Australia
+          </p>
+        </div>
+
+        <!-- Right: form card -->
+        <div class="lg:col-span-7 fade-up" style="transition-delay: 80ms;">
+          <div class="form-card">
+
+            <form id="contact-form" novalidate>
+              <!-- Web3Forms config -->
+              <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+              <input type="hidden" name="subject" value="New enquiry — stratumcore.com.au" />
+              <input type="hidden" name="from_name" value="StratumCore website" />
+              <!-- Honeypot (spam trap) -->
+              <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div class="field">
+                  <label for="f-name">Name <span class="req" aria-hidden="true">*</span></label>
+                  <input id="f-name" name="name" type="text" autocomplete="name" required aria-required="true" />
+                  <p class="err" data-err-for="f-name" hidden>Please enter your name.</p>
+                </div>
+
+                <div class="field">
+                  <label for="f-company">Company</label>
+                  <input id="f-company" name="company" type="text" autocomplete="organization" />
+                </div>
+
+                <div class="field">
+                  <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
+                  <input id="f-email" name="email" type="email" autocomplete="email" required aria-required="true" inputmode="email" />
+                  <p class="err" data-err-for="f-email" hidden>Please enter a valid email address.</p>
+                </div>
+
+                <div class="field">
+                  <label for="f-phone">Phone</label>
+                  <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" />
+                </div>
+
+                <div class="field sm:col-span-2">
+                  <label for="f-message">How can we help?</label>
+                  <textarea id="f-message" name="message" rows="4" placeholder="A little about your business and what&rsquo;s prompting the conversation."></textarea>
+                </div>
+              </div>
+
+              <button type="submit" class="form-submit" id="form-submit-btn">
+                <span class="form-submit__label">Send my enquiry</span>
+                <svg class="form-submit__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+
+              <p class="form-fineprint">We&rsquo;ll only use your details to arrange the call. No lists, no spam.</p>
+
+              <!-- Live region for form-level status -->
+              <p class="form-status form-status--error" id="form-error" role="alert" hidden></p>
+            </form>
+
+            <!-- Success state (revealed after submit) -->
+            <div class="form-success" id="form-success" hidden role="status">
+              <div class="form-success__icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 16 16" fill="none"><path d="M2 8.5l3.5 3.5L14 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <h3 class="form-success__h">Thanks &mdash; message received.</h3>
+              <p class="form-success__b">We&rsquo;ll be in touch within one business day to set up your call.</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -507,6 +578,105 @@ const jsonLd = JSON.stringify({
   .service-card-home:hover a svg {
     transform: translateX(3px);
   }
+
+  /* ── Contact form ──────────────────────────────────────────── */
+  .form-card {
+    background: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    border-top: 3px solid #00C9BB;
+    border-radius: 8px;
+    padding: 1.75rem 1.5rem 1.5rem;
+    box-shadow: 0 1px 2px rgba(28,28,30,0.04), 0 18px 40px -16px rgba(28,28,30,0.28);
+  }
+  @media (min-width: 640px) { .form-card { padding: 2.25rem; } }
+
+  .field { display: flex; flex-direction: column; }
+  .field label {
+    font-family: Georgia, serif; font-size: 0.8125rem; font-weight: 700;
+    letter-spacing: 0.02em; color: #1C1C1E; margin-bottom: 0.4rem;
+  }
+  .field .req { color: #00C9BB; }
+  .field input,
+  .field textarea {
+    font-family: Georgia, serif;
+    font-size: 0.9688rem;
+    color: #1C1C1E;
+    background: #F7F7F5;
+    border: 1px solid #E0E0E0;
+    border-radius: 5px;
+    padding: 0.72rem 0.85rem;
+    min-height: 46px;
+    width: 100%;
+    transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  }
+  .field textarea { min-height: 110px; resize: vertical; line-height: 1.6; }
+  .field input::placeholder,
+  .field textarea::placeholder { color: rgba(34,34,34,0.38); }
+  .field input:hover,
+  .field textarea:hover { border-color: #C9C9C9; }
+  .field input:focus,
+  .field textarea:focus {
+    outline: none;
+    background: #FFFFFF;
+    border-color: #00C9BB;
+    box-shadow: 0 0 0 3px rgba(0,201,187,0.16);
+  }
+  .field input[aria-invalid="true"],
+  .field textarea[aria-invalid="true"] {
+    border-color: #C0392B;
+    box-shadow: 0 0 0 3px rgba(192,57,43,0.12);
+  }
+  .field .err {
+    font-family: Georgia, serif; font-size: 0.8125rem; color: #C0392B; margin-top: 0.35rem;
+  }
+
+  /* Honeypot — visually hidden */
+  .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+
+  .form-submit {
+    margin-top: 1.6rem;
+    width: 100%;
+    min-height: 52px;
+    font-family: Georgia, serif; font-weight: 700; font-size: 1rem; letter-spacing: 0.01em;
+    color: #1C1C1E; background: #00C9BB;
+    border: none; border-radius: 5px; cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+    transition: background 0.18s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease;
+    box-shadow: 0 4px 14px rgba(28,28,30,0.18);
+  }
+  .form-submit:hover { background: #00dfd0; transform: translateY(-2px); box-shadow: 0 8px 22px rgba(28,28,30,0.26); }
+  .form-submit:active { transform: translateY(0); }
+  .form-submit:focus-visible { outline: 2px solid #1C1C1E; outline-offset: 3px; }
+  .form-submit[disabled] { opacity: 0.6; cursor: progress; transform: none; }
+  .form-submit__arrow { transition: transform 0.2s ease; }
+  .form-submit:hover .form-submit__arrow { transform: translateX(3px); }
+
+  .form-fineprint {
+    font-family: Georgia, serif; font-size: 0.8125rem; color: rgba(34,34,34,0.45);
+    text-align: center; margin-top: 0.95rem; line-height: 1.5;
+  }
+  .form-status { font-family: Georgia, serif; font-size: 0.9rem; margin-top: 1rem; text-align: center; }
+  .form-status--error { color: #C0392B; }
+
+  /* Success state */
+  .form-success { text-align: center; padding: 2.5rem 1rem; }
+  .form-success__icon {
+    width: 56px; height: 56px; margin: 0 auto 1.1rem;
+    display: flex; align-items: center; justify-content: center;
+    color: #00C9BB; background: rgba(0,201,187,0.12); border-radius: 50%;
+  }
+  .form-success__h {
+    font-family: Georgia, serif; font-weight: 700; color: #1C1C1E;
+    font-size: 1.5rem; letter-spacing: -0.02em; margin-bottom: 0.6rem;
+  }
+  .form-success__b {
+    font-family: Georgia, serif; font-size: 1rem; color: rgba(34,34,34,0.66);
+    line-height: 1.7; max-width: 26rem; margin: 0 auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .form-submit, .form-submit__arrow { transition: none; }
+  }
 </style>
 
 <script>
@@ -519,4 +689,72 @@ const jsonLd = JSON.stringify({
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
   setTimeout(() => document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible')), 80);
+
+  // ── Contact form: validation + Web3Forms submit + success ────
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  if (form) {
+    const nameEl    = document.getElementById('f-name')    as HTMLInputElement;
+    const emailEl   = document.getElementById('f-email')   as HTMLInputElement;
+    const submitBtn = document.getElementById('form-submit-btn') as HTMLButtonElement;
+    const errBox    = document.getElementById('form-error') as HTMLParagraphElement;
+    const successEl = document.getElementById('form-success') as HTMLDivElement;
+
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const showFieldError = (el: HTMLInputElement, show: boolean) => {
+      el.setAttribute('aria-invalid', String(show));
+      const msg = document.querySelector(`[data-err-for="${el.id}"]`) as HTMLElement | null;
+      if (msg) msg.hidden = !show;
+    };
+
+    // Clear a field's error as the user corrects it
+    [nameEl, emailEl].forEach(el =>
+      el.addEventListener('input', () => { if (el.getAttribute('aria-invalid') === 'true') showFieldError(el, false); })
+    );
+
+    const validate = () => {
+      let ok = true;
+      if (!nameEl.value.trim()) { showFieldError(nameEl, true); ok = false; }
+      if (!emailRe.test(emailEl.value.trim())) { showFieldError(emailEl, true); ok = false; }
+      return ok;
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errBox.hidden = true;
+
+      if (!validate()) {
+        const firstBad = form.querySelector('[aria-invalid="true"]') as HTMLElement | null;
+        firstBad?.focus();
+        return;
+      }
+
+      submitBtn.disabled = true;
+      const original = submitBtn.querySelector('.form-submit__label')!.textContent;
+      submitBtn.querySelector('.form-submit__label')!.textContent = 'Sending…';
+
+      try {
+        const data = new FormData(form);
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: data,
+        });
+        const json = await res.json().catch(() => ({}));
+
+        if (res.ok && (json as any).success) {
+          form.hidden = true;
+          successEl.hidden = false;
+          successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          throw new Error((json as any).message || 'Submission failed');
+        }
+      } catch (err) {
+        errBox.textContent = 'Something went wrong sending your message. Please email wen@stratumcore.com.au and we’ll sort it out.';
+        errBox.hidden = false;
+        submitBtn.disabled = false;
+        submitBtn.querySelector('.form-submit__label')!.textContent = original;
+      }
+    });
+  }
 </script>
