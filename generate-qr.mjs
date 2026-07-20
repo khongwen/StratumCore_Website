@@ -77,7 +77,7 @@ function seatCard() {
 
   <rect x="${W / 2 - 11}" y="64" width="22" height="1" fill="${TEAL}"/>
 
-  <text x="${W / 2}" y="74" text-anchor="middle" font-family="Georgia, serif" font-size="4.7" fill="#555555">Scan for tonight’s toolkit. Two minutes to your inbox.</text>
+  <text x="${W / 2}" y="74" text-anchor="middle" font-family="Georgia, serif" font-size="4.7" fill="#555555">Scan for today’s toolkit. Two minutes to your inbox.</text>
 
   <g transform="translate(${qx}, ${qy})"><path d="${q.d}" fill="${INK}"/></g>
 
@@ -109,7 +109,7 @@ function holdingScreen() {
 
   <rect x="150" y="566" width="76" height="5" fill="${TEAL}"/>
 
-  <text x="150" y="632" font-family="Georgia, serif" font-size="31" fill="rgba(255,255,255,0.72)">Scan the code for tonight’s toolkit.</text>
+  <text x="150" y="632" font-family="Georgia, serif" font-size="31" fill="rgba(255,255,255,0.72)">Scan the code for today’s toolkit.</text>
   <text x="150" y="678" font-family="Georgia, serif" font-size="31" fill="rgba(255,255,255,0.72)">Two minutes to your inbox.</text>
 
   <text x="150" y="762" font-family="Georgia, serif" font-size="27" fill="rgba(255,255,255,0.5)">${FALLBACK_TEXT}</text>
