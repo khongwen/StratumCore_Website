@@ -8,3 +8,6 @@ linkedin-logo.html
 linkedin-logo.png
 .env
 .env.*
+!.env.example
+.vercel/
+.cdp-profile*/

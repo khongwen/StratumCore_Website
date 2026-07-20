@@ -1,0 +1,436 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
+
+const CAL_LINK = 'https://cal.com/wen-khong/30min';
+---
+
+<BaseLayout
+  title="The overheads review toolkit — StratumCore"
+  description="The overheads review from The Commercial Edge session 01 — the same structure we use on site to find the cost that grew faster than the output."
+  canonical="https://www.stratumcore.com.au/toolkit"
+>
+  <!-- No top navigation: this is a wedge page. A single wordmark home link only. -->
+  <header class="wedge-head">
+    <a href="/" class="wordmark" aria-label="StratumCore home">
+      <span class="part-stratum">Stratum</span><span class="part-core">Core</span>
+    </a>
+  </header>
+
+  <main>
+    <!-- ─── Dark wedge ─────────────────────────────────────────── -->
+    <section class="wedge hero-dark" aria-labelledby="toolkit-h1">
+      <div class="wedge-inner">
+        <p class="eyebrow">The Commercial Edge &mdash; session 01</p>
+
+        <h1 id="toolkit-h1">The overheads review toolkit</h1>
+
+        <span class="teal-rule" aria-hidden="true"></span>
+
+        <p class="lead">
+          The overheads review from tonight&rsquo;s session &mdash; the same structure we
+          use on site to find the cost that grew faster than the output.
+          Scan done. Two minutes to your inbox.
+        </p>
+      </div>
+    </section>
+
+    <!-- ─── Form card, overlapping the wedge ───────────────────── -->
+    <section class="card-zone" aria-label="Get the toolkit">
+      <div class="card">
+
+        <form id="toolkit-form" novalidate>
+          <!-- Honeypot (spam trap) -->
+          <input type="text" name="botcheck" class="hp-field" tabindex="-1"
+                 autocomplete="off" aria-hidden="true" />
+
+          <div class="fields">
+            <div class="field">
+              <label for="f-name">First name <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-name" name="name" type="text" autocomplete="given-name"
+                     enterkeyhint="next" required aria-required="true" />
+              <p class="err" data-err-for="f-name" hidden>Please enter your first name.</p>
+            </div>
+
+            <div class="field">
+              <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-email" name="email" type="email" autocomplete="email"
+                     inputmode="email" enterkeyhint="next" required aria-required="true" />
+              <p class="err" data-err-for="f-email" hidden>Please enter a valid email address.</p>
+            </div>
+
+            <div class="field">
+              <label for="f-company">Company <span class="opt">optional</span></label>
+              <input id="f-company" name="company" type="text"
+                     autocomplete="organization" enterkeyhint="next" />
+            </div>
+
+            <div class="field">
+              <label for="f-role">Role <span class="opt">optional</span></label>
+              <input id="f-role" name="role" type="text"
+                     autocomplete="organization-title" enterkeyhint="send" />
+            </div>
+          </div>
+
+          <button type="submit" class="submit" id="submit-btn">
+            <span class="submit__label">Send me the toolkit</span>
+            <svg class="submit__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.6"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <p class="consent">
+            We&rsquo;ll send you the toolkit and occasional practical material on cost
+            and financial control. Unsubscribe any time.
+          </p>
+
+          <p class="status" id="form-error" role="alert" hidden></p>
+        </form>
+
+        <!-- Success state — same page, no redirect -->
+        <div class="success" id="form-success" hidden role="status" tabindex="-1">
+          <div class="success__icon" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 16 16" fill="none">
+              <path d="M2 8.5l3.5 3.5L14 4" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h2 class="success__h">Done &mdash; it&rsquo;s on its way.</h2>
+          <p class="success__b">While you&rsquo;re here:</p>
+          <a href={CAL_LINK} class="success__cta" target="_blank" rel="noopener noreferrer">
+            Book a 30-minute cost scan
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* ─── Wedge head ───────────────────────────────────────────── */
+  .wedge-head {
+    background: #1C1C1E;
+    padding: 1.25rem 1.25rem 0;
+  }
+  @media (min-width: 640px) { .wedge-head { padding: 1.75rem 2rem 0; } }
+
+  /* ─── Dark wedge ───────────────────────────────────────────── */
+  .wedge {
+    background: #1C1C1E;
+    /* Angled bottom edge — the wedge. Extra padding covers the cut. */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3.25rem), 0 100%);
+    padding: 2rem 1.25rem 5.5rem;
+  }
+  @media (min-width: 640px) {
+    .wedge {
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 4rem), 0 100%);
+      padding: 3rem 2rem 7rem;
+    }
+  }
+
+  .wedge-inner { max-width: 44rem; margin: 0 auto; }
+
+  .eyebrow {
+    font-family: Georgia, serif;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #D4751A;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-family: Georgia, serif;
+    font-weight: 700;
+    color: #FFFFFF;
+    font-size: clamp(2rem, 8vw, 3.25rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+
+  .lead {
+    font-family: Georgia, serif;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.72);
+    margin-top: 1.5rem;
+    max-width: 34rem;
+    text-wrap: pretty;
+  }
+
+  /* ─── Card zone ────────────────────────────────────────────── */
+  .card-zone {
+    background: #F2F2F2;
+    padding: 0 1.25rem 3.5rem;
+  }
+  @media (min-width: 640px) { .card-zone { padding: 0 2rem 5rem; } }
+
+  .card {
+    max-width: 34rem;
+    margin: -3rem auto 0; /* lifts the card up into the wedge */
+    position: relative;
+    z-index: 2;
+    background: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    border-top: 3px solid #00C9BB;
+    border-radius: 8px;
+    padding: 1.5rem 1.25rem 1.25rem;
+    box-shadow: 0 1px 2px rgba(28,28,30,0.04),
+                0 18px 40px -16px rgba(28,28,30,0.28);
+  }
+  @media (min-width: 640px) { .card { margin-top: -4rem; padding: 2rem; } }
+
+  /* ─── Fields ───────────────────────────────────────────────── */
+  .fields { display: flex; flex-direction: column; gap: 1.1rem; }
+  .field  { display: flex; flex-direction: column; }
+
+  .field label {
+    font-family: Georgia, serif;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #1C1C1E;
+    margin-bottom: 0.4rem;
+  }
+  .field .req { color: #00C9BB; }
+  .field .opt {
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    color: rgba(34,34,34,0.40);
+  }
+
+  .field input {
+    font-family: Georgia, serif;
+    /* 16px minimum stops iOS Safari zooming the page on focus */
+    font-size: 1rem;
+    color: #1C1C1E;
+    background: #F7F7F5;
+    border: 1px solid #E0E0E0;
+    border-radius: 5px;
+    padding: 0.72rem 0.85rem;
+    min-height: 48px;
+    width: 100%;
+    transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  }
+  .field input:hover { border-color: #C9C9C9; }
+  .field input:focus {
+    outline: none;
+    background: #FFFFFF;
+    border-color: #00C9BB;
+    box-shadow: 0 0 0 3px rgba(0,201,187,0.16);
+  }
+  .field input[aria-invalid="true"] {
+    border-color: #C0392B;
+    box-shadow: 0 0 0 3px rgba(192,57,43,0.12);
+  }
+  .field .err {
+    font-family: Georgia, serif;
+    font-size: 0.8125rem;
+    color: #C0392B;
+    margin-top: 0.35rem;
+  }
+
+  /* Honeypot — visually hidden, off-screen */
+  .hp-field {
+    position: absolute; left: -9999px;
+    width: 1px; height: 1px; opacity: 0;
+  }
+
+  /* ─── Submit ───────────────────────────────────────────────── */
+  .submit {
+    margin-top: 1.5rem;
+    width: 100%;
+    min-height: 54px;
+    font-family: Georgia, serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+    color: #1C1C1E;
+    background: #00C9BB;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    box-shadow: 0 4px 14px rgba(28,28,30,0.18);
+    transition: background 0.18s ease,
+                transform 0.18s cubic-bezier(0.34,1.56,0.64,1),
+                box-shadow 0.18s ease;
+  }
+  .submit:hover {
+    background: #00dfd0;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(28,28,30,0.26);
+  }
+  .submit:active { transform: translateY(0); }
+  .submit:focus-visible { outline: 2px solid #1C1C1E; outline-offset: 3px; }
+  .submit[disabled] { opacity: 0.6; cursor: progress; transform: none; }
+  .submit__arrow { transition: transform 0.2s ease; }
+  .submit:hover .submit__arrow { transform: translateX(3px); }
+
+  .consent {
+    font-family: Georgia, serif;
+    font-size: 0.8125rem;
+    line-height: 1.55;
+    color: rgba(34,34,34,0.48);
+    text-align: center;
+    margin-top: 0.95rem;
+  }
+
+  .status {
+    font-family: Georgia, serif;
+    font-size: 0.9rem;
+    color: #C0392B;
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  /* ─── Success ──────────────────────────────────────────────── */
+  .success { text-align: center; padding: 1.75rem 0.5rem 1.25rem; }
+  .success:focus { outline: none; }
+  .success__icon {
+    width: 54px; height: 54px;
+    margin: 0 auto 1.1rem;
+    display: flex; align-items: center; justify-content: center;
+    color: #00C9BB;
+    background: rgba(0,201,187,0.12);
+    border-radius: 50%;
+  }
+  .success__h {
+    font-family: Georgia, serif;
+    font-weight: 700;
+    color: #1C1C1E;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+  .success__b {
+    font-family: Georgia, serif;
+    font-size: 1rem;
+    color: rgba(34,34,34,0.66);
+    margin-bottom: 1.5rem;
+  }
+  .success__cta {
+    font-family: Georgia, serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #FFFFFF;
+    background: #D4751A;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 54px;
+    width: 100%;
+    padding: 0 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(212,117,26,0.28);
+    transition: background 0.18s ease,
+                transform 0.18s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .success__cta:hover  { background: #e8862a; transform: translateY(-2px); }
+  .success__cta:active { transform: translateY(0); }
+  .success__cta:focus-visible { outline: 2px solid #1C1C1E; outline-offset: 3px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .submit, .submit__arrow, .success__cta { transition: none; }
+    .submit:hover, .success__cta:hover { transform: none; }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('toolkit-form') as HTMLFormElement | null;
+
+  if (form) {
+    const nameEl    = document.getElementById('f-name')     as HTMLInputElement;
+    const emailEl   = document.getElementById('f-email')    as HTMLInputElement;
+    const companyEl = document.getElementById('f-company')  as HTMLInputElement;
+    const roleEl    = document.getElementById('f-role')     as HTMLInputElement;
+    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+    const errBox    = document.getElementById('form-error') as HTMLParagraphElement;
+    const successEl = document.getElementById('form-success') as HTMLDivElement;
+    const labelEl   = submitBtn.querySelector('.submit__label') as HTMLSpanElement;
+
+    // Event QR codes carry ?src=card; the server maps it to the right group.
+    const src = new URLSearchParams(window.location.search).get('src') ?? '';
+
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const showFieldError = (el: HTMLInputElement, show: boolean) => {
+      el.setAttribute('aria-invalid', String(show));
+      const msg = document.querySelector(`[data-err-for="${el.id}"]`) as HTMLElement | null;
+      if (msg) msg.hidden = !show;
+    };
+
+    // Clear a field's error as soon as the visitor starts correcting it
+    [nameEl, emailEl].forEach((el) =>
+      el.addEventListener('input', () => {
+        if (el.getAttribute('aria-invalid') === 'true') showFieldError(el, false);
+      }),
+    );
+
+    const validate = () => {
+      let ok = true;
+      if (!nameEl.value.trim()) { showFieldError(nameEl, true); ok = false; }
+      if (!emailRe.test(emailEl.value.trim())) { showFieldError(emailEl, true); ok = false; }
+      return ok;
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errBox.hidden = true;
+
+      if (!validate()) {
+        (form.querySelector('[aria-invalid="true"]') as HTMLElement | null)?.focus();
+        return;
+      }
+
+      submitBtn.disabled = true;
+      const original = labelEl.textContent;
+      labelEl.textContent = 'Sending…';
+
+      try {
+        const res = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name:     nameEl.value.trim(),
+            email:    emailEl.value.trim(),
+            company:  companyEl.value.trim(),
+            role:     roleEl.value.trim(),
+            botcheck: (form.elements.namedItem('botcheck') as HTMLInputElement).value,
+            src,
+          }),
+        });
+        const json = await res.json().catch(() => ({}));
+
+        if (!res.ok || !json.success) throw new Error(json.message || 'Submission failed');
+
+        (window as any).gtag?.('event', 'toolkit_signup', {
+          event_category: 'conversion',
+          event_label: src || 'organic',
+        });
+
+        form.hidden = true;
+        successEl.hidden = false;
+        successEl.focus();
+      } catch (err) {
+        errBox.textContent =
+          (err as Error).message ||
+          'Something went wrong. Please email wen@stratumcore.com.au and we’ll send it over.';
+        errBox.hidden = false;
+        submitBtn.disabled = false;
+        labelEl.textContent = original;
+      }
+    });
+  }
+</script>

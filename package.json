@@ -10,7 +10,13 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
     "@astrojs/tailwind": "^6.0.2",
+    "@astrojs/vercel": "^9.0.5",
     "astro": "^5.18.2",
     "tailwindcss": "^3.4.0"
+  },
+  "devDependencies": {
+    "jsqr": "^1.4.0",
+    "pngjs": "^7.0.0",
+    "qrcode": "^1.5.4"
   }
 }

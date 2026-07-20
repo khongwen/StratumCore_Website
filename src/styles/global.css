@@ -326,6 +326,25 @@ body {
 .footer-wordmark .part-stratum { color: rgba(255,255,255,0.90); }
 .footer-wordmark .part-core    { color: var(--teal); }
 
+/* COST | PERFORMANCE | CAPABILITY strapline */
+.footer-strapline {
+  margin-top: 0.85rem;
+  font-family: Georgia, serif;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--teal);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.footer-strapline .sep {
+  margin: 0 0.55rem;
+  color: rgba(255, 255, 255, 0.22);
+  font-weight: 400;
+}
+
 .footer-link {
   font-family: Georgia, serif;
   font-size: 0.8125rem;
