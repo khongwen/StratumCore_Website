@@ -10,11 +10,21 @@ const CAL_LINK = 'https://cal.com/wen-khong/30min';
   description="The overheads review from The Commercial Edge session 01 — the same structure we use on site to find the cost that grew faster than the output."
   canonical="https://www.stratumcore.com.au/toolkit"
 >
-  <!-- No top navigation: this is a wedge page. A single wordmark home link only. -->
+  <!-- No top navigation: this is a wedge page. The co-brand lockup stands in
+       for the nav — equal weight to both marks, separated by a hairline. -->
   <header class="wedge-head">
-    <a href="/" class="wordmark" aria-label="StratumCore home">
-      <span class="part-stratum">Stratum</span><span class="part-core">Core</span>
-    </a>
+    <div class="cobrand">
+      <a href="/" class="wordmark" aria-label="StratumCore home">
+        <span class="part-stratum">Stratum</span><span class="part-core">Core</span>
+      </a>
+      <span class="cobrand__x" aria-hidden="true">&#215;</span>
+      <img
+        src="/brand_assets/joblin-partners-dark-bg.png"
+        alt="Joblin Partners"
+        class="cobrand__joblin"
+        width="282" height="110" decoding="async"
+      />
+    </div>
   </header>
 
   <main>
@@ -28,9 +38,9 @@ const CAL_LINK = 'https://cal.com/wen-khong/30min';
         <span class="teal-rule" aria-hidden="true"></span>
 
         <p class="lead">
-          The overheads review from today&rsquo;s session &mdash; the same structure we
-          use on site to find the cost that grew faster than the output.
-          Scan done. Two minutes to your inbox.
+          The overheads review from today&rsquo;s session with Joblin Partners &mdash;
+          the same structure we use on site to find the cost that grew faster
+          than the output. Scan done. Two minutes to your inbox.
         </p>
       </div>
     </section>
@@ -117,6 +127,41 @@ const CAL_LINK = 'https://cal.com/wen-khong/30min';
     padding: 1.25rem 1.25rem 0;
   }
   @media (min-width: 640px) { .wedge-head { padding: 1.75rem 2rem 0; } }
+
+  /* ─── Co-brand lockup ──────────────────────────────────────── */
+  .cobrand {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  /* Hairline separator. Sized down and dimmed so neither mark reads as
+     subordinate to the other — the divider should recede, not compete. */
+  .cobrand__x {
+    font-family: Georgia, serif;
+    font-size: 0.9rem;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.28);
+    flex-shrink: 0;
+  }
+
+  /* Joblin's mark stacks two words, so matching the single-line wordmark by
+     bounding-box height would leave it looking undersized. Sized up until the
+     two logos carry equal optical weight. */
+  .cobrand__joblin {
+    height: 34px;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+    /* Optical correction: the mark opens on a thin curved stroke, so an equal
+       measured gap reads as a wider one. Pull it back by 2px. */
+    margin-left: -2px;
+  }
+  @media (min-width: 640px) {
+    .cobrand { gap: 1rem; }
+    .cobrand__joblin { height: 40px; }
+    .cobrand__x { font-size: 1rem; }
+  }
 
   /* ─── Dark wedge ───────────────────────────────────────────── */
   .wedge {

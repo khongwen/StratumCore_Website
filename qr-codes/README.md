@@ -1,5 +1,31 @@
 # QR artwork — The Commercial Edge, session 01
 
+Co-branded **StratumCore × Joblin Partners**. Every piece carries the lockup:
+the two marks sit at equal weight, joined by a recessive ×, with neither
+subordinate to the other.
+
+The Joblin mark is embedded in each SVG as a base64 PNG, so the files stay
+self-contained — hand the printer one SVG per piece and nothing else.
+
+## ⚠️ The Joblin logo is raster, not vector
+
+The supplied asset is a **282 × 110px PNG**. That caps how large it can print:
+
+| printed width | effective resolution |
+|---|---|
+| 20mm | 358 dpi |
+| **25mm** (seat card) | **283 dpi** ✓ |
+| 30mm | 239 dpi |
+| 40mm | 179 dpi |
+
+The current artwork is sized to stay at or near 300dpi, so it will print
+cleanly as-is. **But if any piece is scaled up — a pull-up banner, an A4
+flyer, a larger tent card — the logo will visibly soften.** For anything
+bigger than the current set, ask Joblin Partners for vector artwork (SVG,
+EPS, AI or PDF) and swap it into `generate-qr.mjs`.
+
+Joblin's brand gold is `#BBA263`, sampled from the supplied asset.
+
 Regenerate with:
 
 ```
@@ -69,6 +95,10 @@ to get bigger.
 - **Contrast** — codes are near-black `#1C1C1E` on white. Do not print on
   coloured or textured stock, and never invert (light code on dark ground):
   most scanners will not read it.
+- **Logo variants** — the seat card and name card use Joblin's light-background
+  logo (black wordmark); the holding screen uses the dark-background variant
+  (white wordmark). Do not swap them: the wrong variant disappears into its
+  own background.
 - **Finish** — matte. Gloss under venue lighting causes specular glare that
   defeats the scan.
 - **Bleed** — the SVGs are trim-size with no bleed. The teal edge bars run to

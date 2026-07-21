@@ -6,7 +6,7 @@
 // Writes vector SVG (the print master) to qr-codes/. PNGs are rendered from
 // those same SVGs by render-qr-png.mjs, so the two can never drift apart.
 import QRCode from 'qrcode';
-import { writeFileSync, mkdirSync } from 'fs';
+import { writeFileSync, mkdirSync, readFileSync } from 'fs';
 import { join } from 'path';
 
 const FULL_URL  = 'https://www.stratumcore.com.au/toolkit?src=card&utm_source=joblin-event&utm_medium=qr&utm_campaign=commercial-edge-01';
@@ -50,6 +50,86 @@ function qrPath(url, ec, sizeMm, quietModules = 4) {
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
 
+/* ─── Co-brand lockup ──────────────────────────────────────────────
+ * StratumCore × Joblin Partners, as an equal-weight pairing.
+ *
+ * The Joblin mark is embedded as a base64 PNG so each SVG stays a single
+ * self-contained file the printer can drop straight in.
+ */
+const JOBLIN = {
+  light: readFileSync('public/brand_assets/joblin-partners-light-bg.png').toString('base64'),
+  dark:  readFileSync('public/brand_assets/joblin-partners-dark-bg.png').toString('base64'),
+};
+
+const JOBLIN_ASPECT = 282 / 110; // 2.564
+
+// Georgia metrics, measured rather than estimated: "StratumCore" in bold is
+// 6.695em wide with a 0.71em cap height; the × glyph is 0.643em wide.
+const SC_WIDTH_EM = 6.695;
+const SC_CAP_EM   = 0.71;
+const X_WIDTH_EM  = 0.643;
+
+/**
+ * Joblin logo height as a multiple of the StratumCore font size.
+ *
+ * Deliberately below cap-height parity (which would be ~2.17). The Joblin
+ * mark sets its name on two lines, so matching cap heights exactly would give
+ * it roughly double the visual mass of a single-line wordmark and make
+ * StratumCore read as the junior partner. 1.7 is where the two balance.
+ */
+const JOBLIN_H_RATIO = 1.7;
+
+/** How far the lockup extends above / below the StratumCore baseline. */
+const lockupRise = (fs) => SC_CAP_EM * fs / 2 + JOBLIN_H_RATIO * fs / 2;
+const lockupDrop = (fs) => JOBLIN_H_RATIO * fs / 2 - SC_CAP_EM * fs / 2;
+
+/**
+ * Fail the build if two elements overlap. The lockup is taller than the
+ * wordmark it replaced — it extends above the baseline as well as below — so
+ * a baseline that looks safe can still collide with the line above it.
+ */
+function assertClear(label, topOfLower, bottomOfUpper, min = 3) {
+  const gap = topOfLower - bottomOfUpper;
+  if (gap < min) {
+    throw new Error(`${label}: elements overlap or crowd — gap is ${gap.toFixed(2)}mm, need >= ${min}mm`);
+  }
+}
+
+/** Total lockup width for a given StratumCore font size. */
+function cobrandWidth(fs) {
+  return SC_WIDTH_EM * fs + fs * 0.62 * 2 + X_WIDTH_EM * (fs * 0.72) + JOBLIN_H_RATIO * fs * JOBLIN_ASPECT;
+}
+
+/**
+ * Build the lockup with the StratumCore baseline at `y`. Pass either `cx` to
+ * centre it or `left` to align its leading edge. `fs` is the StratumCore font
+ * size in user units (mm for print artwork, px for the screen).
+ */
+function cobrand({ cx, left, y, fs, dark = false, scColor = INK }) {
+  const scW = SC_WIDTH_EM * fs;
+  const xFs = fs * 0.72;                 // the × recedes; it is a joiner, not a mark
+  const xW  = X_WIDTH_EM * xFs;
+  const gap = fs * 0.62;
+
+  const jH = JOBLIN_H_RATIO * fs;
+  const jW = jH * JOBLIN_ASPECT;
+
+  const x0 = left !== undefined ? left : cx - cobrandWidth(fs) / 2;
+
+  // Align the logo's centre to the wordmark's cap centre, not its baseline —
+  // baseline alignment would leave the two-line mark sitting visibly low.
+  const capCentre = y - SC_CAP_EM * fs / 2;
+  const jY = capCentre - jH / 2;
+
+  const xPos = x0 + scW + gap + xW / 2;
+  // × is centred on the maths axis, ~0.31em above the baseline.
+  const xBaseline = capCentre + 0.31 * xFs;
+
+  return `<text x="${x0.toFixed(2)}" y="${y.toFixed(2)}" font-family="Georgia, serif" font-size="${fs.toFixed(2)}" font-weight="bold" fill="${scColor}">Stratum<tspan fill="${TEAL}">Core</tspan></text>
+  <text x="${xPos.toFixed(2)}" y="${xBaseline.toFixed(2)}" text-anchor="middle" font-family="Georgia, serif" font-size="${xFs.toFixed(2)}" fill="${dark ? 'rgba(255,255,255,0.30)' : 'rgba(28,28,30,0.28)'}">&#215;</text>
+  <image x="${(x0 + scW + gap + xW + gap).toFixed(2)}" y="${jY.toFixed(2)}" width="${jW.toFixed(2)}" height="${jH.toFixed(2)}" href="data:image/png;base64,${dark ? JOBLIN.dark : JOBLIN.light}" preserveAspectRatio="xMidYMid meet"/>`;
+}
+
 /**
  * Card 1 — seat card. A5 portrait tent card, EC H, largest code.
  *
@@ -64,7 +144,19 @@ function seatCard() {
   const qrSize = 104;
   const q = qrPath(URL_TO_ENCODE, 'H', qrSize);
   const qx = (W - qrSize) / 2;
-  const qy = 79;
+  const qy = 75;
+
+  // Bottom block: fallback URL, then the co-brand lockup.
+  const fallbackFs = 5.2;
+  const fallbackY  = qy + qrSize + 6;
+  const lockFs     = 5.8;
+  const lockY      = H - 12;
+
+  assertClear('seat-card fallback → lockup',
+    lockY - lockupRise(lockFs),      // top of the lockup
+    fallbackY + fallbackFs * 0.21,   // descender of the fallback line
+    4);
+  assertClear('seat-card lockup → trim', H, lockY + lockupDrop(lockFs), 8);
 
   return { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="${W}mm" height="${H}mm" viewBox="0 0 ${W} ${H}">
   <rect width="${W}" height="${H}" fill="#FFFFFF"/>
@@ -81,9 +173,9 @@ function seatCard() {
 
   <g transform="translate(${qx}, ${qy})"><path d="${q.d}" fill="${INK}"/></g>
 
-  <text x="${W / 2}" y="${qy + qrSize + 8}" text-anchor="middle" font-family="Georgia, serif" font-size="5.2" fill="${INK}">${FALLBACK_TEXT}</text>
+  <text x="${W / 2}" y="${fallbackY}" text-anchor="middle" font-family="Georgia, serif" font-size="${fallbackFs}" fill="${INK}">${FALLBACK_TEXT}</text>
 
-  <text x="${W / 2}" y="${H - 9}" text-anchor="middle" font-family="Georgia, serif" font-size="6.2" font-weight="bold" fill="${INK}">Stratum<tspan fill="${TEAL}">Core</tspan></text>
+  ${cobrand({ cx: W / 2, y: lockY, fs: lockFs })}
 </svg>`, meta: { name: 'seat-card', ...q, widthMm: W, heightMm: H, qrSizeMm: qrSize, ec: 'H' } };
 }
 
@@ -114,7 +206,7 @@ function holdingScreen() {
 
   <text x="150" y="762" font-family="Georgia, serif" font-size="27" fill="rgba(255,255,255,0.5)">${FALLBACK_TEXT}</text>
 
-  <text x="150" y="905" font-family="Georgia, serif" font-size="38" font-weight="bold" fill="#FFFFFF">Stratum<tspan fill="${TEAL}">Core</tspan></text>
+  ${cobrand({ left: 150, y: 905, fs: 38, dark: true, scColor: '#FFFFFF' })}
 
   <!-- QR always sits on a white panel: never invert a QR on a dark ground -->
   <rect x="${px}" y="${py}" width="${panel}" height="${panel}" rx="10" fill="#FFFFFF"/>
@@ -133,6 +225,16 @@ function nameCardBack() {
   const qy = (H - qrSize) / 2;
   const textW = qx - 7; // 35mm of usable column; type is sized to fit it
 
+  // Largest lockup that fits the text column without crowding the QR.
+  const nameCardFs = Math.min(3.3, (textW - 1) / (cobrandWidth(1)));
+  const nameLockY = 48;
+
+  assertClear('name-card fallback → lockup',
+    nameLockY - lockupRise(nameCardFs),
+    40 + 2.5 * 0.21,                     // fallback line sits at y=40, fs 2.5
+    2.5);
+  assertClear('name-card lockup → trim', H, nameLockY + lockupDrop(nameCardFs), 4);
+
   return { svg: `<svg xmlns="http://www.w3.org/2000/svg" width="${W}mm" height="${H}mm" viewBox="0 0 ${W} ${H}">
   <rect width="${W}" height="${H}" fill="#FFFFFF"/>
   <rect x="0" y="0" width="2" height="${H}" fill="${TEAL}"/>
@@ -146,7 +248,7 @@ function nameCardBack() {
 
   <text x="7" y="40" font-family="Georgia, serif" font-size="2.5" fill="#555555">${FALLBACK_TEXT}</text>
 
-  <text x="7" y="48" font-family="Georgia, serif" font-size="3.3" font-weight="bold" fill="${INK}">Stratum<tspan fill="${TEAL}">Core</tspan></text>
+  ${cobrand({ left: 7, y: nameLockY, fs: nameCardFs })}
 
   <g transform="translate(${qx}, ${qy})"><path d="${q.d}" fill="${INK}"/></g>
 </svg>`, meta: { name: 'name-card-back', ...q, widthMm: W, heightMm: H, qrSizeMm: qrSize, ec: 'H', textW } };
