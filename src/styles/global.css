@@ -2,15 +2,160 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Typefaces ──────────────────────────────────────────────────
+   Self-hosted, latin-subset variable fonts (156 KB total). No
+   third-party request, no render-blocking stylesheet.
+
+   THE LOGO IS NOT PART OF THIS. .wordmark / .footer-wordmark are
+   pinned to Georgia below and must stay that way.
+──────────────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Fraunces';
+  src: url('/fonts/fraunces-latin-var.woff2') format('woff2');
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Hanken Grotesk';
+  src: url('/fonts/hankengrotesk-latin-var.woff2') format('woff2');
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* ─── Design tokens ──────────────────────────────────────────────── */
 :root {
-  --ink:        #1C1C1E;
+  /* ── Light palette ─────────────────────────────────────────────
+     The site is light-dominant and warm. Only two surfaces stay
+     dark by design: the photographic hero and the footer, so the
+     page is anchored top and bottom.                             */
+  --bg:        #F6F4EF;   /* page + most sections — warm off-white   */
+  --bg-alt:    #EFECE4;   /* alternating band, keeps section rhythm  */
+  --surface:   #FFFFFF;   /* cards and raised elements              */
+  --surface-2: #FBFAF7;   /* quieter card, a hair off --surface     */
+  --ink:       #1C1B19;   /* headings + primary text — warm near-black */
+  --body:      #55514B;   /* secondary / body text   7.2:1 on --bg   */
+  --muted:     #6B665E;   /* small supporting text   5.2:1 on --bg   */
+  --hairline:  #E4DFD5;   /* warm divider — used instead of shadows  */
+
   --teal:       #00C9BB;
   --orange:     #D4751A;
-  --stone:      #F2F2F2;
-  --body:       #222222;
   --white:      #FFFFFF;
   --nav-height: 72px;
+
+  /* ── Type ──────────────────────────────────────────────────────
+     Display serif + clean sans. Fraunces is set conservatively:
+     WONK off, SOFT at 0, optical size pushed high on large sizes so
+     the cut stays authoritative rather than playful.
+     --font-logo is Georgia and exists only so the wordmark can never
+     be caught by a global font change.                            */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body:    'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-logo:    Georgia, 'Times New Roman', serif;
+
+  /* Fraunces axis presets, largest optical size first */
+  --fx-display: "opsz" 110, "SOFT" 0, "WONK" 0;
+  --fx-heading: "opsz"  72, "SOFT" 0, "WONK" 0;
+  --fx-sub:     "opsz"  24, "SOFT" 0, "WONK" 0;
+
+  --measure:    68ch;   /* ~65–72 characters of body copy per line */
+  --lh-body:    1.55;
+  --lh-heading: 1.08;
+
+  /* ── Spacing scale — 8px base, used for every section and gap ── */
+  --s-1:  0.25rem;   /*   4 */
+  --s-2:  0.5rem;    /*   8 */
+  --s-3:  0.75rem;   /*  12 */
+  --s-4:  1rem;      /*  16 */
+  --s-5:  1.5rem;    /*  24 */
+  --s-6:  2rem;      /*  32 */
+  --s-7:  3rem;      /*  48 */
+  --s-8:  4rem;      /*  64 */
+  --s-9:  6rem;      /*  96 */
+  --s-10: 8rem;      /* 128 */
+  --s-11: 10rem;     /* 160 */
+  /* Section rhythm: one value, everything breathes off it */
+  --section-y: clamp(var(--s-9), 8.5vw, var(--s-11));
+
+  /* ── Motion ────────────────────────────────────────────────────
+     Restrained: nothing bouncy, nothing fast. One easing curve.   */
+  --ease:      cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-fast:  180ms;
+  --dur-mid:   320ms;
+  --dur-slow:  560ms;
+  --dur-reveal: 380ms;   /* shorter than --dur-slow so nothing sits faded */
+  --rise:      16px;
+
+  /* Paper grain — a background layer, never over the type */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23g)' opacity='0.11'/%3E%3C/svg%3E");
+
+  /* ── Accent discipline ─────────────────────────────────────────
+     THE RULE: the accent is for marks, links, rules and one CTA.
+     Never for headline fill. Headline-scale type is white/off-white
+     on dark sections and ink on light ones — the accent stays small
+     so it still reads as an accent. Rough budget: well under 5% of
+     the pixels on any page.
+
+     Permitted accent roles
+       · eyebrow / page labels          · the short underline rules
+       · inline links and "Learn more"  · 01 / 02 / 03 sequence numbers
+       · list bullets and hairline card borders
+       · one primary CTA per view
+     Not permitted
+       · h1 / h2 / h3 fill, pull quotes, subheads, any display type
+
+     --brand         the exact logo teal. Never redefine, never recolour
+                     the logo or wordmark. Reserved for the logo and
+                     tiny marks — at 1.9:1 on --bg it is NOT legible as
+                     text, which is exactly why --accent exists.
+     --accent        the working teal: same hue (176°), muted to 85%
+                     saturation and dropped to 24% lightness so it
+                     clears AA both as text on light and as a button
+                     fill under white text. Eyebrows, rules, links,
+                     01/02/03 numbers, primary buttons.
+     --accent-strong hover / active
+     --accent-fg     text colour that sits ON an --accent fill
+     --accent-soft   low-alpha wash for focus rings and tinted panels
+  */
+  --brand:         #00C9BB;
+  --accent:        #09716A;
+  --accent-strong: #065651;
+  --accent-fg:     #FFFFFF;
+  --accent-fill:   var(--accent);   /* solid fills; only differs on dark */
+  --accent-soft:   rgba(9, 113, 106, 0.14);
+
+  /* Headline fill — never the accent */
+  --head-on-dark:  #FFFFFF;
+  --head-on-light: var(--ink);
+
+  /* Text on dark surfaces. Every tier clears WCAG AA (4.5:1) on --ink. */
+  --on-dark-1: rgba(255, 255, 255, 0.92);  /* lead body            15.9:1 */
+  --on-dark-2: rgba(255, 255, 255, 0.72);  /* standard body         9.2:1 */
+  --on-dark-3: rgba(255, 255, 255, 0.56);  /* small supporting text 6.1:1 */
+}
+
+/* ── Dark context ────────────────────────────────────────────────
+   The hero and the footer are the two dark surfaces. Inside them the
+   deep --accent would go muddy (3.0:1 on --ink), so the accent token
+   is redefined locally to a lighter tint of the same hue — 5.8:1 on
+   --ink. Everything that paints with var(--accent) adapts on its own;
+   no per-element dark overrides needed.                            */
+.hero-dark,
+#site-footer,
+.wedge-head,
+#site-nav.is-over-hero {
+  /* Marks on dark are tiny — an 11px eyebrow, a 2px rule — which is exactly
+     the "logo and tiny marks" role the brand teal is reserved for, and it
+     clears AA here (6.0:1 over the hero photo, 8.2:1 on the footer).
+     Solid FILLS get one step down so a button does not shout over the
+     photograph; ink text on it measures 5.9:1.                          */
+  --accent:        var(--brand);
+  --accent-strong: #4FE3D8;
+  --accent-fill:   #00A99E;
+  --accent-fg:     var(--ink);
 }
 
 /* ─── Base ───────────────────────────────────────────────────────── */
@@ -24,29 +169,104 @@ html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
 [id] { scroll-margin-top: var(--nav-height); }
 
 body {
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: var(--lh-body);
   color: var(--body);
-  background: var(--white);
+  background-color: var(--bg);
+  /* Paper grain sits in the background layer, under the type, so it
+     textures the surface without touching text contrast. */
+  background-image: var(--grain);
+  background-size: 260px 260px;
   overflow-x: hidden;
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures contextual;
+  text-rendering: optimizeLegibility;
 }
 
-/* ─── Navigation ─────────────────────────────────────────────────── */
+/* ─── Type system ────────────────────────────────────────────────
+   Display: Fraunces, WONK off / SOFT 0, weight 500–600, tight tracking.
+   Body:    Hanken Grotesk. Sans was chosen over Newsreader so heading
+            and body read as two distinct voices rather than two
+            similar serifs competing.
+   Figures: Fraunces carries the old-style set for display and running
+            display numerals; the sans has lining figures only, so
+            aligned data uses tabular lining.
+──────────────────────────────────────────────────────────────────── */
+h1, h2, h3, h4,
+.hero-h1, .font-display {
+  font-family: var(--font-display);
+  font-optical-sizing: none;
+  font-variation-settings: var(--fx-heading);
+  font-weight: 600;
+  line-height: var(--lh-heading);
+  letter-spacing: -0.015em;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+  font-variant-ligatures: common-ligatures contextual;
+}
+h1, .hero-h1 {
+  font-variation-settings: var(--fx-display);
+  letter-spacing: -0.02em;
+}
+h3, h4 {
+  font-variation-settings: var(--fx-sub);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Body copy: default tracking, capped measure, comfortable leading */
+p, li, dd, blockquote, figcaption {
+  line-height: var(--lh-body);
+  max-width: var(--measure);
+}
+/* Aligned numerals (data, prices, tabulated figures) */
+.tabular { font-variant-numeric: tabular-nums lining-nums; }
+
+/* Tailwind utility aliases.
+   @astrojs/tailwind's dev server caches tailwind.config.mjs and kept serving
+   the stock `sans` stack while the production build used the configured one —
+   so the two disagreed. Aliasing the utilities to the CSS variables here makes
+   the variables the single source of truth and removes the divergence. */
+.font-serif { font-family: var(--font-display); }
+.font-sans  { font-family: var(--font-body); }
+.text-body  { color: var(--ink); }
+.max-w-site { max-width: 1360px; }
+
+/* THE LOGO — pinned. Never inherits the display or body face. */
+.wordmark,
+.footer-wordmark { font-family: var(--font-logo) !important; }
+
+/* ─── Navigation ─────────────────────────────────────────────────
+   Two states. Over the dark hero the bar is translucent dark with
+   white links; once the hero has scrolled past it becomes a solid
+   light bar with ink links. The swap is driven by .is-over-hero,
+   set in Nav.astro against the real height of the hero section.  */
 #site-nav {
   height: var(--nav-height);
-  background: rgba(28, 28, 30, 0.72);
+  background: var(--surface);
+  border-bottom: 1px solid var(--hairline);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0);
-  transition: background 0.35s ease, border-color 0.35s ease;
+  transition: background var(--dur-slow) var(--ease),
+              border-color var(--dur-slow) var(--ease);
 }
-#site-nav.is-scrolled {
-  background: rgba(28, 28, 30, 0.97);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+#site-nav.is-over-hero {
+  background: rgba(20, 19, 17, 0.60);
+  border-bottom-color: rgba(255, 255, 255, 0);
+}
+#site-nav.is-over-hero.is-scrolled {
+  background: rgba(20, 19, 17, 0.92);
+}
+/* The mobile panel always needs a solid bar above it */
+#site-nav.menu-open,
+#site-nav.menu-open.is-over-hero {
+  background: var(--surface);
+  border-bottom-color: var(--hairline);
 }
 
 /* Wordmark */
 .wordmark {
-  font-family: Georgia, serif;
+  font-family: var(--font-body);
   font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -56,21 +276,28 @@ body {
   align-items: baseline;
   gap: 0;
 }
-.wordmark .part-stratum { color: #FFFFFF; }
+.wordmark .part-stratum { color: var(--ink); transition: color 0.35s ease; }
+#site-nav.is-over-hero .wordmark .part-stratum,
+.wedge-head .wordmark .part-stratum { color: #FFFFFF; }
 .wordmark .part-core    { color: var(--teal); }
 
 /* Nav links */
 .nav-link {
-  font-family: Georgia, serif;
+  font-family: var(--font-body);
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.70);
+  color: var(--body);
   text-decoration: none;
   letter-spacing: 0.01em;
   transition: color 0.15s ease;
   white-space: nowrap;
 }
 .nav-link:hover,
-.nav-link.is-active { color: #FFFFFF; }
+.nav-link.is-active { color: var(--ink); }
+.nav-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
+
+#site-nav.is-over-hero .nav-link { color: rgba(255, 255, 255, 0.78); }
+#site-nav.is-over-hero .nav-link:hover,
+#site-nav.is-over-hero .nav-link.is-active { color: #FFFFFF; }
 
 /* Services dropdown */
 .dropdown-parent { position: relative; }
@@ -80,13 +307,13 @@ body {
   top: 100%;
   left: -1rem;
   min-width: 13rem;
-  background: var(--ink);
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: var(--surface);
+  border: 1px solid var(--hairline);
   border-radius: 4px;
   padding: 0.5rem 0;
   padding-top: calc(12px + 0.5rem);
   margin-top: -12px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 14px 34px -14px rgba(28, 27, 25, 0.30);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -106,18 +333,18 @@ body {
 .dropdown-link {
   display: block;
   padding: 0.6rem 1.25rem;
-  font-family: Georgia, serif;
+  font-family: var(--font-body);
   font-size: 0.8125rem;
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--body);
   text-decoration: none;
   letter-spacing: 0.01em;
   transition: color 0.12s ease, background 0.12s ease;
 }
 .dropdown-link:hover {
-  color: #FFFFFF;
-  background: rgba(255, 255, 255, 0.05);
+  color: var(--ink);
+  background: var(--bg);
 }
-.dropdown-link.is-active { color: var(--teal); }
+.dropdown-link.is-active { color: var(--accent); }
 
 /* Chevron */
 .chevron {
@@ -133,12 +360,12 @@ body {
 
 /* Book a Call CTA */
 .btn-book-call {
-  font-family: Georgia, serif;
+  font-family: var(--font-body);
   font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  color: var(--ink);
-  background: var(--teal);
+  color: var(--accent-fg);
+  background: var(--accent-fill);
   padding: 0.55rem 1.25rem;
   border-radius: 3px;
   text-decoration: none;
@@ -146,46 +373,46 @@ body {
   transition: background 0.18s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1);
   white-space: nowrap;
 }
-.btn-book-call:hover  { background: #00dfd0; transform: translateY(-1px); }
+.btn-book-call:hover  { background: var(--accent-strong); transform: translateY(-1px); }
 .btn-book-call:active { transform: translateY(0); }
-.btn-book-call:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+.btn-book-call:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 /* ─── Mobile menu ────────────────────────────────────────────────── */
 #mob-menu {
-  background: var(--ink);
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  background: var(--surface);
+  border-top: 1px solid var(--hairline);
   padding: 1.25rem 1.5rem 1.75rem;
 }
 #mob-menu a.mob-nav-link {
   display: block;
-  font-family: Georgia, serif;
+  font-family: var(--font-body);
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--ink);
   text-decoration: none;
   padding: 0.65rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--hairline);
   transition: color 0.15s;
 }
-#mob-menu a.mob-nav-link:hover { color: #FFF; }
-#mob-menu a.mob-nav-link.is-active { color: var(--teal); }
+#mob-menu a.mob-nav-link:hover { color: var(--accent); }
+#mob-menu a.mob-nav-link.is-active { color: var(--accent); }
 
 .mob-services-toggle {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  font-family: Georgia, serif;
+  font-family: var(--font-body);
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--ink);
   background: none;
   border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--hairline);
   padding: 0.65rem 0;
   cursor: pointer;
   text-align: left;
   transition: color 0.15s;
 }
-.mob-services-toggle:hover { color: #FFF; }
+.mob-services-toggle:hover { color: var(--accent); }
 
 .mob-services-chevron { transition: transform 0.22s ease; }
 .mob-services-toggle.open .mob-services-chevron { transform: rotate(180deg); }
@@ -195,14 +422,14 @@ body {
 }
 .mob-submenu a {
   display: block;
-  font-family: Georgia, serif;
+  font-family: var(--font-body);
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--body);
   text-decoration: none;
   padding: 0.45rem 0;
   transition: color 0.15s;
 }
-.mob-submenu a:hover { color: var(--teal); }
+.mob-submenu a:hover { color: var(--accent); }
 
 .mob-cta-wrap { margin-top: 1.25rem; }
 
@@ -220,7 +447,7 @@ body {
 .hamburger span {
   display: block;
   height: 1.5px;
-  background: rgba(255,255,255,0.85);
+  background: var(--ink);
   border-radius: 2px;
   transition: width 0.2s ease, opacity 0.2s, transform 0.25s ease;
 }
@@ -230,6 +457,8 @@ body {
 .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); width: 22px; }
 .hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); width: 22px; }
+#site-nav.is-over-hero:not(.menu-open) .hamburger span { background: rgba(255,255,255,0.88); }
+.hamburger:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 /* ─── Hero sections ──────────────────────────────────────────────── */
 .hero-dark {
@@ -249,50 +478,237 @@ body {
 }
 .hero-dark > * { position: relative; z-index: 1; }
 
-/* Teal accent line */
+/* ─── Photographic hero ──────────────────────────────────────────
+   Full-bleed image + a two-axis scrim (left-heavy for the type
+   column, bottom-heavy for the headline → CTA stack). The right of
+   the frame stays open so the pit wall and sky still read as a
+   photograph rather than a texture.
+
+   GRADE TOGGLE — the desaturation + cool duotone that stops the
+   hi-vis orange and sky blue clashing with the palette. To switch
+   it off and show the untouched photograph, put data-grade="off" on
+   the hero <section>.
+──────────────────────────────────────────────────────────────────── */
+.hero-photo { background-color: #0B0B0D; }
+
+.hero-photo > .hero-photo__media {
+  position: absolute;
+  inset: 0;
+  display: block;
+  z-index: 0;
+}
+.hero-photo__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Desktop: whole frame in view — figures left, pit and sky right */
+  object-position: 42% 44%;
+}
+.hero-photo > .hero-photo__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    /* top-left plate — the eyebrow and rule are 11px accent marks sitting
+       on open sky; teal needs a genuinely dark ground to clear AA */
+    radial-gradient(ellipse 92% 78% at -4% 2%,
+      rgba(9, 9, 11, 0.94) 0%,
+      rgba(9, 9, 11, 0.83) 32%,
+      rgba(9, 9, 11, 0.46) 58%,
+      rgba(9, 9, 11, 0.00) 80%),
+    /* bottom-heavy — carries the headline, body and both CTAs. The 38–68%
+       band is where the headline crosses the blown-out horizon cloud. */
+    linear-gradient(to top,
+      rgba(9, 9, 11, 0.80) 0%,
+      rgba(9, 9, 11, 0.68) 16%,
+      rgba(9, 9, 11, 0.54) 38%,
+      rgba(9, 9, 11, 0.28) 68%,
+      rgba(9, 9, 11, 0.28) 100%),
+    /* left-heavy — carries the type column, releases toward the pit */
+    linear-gradient(97deg,
+      rgba(9, 9, 11, 0.54) 0%,
+      rgba(9, 9, 11, 0.47) 26%,
+      rgba(9, 9, 11, 0.31) 54%,
+      rgba(9, 9, 11, 0.11) 78%,
+      rgba(9, 9, 11, 0.04) 100%);
+}
+
+/* Grain sits over the photo so the hero matches the other dark sections */
+.hero-photo::after { z-index: 2; }
+.hero-photo > .hero-photo__content { z-index: 3; }
+
+/* Mobile: the frame crops hard, so bias left to keep both figures in */
+@media (max-width: 767px) {
+  /* 19% keeps the second worker and the pointing arm whole, the first
+     worker's head and helmet in frame, and opens onto the pit wall. */
+  .hero-photo__img { object-position: 19% 44%; }
+  .hero-photo > .hero-photo__scrim {
+    background:
+      /* the eyebrow runs nearly full width here, so the plate is a band */
+      linear-gradient(180deg,
+        rgba(9, 9, 11, 0.70) 0%,
+        rgba(9, 9, 11, 0.62) 34%,
+        rgba(9, 9, 11, 0.30) 54%,
+        rgba(9, 9, 11, 0.00) 70%),
+      linear-gradient(to top,
+        rgba(9, 9, 11, 0.82) 0%,
+        rgba(9, 9, 11, 0.70) 20%,
+        rgba(9, 9, 11, 0.48) 46%,
+        rgba(9, 9, 11, 0.22) 74%,
+        rgba(9, 9, 11, 0.28) 100%);
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-photo__img { object-position: 28% 45%; }
+}
+
+/* Accent rule — a mark, not a fill */
 .teal-rule {
   display: block;
   width: 3rem;
   height: 2px;
-  background: var(--teal);
+  background: var(--accent);
   border-radius: 1px;
 }
 
+/* ─── Hero headline scale ────────────────────────────────────────
+   Two steps, so hero type is consistent across the site: the homepage
+   carries the larger one, every secondary page shares the smaller.
+   max-width is set in each step to hold the wrap to three lines on the
+   homepage and four on secondary pages at desktop width. Override
+   .hero-h1 { max-width } per page only when the copy length needs it.
+──────────────────────────────────────────────────────────────────── */
+.hero-h1 {
+  font-size: clamp(1.72rem, 3.35vw, 3.35rem);
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  max-width: 38rem;
+}
+.hero-h1--home {
+  font-size: clamp(2.05rem, 5.3vw, 5.1rem);
+  letter-spacing: -0.03em;
+  line-height: 1.06;
+  max-width: 54rem;
+}
+
+/* ─── Light sections ─────────────────────────────────────────────
+   Section rhythm comes from two warm tones plus hairlines, not from
+   dark/light alternation and not from shadows.                    */
+.section-light { background: var(--bg); }
+/* One section rhythm, driven by --section-y off the 8px scale */
+.section-light, .section-alt { padding-block: var(--section-y); }
+.section-light, .section-alt, .card { background-image: var(--grain); background-size: 260px 260px; }
+.section-alt   { background: var(--bg-alt); }
+/* Where two --bg sections meet, a hairline carries the boundary that the
+   old full-bleed teal band used to provide. */
+.section-divided { border-top: 1px solid var(--hairline); }
+
+/* Raised elements: a cleaner surface inside a hairline, never a shadow */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: 6px;
+}
+
+/* ─── Photography ────────────────────────────────────────────────
+   One container treatment for every photograph: a hairline in the
+   page's own divider colour, the same 3px radius the buttons and
+   cards use, and a low diffuse shadow rather than a hard drop.
+   The colour grade is baked into the assets (see grade-images.mjs),
+   not applied here — runtime filters cost a composite on every paint.
+──────────────────────────────────────────────────────────────────── */
+.portrait {
+  margin: 0;
+  max-width: 360px;
+  border: 1px solid var(--hairline);
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: 0 18px 40px -28px rgba(28, 27, 25, 0.45);
+  position: relative;
+}
+.portrait picture { display: block; }
+.portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;      /* identical crop for every principal */
+  object-fit: cover;
+  object-position: 50% 22%; /* faces sit high in both source frames */
+}
+/* The accent keeps its footing mark under each portrait */
+.portrait::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 3px;
+  background: var(--accent);
+}
+
+/* Inline text link — accent, underlined so it does not rely on colour alone */
+.inline-link, .card-link {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  padding-bottom: 2px;
+  transition: background-size var(--dur-mid) var(--ease),
+              color var(--dur-fast) var(--ease);
+}
+.inline-link:hover, .inline-link:focus-visible,
+.card-link:hover,   .card-link:focus-visible,
+.service-card-home:hover .card-link { background-size: 100% 1px; }
+.inline-link:hover { color: var(--accent-strong); }
+.inline-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+
 /* ─── Page label (small caps above headline) ─────────────────────── */
 .page-label {
-  font-family: Georgia, serif;
+  font-family: var(--font-body);
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--accent);
 }
 
 /* ─── Body buttons ───────────────────────────────────────────────── */
 .btn-primary {
-  font-family: Georgia, serif;
+  font-family: var(--font-body);
   font-size: 0.9375rem;
   font-weight: 700;
   letter-spacing: 0.01em;
-  color: var(--ink);
-  background: var(--teal);
+  color: var(--accent-fg);
+  background: var(--accent-fill);
   padding: 0.8rem 2rem;
   border-radius: 3px;
   text-decoration: none;
   display: inline-block;
-  transition: background 0.18s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1);
+  transition: background var(--dur-mid) var(--ease),
+              transform var(--dur-mid) var(--ease),
+              box-shadow var(--dur-mid) var(--ease);
 }
-.btn-primary:hover  { background: #00dfd0; transform: translateY(-2px); }
-.btn-primary:active { transform: translateY(0); }
+.btn-primary:hover  {
+  background: var(--accent-strong);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -12px rgba(28,27,25,0.45);
+}
+.hero-dark .btn-primary:hover { background: var(--brand); }
+.btn-primary:active { transform: translateY(0); box-shadow: none; }
+.btn-primary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; box-shadow: 0 0 0 5px var(--accent-soft); }
+
 
 .btn-outline {
-  font-family: Georgia, serif;
+  font-family: var(--font-body);
   font-size: 0.9375rem;
   font-weight: 400;
   letter-spacing: 0.01em;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--ink);
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--ink);
   padding: 0.8rem 2rem;
   border-radius: 3px;
   text-decoration: none;
@@ -301,20 +717,35 @@ body {
               transform 0.18s cubic-bezier(0.34,1.56,0.64,1);
 }
 .btn-outline:hover  {
-  border-color: rgba(255,255,255,0.65);
-  color: #FFFFFF;
+  background: var(--ink);
+  color: var(--bg);
   transform: translateY(-2px);
 }
 .btn-outline:active { transform: translateY(0); }
+.btn-outline:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* On the photo the outline button needs its own plate to stay readable */
+.hero-photo .btn-outline {
+  color: #FFFFFF;
+  background: rgba(9, 9, 11, 0.42);
+  border-color: rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+.hero-photo .btn-outline:hover {
+  background: rgba(9, 9, 11, 0.62);
+  border-color: rgba(255, 255, 255, 0.72);
+}
 
 /* ─── Footer ─────────────────────────────────────────────────────── */
 #site-footer {
   background: var(--ink);
   border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
+#site-footer .footer-strapline { color: var(--accent); }
 
 .footer-wordmark {
-  font-family: Georgia, serif;
+  font-family: var(--font-body);
   font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -329,12 +760,12 @@ body {
 /* COST | PERFORMANCE | CAPABILITY strapline */
 .footer-strapline {
   margin-top: 0.85rem;
-  font-family: Georgia, serif;
+  font-family: var(--font-body);
   font-size: 0.625rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--accent);
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -346,32 +777,53 @@ body {
 }
 
 .footer-link {
-  font-family: Georgia, serif;
+  font-family: var(--font-body);
   font-size: 0.8125rem;
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--on-dark-3);      /* was 0.45 — 4.4:1, under AA */
   text-decoration: none;
   transition: color 0.15s ease;
   letter-spacing: 0.01em;
 }
-.footer-link:hover { color: rgba(255,255,255,0.85); }
+.footer-link:hover { color: rgba(255,255,255,0.95); }
+.footer-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 
 .footer-heading {
-  font-family: Georgia, serif;
+  font-family: var(--font-body);
   font-size: 0.625rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.52);   /* was 0.28 — 2.5:1, well under AA */
   margin-bottom: 0.85rem;
 }
 
 /* ─── Scroll reveal ──────────────────────────────────────────────── */
 .fade-up {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34,1.2,0.64,1);
+  transform: translateY(var(--rise));
+  transition: opacity var(--dur-reveal) var(--ease),
+              transform var(--dur-reveal) var(--ease);
+  transition-delay: calc(var(--i, 0) * 55ms);
 }
-.fade-up.visible {
-  opacity: 1;
-  transform: translateY(0);
+.fade-up.visible { opacity: 1; transform: none; }
+
+/* Belt and braces: if scripting never runs, nothing stays invisible. */
+@media (scripting: none) {
+  .fade-up { opacity: 1; transform: none; }
+}
+/* A fast scroll can outrun the transition; once revealed, an element that is
+   already well inside the viewport snaps to final state rather than easing. */
+.fade-up.visible.instant { transition: none; transition-delay: 0s; }
+
+/* ─── Reduced motion ─────────────────────────────────────────────
+   All of the above is decoration. If the user asks for less, the
+   reveal resolves instantly and no transition runs anywhere.      */
+@media (prefers-reduced-motion: reduce) {
+  .fade-up { opacity: 1; transform: none; transition: none; transition-delay: 0s; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

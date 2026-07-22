@@ -28,6 +28,10 @@ const {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
 
+  <!-- Per-page head additions (hero image preloads, etc.) — kept early so
+       the preload scanner picks them up before the stylesheet resolves. -->
+  <slot name="head" />
+
   <!-- SEO -->
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />

@@ -123,7 +123,7 @@ const CAL_LINK = 'https://cal.com/wen-khong/30min';
 <style>
   /* ─── Wedge head ───────────────────────────────────────────── */
   .wedge-head {
-    background: #1C1C1E;
+    background: var(--ink);
     padding: 1.25rem 1.25rem 0;
   }
   @media (min-width: 640px) { .wedge-head { padding: 1.75rem 2rem 0; } }
@@ -138,7 +138,7 @@ const CAL_LINK = 'https://cal.com/wen-khong/30min';
   /* Hairline separator. Sized down and dimmed so neither mark reads as
      subordinate to the other — the divider should recede, not compete. */
   .cobrand__x {
-    font-family: Georgia, serif;
+    font-family: var(--font-body);
     font-size: 0.9rem;
     line-height: 1;
     color: rgba(255, 255, 255, 0.28);
@@ -165,7 +165,7 @@ const CAL_LINK = 'https://cal.com/wen-khong/30min';
 
   /* ─── Dark wedge ───────────────────────────────────────────── */
   .wedge {
-    background: #1C1C1E;
+    background: var(--ink);
     /* Angled bottom edge — the wedge. Extra padding covers the cut. */
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3.25rem), 0 100%);
     padding: 2rem 1.25rem 5.5rem;
@@ -180,7 +180,7 @@ const CAL_LINK = 'https://cal.com/wen-khong/30min';
   .wedge-inner { max-width: 44rem; margin: 0 auto; }
 
   .eyebrow {
-    font-family: Georgia, serif;
+    font-family: var(--font-body);
     font-size: 0.6875rem;
     font-weight: 700;
     letter-spacing: 0.18em;
@@ -190,7 +190,7 @@ const CAL_LINK = 'https://cal.com/wen-khong/30min';
   }
 
   h1 {
-    font-family: Georgia, serif;
+    font-family: var(--font-body);
     font-weight: 700;
     color: #FFFFFF;
     font-size: clamp(2rem, 8vw, 3.25rem);
@@ -200,7 +200,7 @@ const CAL_LINK = 'https://cal.com/wen-khong/30min';
   }
 
   .lead {
-    font-family: Georgia, serif;
+    font-family: var(--font-body);
     font-size: 1.0625rem;
     line-height: 1.7;
     color: rgba(255, 255, 255, 0.72);
@@ -211,7 +211,7 @@ const CAL_LINK = 'https://cal.com/wen-khong/30min';
 
   /* ─── Card zone ────────────────────────────────────────────── */
   .card-zone {
-    background: #F2F2F2;
+    background: var(--bg-alt);
     padding: 0 1.25rem 3.5rem;
   }
   @media (min-width: 640px) { .card-zone { padding: 0 2rem 5rem; } }
@@ -221,13 +221,13 @@ const CAL_LINK = 'https://cal.com/wen-khong/30min';
     margin: -3rem auto 0; /* lifts the card up into the wedge */
     position: relative;
     z-index: 2;
-    background: #FFFFFF;
-    border: 1px solid #E8E8E8;
-    border-top: 3px solid #00C9BB;
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-top: 3px solid var(--accent);
     border-radius: 8px;
     padding: 1.5rem 1.25rem 1.25rem;
-    box-shadow: 0 1px 2px rgba(28,28,30,0.04),
-                0 18px 40px -16px rgba(28,28,30,0.28);
+    box-shadow: 0 1px 2px var(--muted),
+                0 18px 40px -16px var(--muted);
   }
   @media (min-width: 640px) { .card { margin-top: -4rem; padding: 2rem; } }
 
@@ -236,38 +236,38 @@ const CAL_LINK = 'https://cal.com/wen-khong/30min';
   .field  { display: flex; flex-direction: column; }
 
   .field label {
-    font-family: Georgia, serif;
+    font-family: var(--font-body);
     font-size: 0.8125rem;
     font-weight: 700;
     letter-spacing: 0.02em;
-    color: #1C1C1E;
+    color: var(--ink);
     margin-bottom: 0.4rem;
   }
-  .field .req { color: #00C9BB; }
+  .field .req { color: var(--accent); }
   .field .opt {
     font-weight: 400;
     letter-spacing: 0.01em;
-    color: rgba(34,34,34,0.40);
+    color: var(--muted);
   }
 
   .field input {
-    font-family: Georgia, serif;
+    font-family: var(--font-body);
     /* 16px minimum stops iOS Safari zooming the page on focus */
     font-size: 1rem;
-    color: #1C1C1E;
-    background: #F7F7F5;
-    border: 1px solid #E0E0E0;
+    color: var(--ink);
+    background: var(--bg);
+    border: 1px solid var(--hairline);
     border-radius: 5px;
     padding: 0.72rem 0.85rem;
     min-height: 48px;
     width: 100%;
-    transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+    transition: border-color var(--dur-mid) var(--ease), background var(--dur-mid) var(--ease), box-shadow var(--dur-mid) var(--ease);
   }
-  .field input:hover { border-color: #C9C9C9; }
+  .field input:hover { border-color: var(--muted); }
   .field input:focus {
     outline: none;
-    background: #FFFFFF;
-    border-color: #00C9BB;
+    background: var(--surface);
+    border-color: var(--accent);
     box-shadow: 0 0 0 3px rgba(0,201,187,0.16);
   }
   .field input[aria-invalid="true"] {
@@ -275,7 +275,7 @@ const CAL_LINK = 'https://cal.com/wen-khong/30min';
     box-shadow: 0 0 0 3px rgba(192,57,43,0.12);
   }
   .field .err {
-    font-family: Georgia, serif;
+    font-family: var(--font-body);
     font-size: 0.8125rem;
     color: #C0392B;
     margin-top: 0.35rem;
@@ -292,12 +292,12 @@ const CAL_LINK = 'https://cal.com/wen-khong/30min';
     margin-top: 1.5rem;
     width: 100%;
     min-height: 54px;
-    font-family: Georgia, serif;
+    font-family: var(--font-body);
     font-weight: 700;
     font-size: 1rem;
     letter-spacing: 0.01em;
-    color: #1C1C1E;
-    background: #00C9BB;
+    color: var(--accent-fg);
+    background: var(--accent-fill);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -305,33 +305,33 @@ const CAL_LINK = 'https://cal.com/wen-khong/30min';
     align-items: center;
     justify-content: center;
     gap: 0.6rem;
-    box-shadow: 0 4px 14px rgba(28,28,30,0.18);
+    box-shadow: 0 4px 14px var(--muted);
     transition: background 0.18s ease,
                 transform 0.18s cubic-bezier(0.34,1.56,0.64,1),
                 box-shadow 0.18s ease;
   }
   .submit:hover {
-    background: #00dfd0;
+    background: var(--accent-strong);
     transform: translateY(-2px);
-    box-shadow: 0 8px 22px rgba(28,28,30,0.26);
+    box-shadow: 0 8px 22px var(--muted);
   }
   .submit:active { transform: translateY(0); }
-  .submit:focus-visible { outline: 2px solid #1C1C1E; outline-offset: 3px; }
+  .submit:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
   .submit[disabled] { opacity: 0.6; cursor: progress; transform: none; }
   .submit__arrow { transition: transform 0.2s ease; }
   .submit:hover .submit__arrow { transform: translateX(3px); }
 
   .consent {
-    font-family: Georgia, serif;
+    font-family: var(--font-body);
     font-size: 0.8125rem;
     line-height: 1.55;
-    color: rgba(34,34,34,0.48);
+    color: var(--muted);
     text-align: center;
     margin-top: 0.95rem;
   }
 
   .status {
-    font-family: Georgia, serif;
+    font-family: var(--font-body);
     font-size: 0.9rem;
     color: #C0392B;
     text-align: center;
@@ -345,27 +345,27 @@ const CAL_LINK = 'https://cal.com/wen-khong/30min';
     width: 54px; height: 54px;
     margin: 0 auto 1.1rem;
     display: flex; align-items: center; justify-content: center;
-    color: #00C9BB;
+    color: var(--accent);
     background: rgba(0,201,187,0.12);
     border-radius: 50%;
   }
   .success__h {
-    font-family: Georgia, serif;
+    font-family: var(--font-body);
     font-weight: 700;
-    color: #1C1C1E;
+    color: var(--ink);
     font-size: 1.5rem;
     letter-spacing: -0.02em;
     line-height: 1.2;
     margin-bottom: 0.5rem;
   }
   .success__b {
-    font-family: Georgia, serif;
+    font-family: var(--font-body);
     font-size: 1rem;
-    color: rgba(34,34,34,0.66);
+    color: var(--body);
     margin-bottom: 1.5rem;
   }
   .success__cta {
-    font-family: Georgia, serif;
+    font-family: var(--font-body);
     font-weight: 700;
     font-size: 1rem;
     color: #FFFFFF;
@@ -384,7 +384,7 @@ const CAL_LINK = 'https://cal.com/wen-khong/30min';
   }
   .success__cta:hover  { background: #e8862a; transform: translateY(-2px); }
   .success__cta:active { transform: translateY(0); }
-  .success__cta:focus-visible { outline: 2px solid #1C1C1E; outline-offset: 3px; }
+  .success__cta:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
   @media (prefers-reduced-motion: reduce) {
     .submit, .submit__arrow, .success__cta { transition: none; }

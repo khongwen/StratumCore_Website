@@ -103,10 +103,21 @@ const start = (p) => pathname.startsWith(p);
 </header>
 
 <script>
-  // ── Scroll effect ──────────────────────────────────────────────
+  // ── Nav state ──────────────────────────────────────────────────
+  // Over the dark hero the bar is translucent with white text; once the
+  // hero has scrolled past, it becomes the solid light bar. Measured
+  // against the hero's real height so it works on every page.
   const nav = document.getElementById('site-nav')!;
-  const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 24);
+  const hero = document.querySelector<HTMLElement>('section.hero-dark');
+
+  const onScroll = () => {
+    nav.classList.toggle('is-scrolled', window.scrollY > 24);
+    const overHero = !!hero &&
+      window.scrollY < hero.offsetHeight - nav.offsetHeight;
+    nav.classList.toggle('is-over-hero', overHero);
+  };
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
   onScroll();
 
   // ── Mobile hamburger toggle ────────────────────────────────────
@@ -119,6 +130,7 @@ const start = (p) => pathname.startsWith(p);
     mobMenu.setAttribute('aria-hidden', String(isOpen));
     toggle.setAttribute('aria-expanded', String(!isOpen));
     toggle.classList.toggle('open', !isOpen);
+    nav.classList.toggle('menu-open', !isOpen);
   });
 
   // Close on outside click
@@ -128,6 +140,7 @@ const start = (p) => pathname.startsWith(p);
       mobMenu.setAttribute('aria-hidden', 'true');
       toggle.setAttribute('aria-expanded', 'false');
       toggle.classList.remove('open');
+      nav.classList.remove('menu-open');
     }
   });
 
@@ -148,6 +161,7 @@ const start = (p) => pathname.startsWith(p);
     a.addEventListener('click', () => {
       mobMenu.classList.add('hidden');
       toggle.classList.remove('open');
+      nav.classList.remove('menu-open');
     })
   );
 </script>

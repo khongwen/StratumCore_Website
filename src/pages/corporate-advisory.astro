@@ -45,29 +45,28 @@ const schema = graph(
       aria-hidden="true"
     ></div>
 
-    <div class="relative z-10 max-w-site mx-auto px-6 lg:px-10 pb-20 pt-[72px] w-full">
-      <div class="max-w-4xl fade-up">
+    <div class="relative z-10 max-w-site mx-auto px-6 lg:px-10 pb-20 pt-[calc(72px+2.5rem)] w-full">
+      <div class="max-w-4xl">
 
         <p class="page-label mb-6">Corporate Advisory</p>
         <span class="teal-rule mb-8 block"></span>
 
         <h1
-          class="font-serif font-bold text-white mb-0 leading-none"
-          style="font-size: clamp(2.2rem, 5vw, 4.75rem); letter-spacing: -0.03em; max-width: 40rem; line-height: 1.05;"
+          class="hero-h1 font-serif font-bold text-white mb-0"
         >
-          Better outcomes start with better clarity.
+          Better outcomes start with better&nbsp;clarity.
         </h1>
 
         <p
-          class="font-serif font-bold mt-6"
-          style="font-size: clamp(1rem, 1.6vw, 1.25rem); color: #00C9BB; letter-spacing: -0.01em;"
+          class="font-sans font-bold mt-8"
+          style="font-size: clamp(1rem, 1.6vw, 1.25rem); color: rgba(255,255,255,0.94); letter-spacing: -0.01em;"
         >
           Practical. Senior. Independent.
         </p>
 
         <p
-          class="font-serif mt-4 leading-relaxed"
-          style="font-size: clamp(0.9375rem, 1.2vw, 1.0625rem); color: rgba(255,255,255,0.50); max-width: 40rem; line-height: 1.75;"
+          class="font-sans mt-4 leading-relaxed"
+          style="font-size: clamp(0.9375rem, 1.2vw, 1.0625rem); color: var(--on-dark-2); max-width: 40rem; line-height: 1.75;"
         >
           We help leaders in mining, resources and asset-intensive businesses see their
           operation clearly, focus on the few things that drive performance, and put the
@@ -83,11 +82,11 @@ const schema = graph(
   <!-- ══════════════════════════════════════════════════════════
        2. THE TWO STREAMS
   ══════════════════════════════════════════════════════════ -->
-  <section class="bg-white py-24 lg:py-32" aria-label="How we help">
+  <section class="section-light" aria-label="How we help">
     <div class="max-w-site mx-auto px-6 lg:px-10">
 
       <div class="mb-16 fade-up">
-        <p class="page-label mb-4" style="color: #00C9BB;">Where we go deep</p>
+        <p class="page-label mb-4" style="color: var(--accent);">Where we go deep</p>
         <h2
           class="font-serif font-bold text-body"
           style="font-size: clamp(1.75rem, 3vw, 2.75rem); letter-spacing: -0.025em; line-height: 1.1; max-width: 28rem;"
@@ -96,7 +95,7 @@ const schema = graph(
         </h2>
       </div>
 
-      <div class="grid lg:grid-cols-2 gap-px" style="background: #E8E8E8;">
+      <div class="grid lg:grid-cols-2 gap-px" style="background: var(--hairline);">
 
         <!-- Cost Reduction -->
         <article class="stream-card bg-white p-8 lg:p-12 flex flex-col fade-up">
@@ -108,10 +107,10 @@ const schema = graph(
             Cost Reduction
           </h3>
           <p
-            class="font-serif leading-relaxed mb-6"
-            style="font-size: 1rem; color: rgba(34,34,34,0.64); line-height: 1.8; max-width: 30rem;"
+            class="font-sans leading-relaxed mb-6"
+            style="font-size: 1rem; color: var(--body); line-height: 1.8; max-width: 30rem;"
           >
-            Unlock 15%+ productivity and unit cost gains from your existing operation.
+            15%+ productivity and unit cost gains from your existing operation.
             We help leaders step back, follow the facts, and focus on the few changes that
             genuinely move productivity, cost and performance.
           </p>
@@ -121,8 +120,8 @@ const schema = graph(
               'Prioritise initiatives by value against effort',
               'A board-ready savings case in 5 weeks',
             ].map((item) => (
-              <li class="font-serif flex items-start gap-3" style="font-size: 0.9375rem; color: rgba(34,34,34,0.78); line-height: 1.5;">
-                <span aria-hidden="true" style="color:#00C9BB; flex-shrink:0; margin-top:0.1em;">
+              <li class="font-sans flex items-start gap-3" style="font-size: 0.9375rem; color: var(--body); line-height: 1.5;">
+                <span aria-hidden="true" style="color:var(--accent); flex-shrink:0; margin-top:0.1em;">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5l3.5 3.5L14 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </span>
                 {item}
@@ -131,8 +130,8 @@ const schema = graph(
           </ul>
           <a
             href="/cost-reduction"
-            class="font-serif font-bold inline-flex items-center gap-2 hover:gap-3 mt-auto"
-            style="font-size: 0.9375rem; color: #00C9BB; text-decoration: none; letter-spacing: 0.01em; transition: gap 0.2s ease;"
+            class="font-sans font-bold inline-flex items-center gap-2 hover:gap-3 mt-auto"
+            style="font-size: 0.9375rem; color: var(--accent); text-decoration: none; letter-spacing: 0.01em; transition: gap 0.2s ease;"
           >
             Explore Cost Reduction
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -142,7 +141,7 @@ const schema = graph(
         </article>
 
         <!-- Financial Control & Governance -->
-        <article class="stream-card bg-white p-8 lg:p-12 flex flex-col fade-up" style="transition-delay: 80ms;">
+        <article class="stream-card bg-white p-8 lg:p-12 flex flex-col fade-up">
           <p class="tile-number mb-5">Stream 02</p>
           <h3
             class="font-serif font-bold text-body mb-4"
@@ -151,8 +150,8 @@ const schema = graph(
             Financial Control &amp; Governance
           </h3>
           <p
-            class="font-serif leading-relaxed mb-6"
-            style="font-size: 1rem; color: rgba(34,34,34,0.64); line-height: 1.8; max-width: 30rem;"
+            class="font-sans leading-relaxed mb-6"
+            style="font-size: 1rem; color: var(--body); line-height: 1.8; max-width: 30rem;"
           >
             Grown fast and the financial plumbing hasn&rsquo;t kept up? We help you get a
             real handle on operational spend, clear visibility into performance, and the
@@ -164,8 +163,8 @@ const schema = graph(
               'Visibility into financial performance',
               'Policies and processes that remove bottlenecks',
             ].map((item) => (
-              <li class="font-serif flex items-start gap-3" style="font-size: 0.9375rem; color: rgba(34,34,34,0.78); line-height: 1.5;">
-                <span aria-hidden="true" style="color:#00C9BB; flex-shrink:0; margin-top:0.1em;">
+              <li class="font-sans flex items-start gap-3" style="font-size: 0.9375rem; color: var(--body); line-height: 1.5;">
+                <span aria-hidden="true" style="color:var(--accent); flex-shrink:0; margin-top:0.1em;">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5l3.5 3.5L14 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </span>
                 {item}
@@ -174,8 +173,8 @@ const schema = graph(
           </ul>
           <a
             href="/financial-control-governance"
-            class="font-serif font-bold inline-flex items-center gap-2 hover:gap-3 mt-auto"
-            style="font-size: 0.9375rem; color: #00C9BB; text-decoration: none; letter-spacing: 0.01em; transition: gap 0.2s ease;"
+            class="font-sans font-bold inline-flex items-center gap-2 hover:gap-3 mt-auto"
+            style="font-size: 0.9375rem; color: var(--accent); text-decoration: none; letter-spacing: 0.01em; transition: gap 0.2s ease;"
           >
             Explore Financial Control &amp; Governance
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -192,7 +191,7 @@ const schema = graph(
   <!-- ══════════════════════════════════════════════════════════
        3. OUR APPROACH — Horizontal steps
   ══════════════════════════════════════════════════════════ -->
-  <section class="py-24 lg:py-32" style="background: #F2F2F2;" aria-label="Our approach">
+  <section class="py-24 lg:py-32" style="background: var(--bg-alt);" aria-label="Our approach">
     <div class="max-w-site mx-auto px-6 lg:px-10">
 
       <div class="mb-16 fade-up">
@@ -205,56 +204,56 @@ const schema = graph(
         </h2>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px" style="background: #E0E0E0;">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px" style="background: var(--hairline);">
 
-        <div class="bg-stone p-8 lg:p-10 fade-up">
+        <div class="section-alt p-8 lg:p-10 fade-up">
           <span
-            class="font-serif font-bold inline-block mb-5"
-            style="font-size: 0.625rem; letter-spacing: 0.14em; text-transform: uppercase; color: #1C1C1E; background: #00C9BB; padding: 0.2rem 0.55rem; border-radius: 2px;"
+            class="font-sans font-bold inline-block mb-5"
+            style="font-size: 0.625rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-fg); background: var(--accent); padding: 0.2rem 0.55rem; border-radius: 2px;"
           >Step 01</span>
           <h3 class="font-serif font-bold text-body mb-3" style="font-size: 1.125rem; letter-spacing: -0.015em;">
             Scoping
           </h3>
-          <p class="font-serif" style="font-size: 0.9rem; color: rgba(34,34,34,0.58); line-height: 1.7;">
+          <p class="font-sans" style="font-size: 0.9rem; color: var(--muted); line-height: 1.7;">
             A focused conversation to understand your situation, constraints, and what success looks like.
           </p>
         </div>
 
-        <div class="bg-stone p-8 lg:p-10 fade-up" style="transition-delay: 80ms;">
+        <div class="section-alt p-8 lg:p-10 fade-up">
           <span
-            class="font-serif font-bold inline-block mb-5"
-            style="font-size: 0.625rem; letter-spacing: 0.14em; text-transform: uppercase; color: #1C1C1E; background: #00C9BB; padding: 0.2rem 0.55rem; border-radius: 2px;"
+            class="font-sans font-bold inline-block mb-5"
+            style="font-size: 0.625rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-fg); background: var(--accent); padding: 0.2rem 0.55rem; border-radius: 2px;"
           >Step 02</span>
           <h3 class="font-serif font-bold text-body mb-3" style="font-size: 1.125rem; letter-spacing: -0.015em;">
             Diagnostic
           </h3>
-          <p class="font-serif" style="font-size: 0.9rem; color: rgba(34,34,34,0.58); line-height: 1.7;">
+          <p class="font-sans" style="font-size: 0.9rem; color: var(--muted); line-height: 1.7;">
             We follow the facts &mdash; deep-dive analysis of your costs, processes, and controls to find the real levers.
           </p>
         </div>
 
-        <div class="bg-stone p-8 lg:p-10 fade-up" style="transition-delay: 160ms;">
+        <div class="section-alt p-8 lg:p-10 fade-up">
           <span
-            class="font-serif font-bold inline-block mb-5"
-            style="font-size: 0.625rem; letter-spacing: 0.14em; text-transform: uppercase; color: #1C1C1E; background: #00C9BB; padding: 0.2rem 0.55rem; border-radius: 2px;"
+            class="font-sans font-bold inline-block mb-5"
+            style="font-size: 0.625rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-fg); background: var(--accent); padding: 0.2rem 0.55rem; border-radius: 2px;"
           >Step 03</span>
           <h3 class="font-serif font-bold text-body mb-3" style="font-size: 1.125rem; letter-spacing: -0.015em;">
             Prioritisation
           </h3>
-          <p class="font-serif" style="font-size: 0.9rem; color: rgba(34,34,34,0.58); line-height: 1.7;">
+          <p class="font-sans" style="font-size: 0.9rem; color: var(--muted); line-height: 1.7;">
             Clear, prioritised recommendations &mdash; the few changes worth acting on, ranked by value against effort.
           </p>
         </div>
 
-        <div class="bg-stone p-8 lg:p-10 fade-up" style="transition-delay: 240ms;">
+        <div class="section-alt p-8 lg:p-10 fade-up">
           <span
-            class="font-serif font-bold inline-block mb-5"
-            style="font-size: 0.625rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(28,28,30,0.38); background: rgba(28,28,30,0.07); padding: 0.2rem 0.55rem; border-radius: 2px;"
+            class="font-sans font-bold inline-block mb-5"
+            style="font-size: 0.625rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--body); background: var(--surface); border: 1px solid var(--hairline); padding: 0.2rem 0.55rem; border-radius: 2px;"
           >Step 04</span>
           <h3 class="font-serif font-bold text-body mb-3" style="font-size: 1.125rem; letter-spacing: -0.015em;">
             Execution support
           </h3>
-          <p class="font-serif" style="font-size: 0.9rem; color: rgba(34,34,34,0.58); line-height: 1.7;">
+          <p class="font-sans" style="font-size: 0.9rem; color: var(--muted); line-height: 1.7;">
             We stay involved so changes land and gains hold &mdash; not a report that sits on a shelf.
           </p>
         </div>
@@ -267,13 +266,13 @@ const schema = graph(
   <!-- ══════════════════════════════════════════════════════════
        4. WHO WE WORK WITH
   ══════════════════════════════════════════════════════════ -->
-  <section class="bg-white py-24 lg:py-32" aria-label="Who we work with">
+  <section class="section-light" aria-label="Who we work with">
     <div class="max-w-site mx-auto px-6 lg:px-10">
 
       <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
         <div class="fade-up">
-          <p class="page-label mb-4" style="color: #00C9BB;">Who we work with</p>
+          <p class="page-label mb-4" style="color: var(--accent);">Who we work with</p>
           <h2
             class="font-serif font-bold text-body mb-6"
             style="font-size: clamp(1.75rem, 3vw, 2.75rem); letter-spacing: -0.025em; line-height: 1.1; max-width: 22rem;"
@@ -281,8 +280,8 @@ const schema = graph(
             Built for businesses like yours.
           </h2>
           <p
-            class="font-serif leading-relaxed"
-            style="font-size: 1rem; color: rgba(34,34,34,0.60); line-height: 1.8; max-width: 28rem;"
+            class="font-sans leading-relaxed"
+            style="font-size: 1rem; color: var(--body); line-height: 1.8; max-width: 28rem;"
           >
             Our roots are in mining and resources, and that&rsquo;s where we go deepest &mdash;
             but the same disciplines apply across energy, infrastructure and asset-intensive
@@ -290,7 +289,7 @@ const schema = graph(
           </p>
         </div>
 
-        <div class="fade-up" style="transition-delay: 80ms;">
+        <div class="fade-up">
           <div class="grid sm:grid-cols-2 gap-x-10">
 
             <ul role="list">
@@ -299,7 +298,7 @@ const schema = graph(
                 'Mining contractors and services companies',
                 'Energy and infrastructure businesses',
               ].map((item) => (
-                <li class="client-bullet font-serif py-4" style="font-size: 0.9375rem; color: rgba(34,34,34,0.75); line-height: 1.5; border-bottom: 1px solid #EBEBEB;">
+                <li class="client-bullet font-sans py-4" style="font-size: 0.9375rem; color: var(--body); line-height: 1.5; border-bottom: 1px solid var(--hairline);">
                   <span class="bullet-dot" aria-hidden="true"></span>
                   {item}
                 </li>
@@ -312,7 +311,7 @@ const schema = graph(
                 'Boards and executives seeking independent review',
                 'PE-backed and asset-intensive industrials',
               ].map((item) => (
-                <li class="client-bullet font-serif py-4" style="font-size: 0.9375rem; color: rgba(34,34,34,0.75); line-height: 1.5; border-bottom: 1px solid #EBEBEB;">
+                <li class="client-bullet font-sans py-4" style="font-size: 0.9375rem; color: var(--body); line-height: 1.5; border-bottom: 1px solid var(--hairline);">
                   <span class="bullet-dot" aria-hidden="true"></span>
                   {item}
                 </li>
@@ -331,29 +330,23 @@ const schema = graph(
        5. CLOSING CTA
   ══════════════════════════════════════════════════════════ -->
   <section
-    class="py-24 lg:py-32 relative overflow-hidden"
+    class="section-alt relative"
     aria-label="Contact"
-    style="background: #00C9BB;"
   >
-    <div
-      class="absolute inset-0 pointer-events-none"
-      style="background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 60px 60px;"
-      aria-hidden="true"
-    ></div>
 
     <div class="relative z-10 max-w-site mx-auto px-6 lg:px-10 text-center fade-up">
       <h2
         class="font-serif font-bold mb-8 mx-auto"
-        style="font-size: clamp(1.75rem, 3.5vw, 3rem); color: #1C1C1E; letter-spacing: -0.025em; line-height: 1.2; max-width: 36rem;"
+        style="font-size: clamp(1.75rem, 3.5vw, 3rem); color: var(--ink); letter-spacing: -0.025em; line-height: 1.2; max-width: 36rem;"
       >
         Let&rsquo;s talk about what&rsquo;s actually holding your business back.
       </h2>
       <a
         href="/#contact"
-        class="font-serif font-bold inline-flex items-center gap-3 px-8 py-4 rounded-sm"
-        style="background: #1C1C1E; color: #FFFFFF; font-size: 0.9375rem; letter-spacing: 0.02em; text-decoration: none; box-shadow: 0 4px 16px rgba(28,28,30,0.2); transition: background 0.18s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease;"
-        onmouseover="this.style.background='#2d2d30'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 24px rgba(28,28,30,0.35)'"
-        onmouseout="this.style.background='#1C1C1E'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 16px rgba(28,28,30,0.2)'"
+        class="font-sans font-bold inline-flex items-center gap-3 px-8 py-4 rounded-sm"
+        style="background: var(--accent); color: var(--accent-fg); font-size: 0.9375rem; letter-spacing: 0.02em; text-decoration: none; transition: background 0.18s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1);"
+        onmouseover="this.style.background=\'var(--accent-strong)\'; this.style.transform=\'translateY(-2px)\'"
+        onmouseout="this.style.background=\'var(--accent)\'; this.style.transform=\'translateY(0)\'"
       >
         Book a call
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -361,8 +354,8 @@ const schema = graph(
         </svg>
       </a>
       <p
-        class="font-serif mt-5"
-        style="font-size: 0.875rem; color: rgba(28,28,30,0.55);"
+        class="font-sans mt-5"
+        style="font-size: 0.875rem; color: var(--muted);"
       >
         wen@stratumcore.com.au &nbsp;·&nbsp; Brisbane, QLD, Australia
       </p>
@@ -378,32 +371,63 @@ const schema = graph(
     border-top: 2px solid transparent;
     transition: border-color 0.22s ease;
   }
-  .stream-card:hover { border-top-color: #00C9BB; }
+  .stream-card:hover { border-top-color: var(--accent); }
 
   .tile-number {
-    font-family: Georgia, serif;
+    font-family: var(--font-body);
     font-size: 0.6875rem;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #00C9BB;
+    color: var(--accent);
   }
 
   .client-bullet { display: flex; align-items: flex-start; gap: 0.75rem; }
   .bullet-dot {
     display: inline-block; flex-shrink: 0;
     width: 5px; height: 5px; border-radius: 50%;
-    background: #00C9BB; margin-top: 0.5em;
+    background: var(--accent); margin-top: 0.5em;
   }
 </style>
 
 <script>
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  // Scroll reveal. Grouped siblings stagger off --i so cards arrive in
+  // sequence rather than together. The hero carries no .fade-up at all, so it
+  // paints at full opacity on first frame.
+  const reveal = () => {
+    const items = [...document.querySelectorAll('.fade-up')];
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced || !('IntersectionObserver' in window)) {
+      items.forEach(el => el.classList.add('visible'));
+      return;
+    }
+    items.forEach(el => {
+      const sibs = [...(el.parentElement?.children ?? [])].filter(n => n.classList.contains('fade-up'));
+      if (sibs.length > 1) el.style.setProperty('--i', String(sibs.indexOf(el)));
     });
-  }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-  setTimeout(() => document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible')), 80);
+    // Anything already on screen at load is shown immediately, with no
+    // transition, so the first viewport is never caught mid-fade.
+    const vh = window.innerHeight;
+    items.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < vh && r.bottom > 0) { el.style.setProperty('--i', '0'); el.classList.add('instant', 'visible'); }
+    });
+
+    // rootMargin fires the reveal a screen-worth early, so an element is
+    // already at full opacity by the time it is actually scrolled into view.
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        // If it is already well inside the viewport, a fast scroll outran the
+        // observer — skip the transition rather than fade it in late.
+        const r = e.target.getBoundingClientRect();
+        if (r.top < window.innerHeight * 0.75) e.target.classList.add('instant');
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0, rootMargin: '0px 0px 45% 0px' });
+    items.forEach(el => { if (!el.classList.contains('visible')) io.observe(el); });
+  };
+  reveal();
 </script>

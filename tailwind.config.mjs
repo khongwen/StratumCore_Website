@@ -3,15 +3,25 @@ export default {
   content: ['./src/**/*.{astro,html,js,ts}'],
   theme: {
     extend: {
+      // Mirrors the CSS variables in src/styles/global.css. Change both.
       colors: {
-        ink:    '#1C1C1E',   // primary dark / near-black
-        teal:   '#00C9BB',   // brand teal accent
-        orange: '#D4751A',   // brand orange accent
-        stone:  '#F2F2F2',   // light grey backgrounds
-        body:   '#222222',   // body text
+        ink:      '#1C1B19',   // headings / primary text, warm near-black
+        teal:     '#00C9BB',   // logo teal — logo and tiny marks only
+        accent:   '#09716A',   // working teal: AA as text and as button fill
+        orange:   '#D4751A',
+        bg:       '#F6F4EF',   // page background, warm off-white
+        bgalt:    '#EFECE4',   // alternating section band
+        surface:  '#FFFFFF',   // cards
+        hairline: '#E4DFD5',   // warm divider
+        // `text-body` is only ever used on headings, so it maps to ink.
+        body:     '#1C1B19',
+        stone:    '#EFECE4',
       },
       fontFamily: {
-        serif: ['Georgia', '"Times New Roman"', 'serif'],
+        // `font-serif` = display (Fraunces); `font-sans` = body (Hanken Grotesk).
+        // The logo is pinned to Georgia in global.css and uses neither.
+        serif: ['Fraunces', 'Georgia', '"Times New Roman"', 'serif'],
+        sans:  ['"Hanken Grotesk"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'sans-serif'],
       },
       fontSize: {
         'display-xl': ['clamp(3rem, 7vw, 6rem)',   { lineHeight: '1.0',  letterSpacing: '-0.03em' }],
@@ -22,7 +32,7 @@ export default {
         nav: '72px',
       },
       maxWidth: {
-        site: '1280px',
+        site: '1360px',
       },
     },
   },

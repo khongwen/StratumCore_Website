@@ -77,8 +77,8 @@ const schema = graph(
 ---
 
 <BaseLayout
-  title="Cost Reduction — Unlock 15%+ Productivity & Unit Cost Gains | StratumCore"
-  description="Unlock 15%+ productivity and unit cost gains from your existing operation. A fixed-fee cost diagnostic that benchmarks your unit cost and delivers a board-ready savings case in 5 weeks."
+  title="Cost Reduction — 15%+ Productivity & Unit Cost Gains | StratumCore"
+  description="15%+ productivity and unit cost gains from your existing operation. A fixed-fee cost diagnostic that benchmarks your unit cost and delivers a board-ready savings case in 5 weeks."
   canonical="https://www.stratumcore.com.au/cost-reduction"
   ogImage="https://www.stratumcore.com.au/og-image-home.png"
   ogImageAlt="Cost Reduction — StratumCore"
@@ -109,21 +109,20 @@ const schema = graph(
     ></div>
 
     <div class="relative z-10 max-w-site mx-auto px-6 lg:px-10 pb-20 pt-[calc(72px+2.5rem)] w-full">
-      <div class="max-w-4xl fade-up">
+      <div class="max-w-4xl">
 
         <p class="page-label mb-6">Corporate Advisory &nbsp;·&nbsp; Cost Reduction</p>
         <span class="teal-rule mb-8 block"></span>
 
         <h1
-          class="font-serif font-bold text-white mb-0"
-          style="font-size: clamp(2.1rem, 4.4vw, 4.25rem); letter-spacing: -0.03em; max-width: 40rem; line-height: 1.06;"
+          class="hero-h1 font-serif font-bold text-white mb-0"
         >
-          Unlock <span style="color:#00C9BB;">15%+ productivity and unit cost gains</span> from your existing operation.
+          15%+ productivity and unit cost gains from your existing&nbsp;operation.
         </h1>
 
         <p
-          class="font-serif mt-7 leading-relaxed"
-          style="font-size: clamp(1rem, 1.35vw, 1.1875rem); color: rgba(255,255,255,0.62); line-height: 1.7; max-width: 36rem;"
+          class="font-sans mt-8 leading-relaxed"
+          style="font-size: clamp(1rem, 1.35vw, 1.1875rem); color: var(--on-dark-2); line-height: 1.7; max-width: 36rem;"
         >
           A fixed-fee cost diagnostic that benchmarks your unit cost against the field and
           hands you a board-ready savings case in
@@ -133,7 +132,7 @@ const schema = graph(
 
         <div class="mt-9 flex flex-wrap items-center gap-x-5 gap-y-4">
           <a href="/#contact" class="btn-primary cta-lg">Book my cost review</a>
-          <span class="font-serif" style="font-size: 0.875rem; color: rgba(255,255,255,0.45); line-height: 1.5; max-width: 18rem;">
+          <span class="font-sans" style="font-size: 0.875rem; color: var(--on-dark-3); line-height: 1.5; max-width: 18rem;">
             30&nbsp;minutes. No obligation. We come prepared with a savings range for your operation.
           </span>
         </div>
@@ -146,11 +145,11 @@ const schema = graph(
   <!-- ══════════════════════════════════════════════════════════
        2. THE THESIS — three editorial narrative blocks
   ══════════════════════════════════════════════════════════ -->
-  <section class="bg-white py-24 lg:py-32" aria-label="How we think about cost">
+  <section class="section-light" aria-label="How we think about cost">
     <div class="max-w-site mx-auto px-6 lg:px-10">
 
       <div class="mb-16 lg:mb-20 fade-up">
-        <p class="page-label mb-4" style="color: #00C9BB;">How we think about cost</p>
+        <p class="page-label mb-4" style="color: var(--accent);">How we think about cost</p>
         <h2
           class="font-serif font-bold text-body"
           style="font-size: clamp(1.75rem, 3vw, 2.75rem); letter-spacing: -0.025em; line-height: 1.1; max-width: 30rem;"
@@ -159,11 +158,10 @@ const schema = graph(
         </h2>
       </div>
 
-      <div class="divide-y" style="border-color: #EBEBEB;">
+      <div class="divide-y" style="border-color: var(--hairline);">
         {blocks.map((b, i) => (
           <article
             class="thesis-row grid lg:grid-cols-12 gap-8 lg:gap-16 py-12 lg:py-16 fade-up"
-            style={`transition-delay: ${i * 60}ms;`}
           >
             <!-- Left: number + thesis -->
             <div class="lg:col-span-5">
@@ -180,15 +178,15 @@ const schema = graph(
             <div class="lg:col-span-7 lg:pt-2">
               <ul class="space-y-4 mb-8" role="list">
                 {b.points.map((p) => (
-                  <li class="font-serif flex items-start gap-3.5" style="font-size: 1.0625rem; color: rgba(34,34,34,0.70); line-height: 1.75; max-width: 38rem;">
-                    <span aria-hidden="true" style="display:inline-block; flex-shrink:0; width:6px; height:6px; border-radius:50%; background:#00C9BB; margin-top:0.7em;"></span>
+                  <li class="font-sans flex items-start gap-3.5" style="font-size: 1.0625rem; color: var(--body); line-height: 1.75; max-width: 38rem;">
+                    <span aria-hidden="true" style="display:inline-block; flex-shrink:0; width:6px; height:6px; border-radius:50%; background:var(--accent); margin-top:0.7em;"></span>
                     {p}
                   </li>
                 ))}
               </ul>
 
               <p
-                class="font-serif font-bold text-body mb-6"
+                class="font-sans font-bold text-body mb-6"
                 style="font-size: clamp(1.0625rem, 1.4vw, 1.1875rem); letter-spacing: -0.01em; line-height: 1.6; max-width: 38rem;"
               >
                 {b.action}
@@ -196,7 +194,7 @@ const schema = graph(
 
               <blockquote
                 class="font-serif pl-6"
-                style="border-left: 3px solid #00C9BB; font-size: clamp(1.0625rem, 1.4vw, 1.25rem); color: #1C1C1E; font-style: italic; letter-spacing: -0.01em; line-height: 1.5; max-width: 36rem;"
+                style="border-left: 3px solid var(--accent); font-size: clamp(1.0625rem, 1.4vw, 1.25rem); color: var(--ink); font-style: italic; letter-spacing: -0.01em; line-height: 1.5; max-width: 36rem;"
               >
                 {b.because}
               </blockquote>
@@ -212,11 +210,11 @@ const schema = graph(
   <!-- ══════════════════════════════════════════════════════════
        3. THE DIAGNOSTIC — what you get (proof assets)
   ══════════════════════════════════════════════════════════ -->
-  <section class="py-24 lg:py-32" style="background: #F2F2F2;" aria-label="The cost diagnostic">
+  <section class="py-24 lg:py-32" style="background: var(--bg-alt);" aria-label="The cost diagnostic">
     <div class="max-w-site mx-auto px-6 lg:px-10">
 
       <div class="max-w-3xl fade-up">
-        <p class="page-label mb-4" style="color: #00C9BB;">The cost diagnostic</p>
+        <p class="page-label mb-4" style="color: var(--accent);">The cost diagnostic</p>
         <h2
           class="font-serif font-bold text-body"
           style="font-size: clamp(1.75rem, 3.5vw, 3rem); letter-spacing: -0.025em; line-height: 1.12;"
@@ -224,8 +222,8 @@ const schema = graph(
           Know where your savings are before you spend a dollar.
         </h2>
         <p
-          class="font-serif mt-6 leading-relaxed"
-          style="font-size: 1.0625rem; color: rgba(34,34,34,0.66); line-height: 1.8;"
+          class="font-sans mt-6 leading-relaxed"
+          style="font-size: 1.0625rem; color: var(--body); line-height: 1.8;"
         >
           A fixed-fee, five-week diagnostic that turns the facts into a prioritised, defensible
           plan. If we don&rsquo;t identify at least $50K in addressable savings, the diagnostic is free.
@@ -233,18 +231,18 @@ const schema = graph(
       </div>
 
       <!-- Three deliverables -->
-      <div class="grid sm:grid-cols-3 gap-px mt-14 fade-up" style="background: #DCDCDC;">
-        <div class="bg-stone p-7 lg:p-8 deliverable">
+      <div class="grid sm:grid-cols-3 gap-px mt-14 fade-up" style="background: var(--hairline);">
+        <div class="section-alt p-7 lg:p-8 deliverable">
           <p class="deliverable__k">01</p>
           <h3 class="deliverable__h">Benchmarked unit cost</h3>
           <p class="deliverable__b">Your cost per tonne placed against the field, broken down to where you actually sit high.</p>
         </div>
-        <div class="bg-stone p-7 lg:p-8 deliverable">
+        <div class="section-alt p-7 lg:p-8 deliverable">
           <p class="deliverable__k">02</p>
           <h3 class="deliverable__h">Prioritised initiatives</h3>
           <p class="deliverable__b">Every saving ranked by dollar value against the effort to capture it — biggest wins first.</p>
         </div>
-        <div class="bg-stone p-7 lg:p-8 deliverable">
+        <div class="section-alt p-7 lg:p-8 deliverable">
           <p class="deliverable__k">03</p>
           <h3 class="deliverable__h">Board-ready case</h3>
           <p class="deliverable__b">A defensible savings case in 5 weeks — numbers that withstand executive and board scrutiny.</p>
@@ -258,16 +256,16 @@ const schema = graph(
   <!-- ══════════════════════════════════════════════════════════
        3c. FAQ — answer-shaped, drives FAQPage schema
   ══════════════════════════════════════════════════════════ -->
-  <section class="bg-white py-24 lg:py-32" aria-label="Common questions">
+  <section class="section-light" aria-label="Common questions">
     <div class="max-w-site mx-auto px-6 lg:px-10">
-      <p class="page-label mb-12 lg:mb-14 fade-up" style="color:#00C9BB;">Common questions</p>
-      <div class="divide-y" style="border-color:#EBEBEB;">
+      <p class="page-label mb-12 lg:mb-14 fade-up" style="color:var(--accent);">Common questions</p>
+      <div class="divide-y" style="border-color:var(--hairline);">
         {faqs.map((f) => (
           <div class="grid lg:grid-cols-12 gap-4 lg:gap-12 py-9 lg:py-11 fade-up">
             <h2 class="lg:col-span-5 font-serif font-bold text-body" style="font-size: clamp(1.2rem, 1.7vw, 1.55rem); letter-spacing: -0.02em; line-height: 1.25;">
               {f.q}
             </h2>
-            <p class="lg:col-span-7 font-serif" style="font-size: 1.0625rem; color: rgba(34,34,34,0.72); line-height: 1.8;">
+            <p class="lg:col-span-7 font-sans" style="font-size: 1.0625rem; color: var(--body); line-height: 1.8;">
               {f.a}
             </p>
           </div>
@@ -281,29 +279,23 @@ const schema = graph(
        4. CLOSING CTA
   ══════════════════════════════════════════════════════════ -->
   <section
-    class="py-24 lg:py-32 relative overflow-hidden"
+    class="section-alt relative"
     aria-label="Contact"
-    style="background: #00C9BB;"
   >
-    <div
-      class="absolute inset-0 pointer-events-none"
-      style="background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 60px 60px;"
-      aria-hidden="true"
-    ></div>
 
     <div class="relative z-10 max-w-site mx-auto px-6 lg:px-10 text-center fade-up">
       <h2
         class="font-serif font-bold mb-8 mx-auto"
-        style="font-size: clamp(1.75rem, 3.5vw, 3rem); color: #1C1C1E; letter-spacing: -0.025em; line-height: 1.2; max-width: 36rem;"
+        style="font-size: clamp(1.75rem, 3.5vw, 3rem); color: var(--ink); letter-spacing: -0.025em; line-height: 1.2; max-width: 36rem;"
       >
         Find out what your operation is truly capable of.
       </h2>
       <a
         href="/#contact"
-        class="font-serif font-bold inline-flex items-center gap-3 px-8 py-4 rounded-sm"
-        style="background: #1C1C1E; color: #FFFFFF; font-size: 0.9375rem; letter-spacing: 0.02em; text-decoration: none; box-shadow: 0 4px 16px rgba(28,28,30,0.2); transition: background 0.18s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease;"
-        onmouseover="this.style.background='#2d2d30'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 24px rgba(28,28,30,0.35)'"
-        onmouseout="this.style.background='#1C1C1E'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 16px rgba(28,28,30,0.2)'"
+        class="font-sans font-bold inline-flex items-center gap-3 px-8 py-4 rounded-sm"
+        style="background: var(--accent); color: var(--accent-fg); font-size: 0.9375rem; letter-spacing: 0.02em; text-decoration: none; transition: background 0.18s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1);"
+        onmouseover="this.style.background=\'var(--accent-strong)\'; this.style.transform=\'translateY(-2px)\'"
+        onmouseout="this.style.background=\'var(--accent)\'; this.style.transform=\'translateY(0)\'"
       >
         Book my cost review
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -311,8 +303,8 @@ const schema = graph(
         </svg>
       </a>
       <p
-        class="font-serif mt-5"
-        style="font-size: 0.875rem; color: rgba(28,28,30,0.55);"
+        class="font-sans mt-5"
+        style="font-size: 0.875rem; color: var(--muted);"
       >
         wen@stratumcore.com.au &nbsp;·&nbsp; Brisbane, QLD, Australia
       </p>
@@ -330,33 +322,64 @@ const schema = graph(
   }
 
   .thesis-num {
-    font-family: Georgia, serif; font-weight: 700; font-size: 0.75rem;
-    letter-spacing: 0.16em; text-transform: uppercase; color: #00C9BB;
+    font-family: var(--font-body); font-weight: 700; font-size: 0.75rem;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent);
   }
 
   /* Deliverables */
-  .deliverable { border-top: 2px solid #E0E0E0; transition: border-color 0.22s ease; }
-  .deliverable:hover { border-top-color: #00C9BB; }
+  .deliverable { border-top: 2px solid var(--hairline); transition: border-color 0.22s ease; }
+  .deliverable:hover { border-top-color: var(--accent); }
   .deliverable__k {
-    font-family: Georgia, serif; font-weight: 700; font-size: 0.6875rem;
-    letter-spacing: 0.14em; text-transform: uppercase; color: #00C9BB; margin-bottom: 1.1rem;
+    font-family: var(--font-body); font-weight: 700; font-size: 0.6875rem;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem;
   }
   .deliverable__h {
-    font-family: Georgia, serif; font-weight: 700; color: #222; margin-bottom: 0.6rem;
+    font-family: var(--font-body); font-weight: 700; color: var(--ink); margin-bottom: 0.6rem;
     font-size: 1.1875rem; letter-spacing: -0.015em; line-height: 1.2;
   }
   .deliverable__b {
-    font-family: Georgia, serif; font-size: 0.9375rem; color: rgba(34,34,34,0.62); line-height: 1.7;
+    font-family: var(--font-body); font-size: 0.9375rem; color: var(--body); line-height: 1.7;
   }
 </style>
 
 <script>
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  // Scroll reveal. Grouped siblings stagger off --i so cards arrive in
+  // sequence rather than together. The hero carries no .fade-up at all, so it
+  // paints at full opacity on first frame.
+  const reveal = () => {
+    const items = [...document.querySelectorAll('.fade-up')];
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced || !('IntersectionObserver' in window)) {
+      items.forEach(el => el.classList.add('visible'));
+      return;
+    }
+    items.forEach(el => {
+      const sibs = [...(el.parentElement?.children ?? [])].filter(n => n.classList.contains('fade-up'));
+      if (sibs.length > 1) el.style.setProperty('--i', String(sibs.indexOf(el)));
     });
-  }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-  setTimeout(() => document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible')), 80);
+    // Anything already on screen at load is shown immediately, with no
+    // transition, so the first viewport is never caught mid-fade.
+    const vh = window.innerHeight;
+    items.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < vh && r.bottom > 0) { el.style.setProperty('--i', '0'); el.classList.add('instant', 'visible'); }
+    });
+
+    // rootMargin fires the reveal a screen-worth early, so an element is
+    // already at full opacity by the time it is actually scrolled into view.
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        // If it is already well inside the viewport, a fast scroll outran the
+        // observer — skip the transition rather than fade it in late.
+        const r = e.target.getBoundingClientRect();
+        if (r.top < window.innerHeight * 0.75) e.target.classList.add('instant');
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0, rootMargin: '0px 0px 45% 0px' });
+    items.forEach(el => { if (!el.classList.contains('visible')) io.observe(el); });
+  };
+  reveal();
 </script>

@@ -26,56 +26,75 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
   schema={schema}
 >
 
+  <Fragment slot="head">
+    <link
+      rel="preload"
+      as="image"
+      type="image/webp"
+      href="/images/hero-open-cut-graded-1536.webp"
+      imagesrcset="/images/hero-open-cut-graded-640.webp 640w, /images/hero-open-cut-graded-1024.webp 1024w, /images/hero-open-cut-graded-1536.webp 1536w"
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
+  </Fragment>
+
   <Nav />
 
   <!-- ══════════════════════════════════════════════════════════
-       1. HERO
+       1. HERO — full-bleed photograph
+       The colour grade is baked into the image assets by grade-images.mjs;
+       there is no runtime filter on this photograph.
   ══════════════════════════════════════════════════════════ -->
   <section
-    class="hero-dark min-h-screen flex flex-col justify-end relative overflow-hidden"
+    class="hero-dark hero-photo min-h-screen flex flex-col justify-end relative overflow-hidden"
     aria-label="Hero"
-    style="
-      background-color: #1C1C1E;
-      background-image:
-        radial-gradient(ellipse 65% 70% at 90% 5%,  rgba(0,201,187,0.07) 0%, transparent 55%),
-        radial-gradient(ellipse 40% 50% at 5%  90%, rgba(212,117,26,0.04) 0%, transparent 50%),
-        linear-gradient(rgba(255,255,255,0.013) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.013) 1px, transparent 1px);
-      background-size: auto, auto, 72px 72px, 72px 72px;
-    "
   >
-    <!-- Horizontal accent line -->
-    <div class="absolute top-[38%] inset-x-0 h-px pointer-events-none"
-         style="background: linear-gradient(90deg, transparent 0%, rgba(0,201,187,0.18) 30%, rgba(0,201,187,0.18) 70%, transparent 100%);"></div>
+    <picture class="hero-photo__media">
+      <source
+        type="image/webp"
+        sizes="100vw"
+        srcset="/images/hero-open-cut-graded-640.webp 640w, /images/hero-open-cut-graded-1024.webp 1024w, /images/hero-open-cut-graded-1536.webp 1536w"
+      />
+      <img
+        class="hero-photo__img"
+        src="/images/hero-open-cut-graded-1536.jpg"
+        srcset="/images/hero-open-cut-graded-640.jpg 640w, /images/hero-open-cut-graded-1024.jpg 1024w, /images/hero-open-cut-graded-1536.jpg 1536w"
+        sizes="100vw"
+        width="1536"
+        height="1024"
+        fetchpriority="high"
+        decoding="async"
+        alt="Two mine workers in orange hi-vis and hard hats stand at the edge of an open-cut coal pit, one pointing across the exposed strata of the pit wall."
+      />
+    </picture>
 
-    <div class="relative z-10 max-w-site mx-auto px-6 lg:px-10 w-full pb-20 pt-[72px]">
-      <div class="max-w-4xl fade-up">
+    <div class="hero-photo__scrim" aria-hidden="true"></div>
+
+    <div class="hero-photo__content relative max-w-site mx-auto px-6 lg:px-10 w-full pb-20 pt-[72px]">
+      <div class="max-w-4xl">
 
         <p class="page-label mb-5">Independent advisory &nbsp;·&nbsp; Mining &amp; resource sector</p>
         <span class="teal-rule mb-10 block"></span>
 
         <!-- Main headline -->
         <h1
-          class="font-serif font-bold text-white mb-0 leading-none"
-          style="font-size: clamp(2.8rem, 6.5vw, 6.25rem); letter-spacing: -0.03em;"
+          class="hero-h1 hero-h1--home font-serif font-bold text-white mb-0"
         >
-          Sharper finance.<br />
-          Stronger leaders.<br />
-          <span style="color: rgba(255,255,255,0.45);">Better decisions.</span>
+          Independent finance advisory for the mining&nbsp;sector.
         </h1>
 
-        <!-- Teal sub-line -->
+        <!-- Sub-line — headline-scale type, so white, not accent -->
         <p
-          class="font-serif font-bold mt-6"
-          style="font-size: clamp(1rem, 1.8vw, 1.375rem); color: #00C9BB; letter-spacing: -0.01em;"
+          class="font-sans font-bold mt-8"
+          style="font-size: clamp(1rem, 1.8vw, 1.375rem); color: rgba(255,255,255,0.94); letter-spacing: -0.01em; max-width: 34rem;"
         >
-          Independent advisory for mining and asset-intensive businesses.
+          We help resource operators reduce cost, strengthen performance and build finance capability.
         </p>
 
         <!-- Supporting copy -->
         <p
-          class="font-serif mt-4 leading-relaxed max-w-xl"
-          style="font-size: clamp(0.9375rem, 1.2vw, 1.0625rem); color: rgba(255,255,255,0.48);"
+          class="font-sans mt-4 leading-relaxed max-w-xl"
+          style="font-size: clamp(0.9375rem, 1.2vw, 1.0625rem); color: rgba(255,255,255,0.82);"
         >
           StratumCore brings senior finance leadership and practical capability building
           to the resource sector — without the big-firm overhead.
@@ -89,22 +108,18 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
 
       </div>
     </div>
-
-    <!-- Bottom fade to next section -->
-    <div class="absolute bottom-0 inset-x-0 h-20 pointer-events-none"
-         style="background: linear-gradient(to bottom, transparent, rgba(28,28,30,0.6));"></div>
   </section>
 
 
   <!-- ══════════════════════════════════════════════════════════
        2. WHAT WE DO — Services
   ══════════════════════════════════════════════════════════ -->
-  <section id="services" class="bg-white py-24 lg:py-32" aria-label="Our services">
+  <section id="services" class="section-light" aria-label="Our services">
     <div class="max-w-site mx-auto px-6 lg:px-10">
 
       <!-- Section header -->
       <div class="mb-16 fade-up">
-        <p class="page-label mb-4" style="color: #00C9BB;">Our services</p>
+        <p class="page-label mb-4" style="color: var(--accent);">Our services</p>
         <h2
           class="font-serif font-bold text-body"
           style="font-size: clamp(1.75rem, 3.5vw, 3rem); letter-spacing: -0.025em; max-width: 28rem; line-height: 1.1;"
@@ -114,17 +129,16 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
       </div>
 
       <!-- Cards grid -->
-      <div class="grid md:grid-cols-3 gap-0 md:gap-px" style="background: #E8E8E8;">
+      <div class="grid md:grid-cols-3 gap-0 md:gap-px" style="background: var(--hairline);">
         <!-- Each card sits on white, gap-px between creates a hairline divider effect -->
 
         <!-- Card 1: Cost Reduction -->
         <article
           class="service-card-home bg-white p-8 lg:p-10 flex flex-col fade-up group"
-          style="transition-delay: 0ms;"
         >
           <p
-            class="font-serif font-bold mb-6"
-            style="font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: #00C9BB;"
+            class="font-sans font-bold mb-6"
+            style="font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);"
           >01</p>
           <h3
             class="font-serif font-bold text-body mb-4"
@@ -133,16 +147,16 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
             Cost Reduction
           </h3>
           <p
-            class="font-serif leading-relaxed flex-1 mb-8"
-            style="font-size: 0.9375rem; color: rgba(34,34,34,0.62); line-height: 1.7;"
+            class="font-sans leading-relaxed flex-1 mb-8"
+            style="font-size: 0.9375rem; color: var(--body); line-height: 1.7;"
           >
-            Unlock 15%+ productivity and unit cost gains from your existing operation —
+            15%+ productivity and unit cost gains from your existing operation —
             clarity, priorities, and a board-ready savings case.
           </p>
           <a
             href="/cost-reduction"
-            class="font-serif font-bold inline-flex items-center gap-2 group-hover:gap-3 card-link"
-            style="font-size: 0.875rem; color: #00C9BB; text-decoration: none; letter-spacing: 0.01em;"
+            class="font-sans font-bold inline-flex items-center gap-2 group-hover:gap-3 card-link"
+            style="font-size: 0.875rem; color: var(--accent); text-decoration: none; letter-spacing: 0.01em;"
           >
             Learn more
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="transition: transform 0.2s ease;">
@@ -154,11 +168,10 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
         <!-- Card 2: Financial Control -->
         <article
           class="service-card-home bg-white p-8 lg:p-10 flex flex-col fade-up group"
-          style="transition-delay: 80ms;"
         >
           <p
-            class="font-serif font-bold mb-6"
-            style="font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: #00C9BB;"
+            class="font-sans font-bold mb-6"
+            style="font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);"
           >02</p>
           <h3
             class="font-serif font-bold text-body mb-4"
@@ -167,16 +180,16 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
             Financial Control
           </h3>
           <p
-            class="font-serif leading-relaxed flex-1 mb-8"
-            style="font-size: 0.9375rem; color: rgba(34,34,34,0.62); line-height: 1.7;"
+            class="font-sans leading-relaxed flex-1 mb-8"
+            style="font-size: 0.9375rem; color: var(--body); line-height: 1.7;"
           >
             Get control of operational spend, real visibility into performance, and the
             governance to scale without bottlenecks.
           </p>
           <a
             href="/financial-control-governance"
-            class="font-serif font-bold inline-flex items-center gap-2 group-hover:gap-3 card-link"
-            style="font-size: 0.875rem; color: #00C9BB; text-decoration: none; letter-spacing: 0.01em;"
+            class="font-sans font-bold inline-flex items-center gap-2 group-hover:gap-3 card-link"
+            style="font-size: 0.875rem; color: var(--accent); text-decoration: none; letter-spacing: 0.01em;"
           >
             Learn more
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="transition: transform 0.2s ease;">
@@ -188,11 +201,10 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
         <!-- Card 3: Finance Team Building -->
         <article
           class="service-card-home bg-white p-8 lg:p-10 flex flex-col fade-up group"
-          style="transition-delay: 160ms;"
         >
           <p
-            class="font-serif font-bold mb-6"
-            style="font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: #00C9BB;"
+            class="font-sans font-bold mb-6"
+            style="font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);"
           >03</p>
           <h3
             class="font-serif font-bold text-body mb-4"
@@ -201,16 +213,16 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
             Finance Team Building
           </h3>
           <p
-            class="font-serif leading-relaxed flex-1 mb-8"
-            style="font-size: 0.9375rem; color: rgba(34,34,34,0.62); line-height: 1.7;"
+            class="font-sans leading-relaxed flex-1 mb-8"
+            style="font-size: 0.9375rem; color: var(--body); line-height: 1.7;"
           >
             Build a finance team that drives decisions — leadership development and the
             Finance Business Partner Academy.
           </p>
           <a
             href="/finance-team-building"
-            class="font-serif font-bold inline-flex items-center gap-2 group-hover:gap-3 card-link"
-            style="font-size: 0.875rem; color: #00C9BB; text-decoration: none; letter-spacing: 0.01em;"
+            class="font-sans font-bold inline-flex items-center gap-2 group-hover:gap-3 card-link"
+            style="font-size: 0.875rem; color: var(--accent); text-decoration: none; letter-spacing: 0.01em;"
           >
             Learn more
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="transition: transform 0.2s ease;">
@@ -228,12 +240,8 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
        3. HOW WE WORK
   ══════════════════════════════════════════════════════════ -->
   <section
-    class="hero-dark py-24 lg:py-32 relative overflow-hidden"
+    class="section-alt relative overflow-hidden"
     aria-label="Our approach"
-    style="
-      background-color: #1C1C1E;
-      background-image: radial-gradient(ellipse 50% 60% at 50% 100%, rgba(0,201,187,0.05) 0%, transparent 60%);
-    "
   >
     <div class="max-w-site mx-auto px-6 lg:px-10 relative z-10">
 
@@ -241,7 +249,7 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
       <div class="mb-16 lg:mb-20 fade-up">
         <p class="page-label mb-4">Our approach</p>
         <h2
-          class="font-serif font-bold text-white"
+          class="font-serif font-bold text-body"
           style="font-size: clamp(1.75rem, 3.5vw, 3rem); letter-spacing: -0.025em; max-width: 32rem; line-height: 1.1;"
         >
           Senior expertise. No juniors. No overhead.
@@ -252,63 +260,63 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
       <div class="grid md:grid-cols-3 gap-12 lg:gap-16">
 
         <!-- Step 1 -->
-        <div class="fade-up" style="transition-delay: 0ms;">
+        <div class="fade-up">
           <p
-            class="font-serif font-bold mb-4 block"
-            style="font-size: 3.5rem; line-height: 1; letter-spacing: -0.04em; color: rgba(0,201,187,0.18);"
+            class="font-sans font-bold mb-4 block"
+            style="font-size: 3.5rem; line-height: 1; letter-spacing: -0.04em; color: var(--accent);"
             aria-hidden="true"
           >01</p>
           <h3
-            class="font-serif font-bold text-white mb-3"
+            class="font-serif font-bold text-body mb-3"
             style="font-size: clamp(1.125rem, 1.6vw, 1.375rem); letter-spacing: -0.015em;"
           >
             Understand
           </h3>
           <p
-            class="font-serif leading-relaxed"
-            style="font-size: 0.9375rem; color: rgba(255,255,255,0.48); line-height: 1.75;"
+            class="font-sans leading-relaxed"
+            style="font-size: 0.9375rem; color: var(--body); line-height: 1.75;"
           >
             We start with your actual problem, not a packaged solution.
           </p>
         </div>
 
         <!-- Step 2 -->
-        <div class="fade-up" style="transition-delay: 90ms;">
+        <div class="fade-up">
           <p
-            class="font-serif font-bold mb-4 block"
-            style="font-size: 3.5rem; line-height: 1; letter-spacing: -0.04em; color: rgba(0,201,187,0.18);"
+            class="font-sans font-bold mb-4 block"
+            style="font-size: 3.5rem; line-height: 1; letter-spacing: -0.04em; color: var(--accent);"
             aria-hidden="true"
           >02</p>
           <h3
-            class="font-serif font-bold text-white mb-3"
+            class="font-serif font-bold text-body mb-3"
             style="font-size: clamp(1.125rem, 1.6vw, 1.375rem); letter-spacing: -0.015em;"
           >
             Design
           </h3>
           <p
-            class="font-serif leading-relaxed"
-            style="font-size: 0.9375rem; color: rgba(255,255,255,0.48); line-height: 1.75;"
+            class="font-sans leading-relaxed"
+            style="font-size: 0.9375rem; color: var(--body); line-height: 1.75;"
           >
             We build the approach around your business, team, and constraints.
           </p>
         </div>
 
         <!-- Step 3 -->
-        <div class="fade-up" style="transition-delay: 180ms;">
+        <div class="fade-up">
           <p
-            class="font-serif font-bold mb-4 block"
-            style="font-size: 3.5rem; line-height: 1; letter-spacing: -0.04em; color: rgba(0,201,187,0.18);"
+            class="font-sans font-bold mb-4 block"
+            style="font-size: 3.5rem; line-height: 1; letter-spacing: -0.04em; color: var(--accent);"
             aria-hidden="true"
           >03</p>
           <h3
-            class="font-serif font-bold text-white mb-3"
+            class="font-serif font-bold text-body mb-3"
             style="font-size: clamp(1.125rem, 1.6vw, 1.375rem); letter-spacing: -0.015em;"
           >
             Deliver
           </h3>
           <p
-            class="font-serif leading-relaxed"
-            style="font-size: 0.9375rem; color: rgba(255,255,255,0.48); line-height: 1.75;"
+            class="font-sans leading-relaxed"
+            style="font-size: 0.9375rem; color: var(--body); line-height: 1.75;"
           >
             We work alongside your people to make the change stick.
           </p>
@@ -322,13 +330,13 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
   <!-- ══════════════════════════════════════════════════════════
        4. ABOUT TEASER
   ══════════════════════════════════════════════════════════ -->
-  <section class="bg-white py-24 lg:py-32" aria-label="About StratumCore">
+  <section class="section-light" aria-label="About StratumCore">
     <div class="max-w-site mx-auto px-6 lg:px-10">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start fade-up">
 
         <!-- Left -->
         <div>
-          <p class="page-label mb-5" style="color: #00C9BB;">About StratumCore</p>
+          <p class="page-label mb-5" style="color: var(--accent);">About StratumCore</p>
           <h2
             class="font-serif font-bold text-body mb-6"
             style="font-size: clamp(1.75rem, 3vw, 2.5rem); letter-spacing: -0.025em; line-height: 1.15; max-width: 26rem;"
@@ -336,8 +344,8 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
             Led by people who have sat in your chair.
           </h2>
           <div
-            class="font-serif leading-relaxed mb-8"
-            style="font-size: 1rem; color: rgba(34,34,34,0.68); line-height: 1.8;"
+            class="font-sans leading-relaxed mb-8"
+            style="font-size: 1rem; color: var(--body); line-height: 1.8;"
           >
             <p>
               StratumCore is led by two principals — Wen Khong and Calvin Yong — each with decades
@@ -348,8 +356,8 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
           </div>
           <a
             href="/about"
-            class="font-serif font-bold inline-flex items-center gap-2 card-link"
-            style="font-size: 0.9375rem; color: #00C9BB; text-decoration: none; letter-spacing: 0.01em;"
+            class="font-sans font-bold inline-flex items-center gap-2 card-link"
+            style="font-size: 0.9375rem; color: var(--accent); text-decoration: none; letter-spacing: 0.01em;"
           >
             Meet the team
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -361,19 +369,19 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
         <!-- Right — two principal credentials -->
         <div class="flex flex-col gap-6">
 
-          <div class="p-6 rounded-sm" style="background: #F2F2F2; border-left: 2px solid #00C9BB;">
-            <p class="font-serif font-bold text-body mb-1" style="font-size: 1rem; letter-spacing: -0.01em;">Wen Khong</p>
-            <p class="font-serif mb-3" style="font-size: 0.8125rem; color: #00C9BB; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 700;">Principal</p>
-            <p class="font-serif" style="font-size: 0.9375rem; color: rgba(34,34,34,0.65); line-height: 1.7;">
+          <div class="card p-6" style="border-left: 2px solid var(--accent);">
+            <p class="font-sans font-bold text-body mb-1" style="font-size: 1rem; letter-spacing: -0.01em;">Wen Khong</p>
+            <p class="font-sans mb-3" style="font-size: 0.8125rem; color: var(--accent); letter-spacing: 0.04em; text-transform: uppercase; font-weight: 700;">Principal</p>
+            <p class="font-sans" style="font-size: 0.9375rem; color: var(--body); line-height: 1.7;">
               Two decades in senior finance roles across BHP, Wesfarmers, BUMA, and Ernst &amp; Young.
               Deep expertise in finance transformation and CFO advisory.
             </p>
           </div>
 
-          <div class="p-6 rounded-sm" style="background: #F2F2F2; border-left: 2px solid #00C9BB;">
-            <p class="font-serif font-bold text-body mb-1" style="font-size: 1rem; letter-spacing: -0.01em;">Calvin Yong</p>
-            <p class="font-serif mb-3" style="font-size: 0.8125rem; color: #00C9BB; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 700;">Principal</p>
-            <p class="font-serif" style="font-size: 0.9375rem; color: rgba(34,34,34,0.65); line-height: 1.7;">
+          <div class="card p-6" style="border-left: 2px solid var(--accent);">
+            <p class="font-sans font-bold text-body mb-1" style="font-size: 1rem; letter-spacing: -0.01em;">Calvin Yong</p>
+            <p class="font-sans mb-3" style="font-size: 0.8125rem; color: var(--accent); letter-spacing: 0.04em; text-transform: uppercase; font-weight: 700;">Principal</p>
+            <p class="font-sans" style="font-size: 0.9375rem; color: var(--body); line-height: 1.7;">
               Extensive experience across BMA, BHP, Bankwest, and CS Gas. Specialist in leadership
               development and finance business partnering.
             </p>
@@ -391,17 +399,9 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
   ══════════════════════════════════════════════════════════ -->
   <section
     id="contact"
-    class="py-24 lg:py-32 relative overflow-hidden"
+    class="section-light section-divided relative"
     aria-label="Contact"
-    style="background: #00C9BB;"
   >
-    <!-- Subtle texture on teal -->
-    <div
-      class="absolute inset-0 pointer-events-none"
-      style="background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 60px 60px;"
-      aria-hidden="true"
-    ></div>
-
     <div class="relative z-10 max-w-site mx-auto px-6 lg:px-10">
       <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
 
@@ -409,28 +409,28 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
         <div class="lg:col-span-5 fade-up">
           <h2
             class="font-serif font-bold"
-            style="font-size: clamp(1.75rem, 3.5vw, 3rem); color: #1C1C1E; letter-spacing: -0.025em; line-height: 1.15; max-width: 30rem;"
+            style="font-size: clamp(1.75rem, 3.5vw, 3rem); color: var(--ink); letter-spacing: -0.025em; line-height: 1.15; max-width: 30rem;"
           >
             Ready to have a different kind of finance conversation?
           </h2>
           <p
-            class="font-serif mt-6 leading-relaxed"
-            style="font-size: 1.0625rem; color: rgba(28,28,30,0.72); line-height: 1.8; max-width: 28rem;"
+            class="font-sans mt-6 leading-relaxed"
+            style="font-size: 1.0625rem; color: var(--body); line-height: 1.8; max-width: 28rem;"
           >
             Tell us a little about your business and what&rsquo;s prompting the conversation.
             We&rsquo;ll come back to you within one business day to set up a call.
           </p>
-          <p class="font-serif mt-8" style="font-size: 0.9375rem; color: rgba(28,28,30,0.72);">
+          <p class="font-sans mt-8" style="font-size: 0.9375rem; color: var(--body);">
             Prefer email?
-            <a href="mailto:wen@stratumcore.com.au" style="color:#1C1C1E; font-weight:700; text-decoration: underline; text-underline-offset: 2px;">wen@stratumcore.com.au</a>
+            <a href="mailto:wen@stratumcore.com.au" class="inline-link">wen@stratumcore.com.au</a>
           </p>
-          <p class="font-serif mt-2" style="font-size: 0.875rem; color: rgba(28,28,30,0.55);">
+          <p class="font-sans mt-2" style="font-size: 0.875rem; color: var(--muted);">
             Brisbane, QLD, Australia
           </p>
         </div>
 
         <!-- Right: form card -->
-        <div class="lg:col-span-7 fade-up" style="transition-delay: 80ms;">
+        <div class="lg:col-span-7 fade-up">
           <div class="form-card">
 
             <form id="contact-form" novalidate>
@@ -517,11 +517,11 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
 
   /* Service card top-border reveal on hover */
   .service-card-home {
-    border-top: 2px solid #E8E8E8;
+    border-top: 2px solid var(--hairline);
     transition: border-color 0.22s ease;
   }
   .service-card-home:hover {
-    border-top-color: #00C9BB;
+    border-top-color: var(--accent);
   }
   .service-card-home:hover a svg {
     transform: translateX(3px);
@@ -529,45 +529,44 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
 
   /* ── Contact form ──────────────────────────────────────────── */
   .form-card {
-    background: #FFFFFF;
-    border: 1px solid #E8E8E8;
-    border-top: 3px solid #00C9BB;
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-top: 3px solid var(--accent);
     border-radius: 8px;
     padding: 1.75rem 1.5rem 1.5rem;
-    box-shadow: 0 1px 2px rgba(28,28,30,0.04), 0 18px 40px -16px rgba(28,28,30,0.28);
   }
   @media (min-width: 640px) { .form-card { padding: 2.25rem; } }
 
   .field { display: flex; flex-direction: column; }
   .field label {
-    font-family: Georgia, serif; font-size: 0.8125rem; font-weight: 700;
-    letter-spacing: 0.02em; color: #1C1C1E; margin-bottom: 0.4rem;
+    font-family: var(--font-body); font-size: 0.8125rem; font-weight: 700;
+    letter-spacing: 0.02em; color: var(--ink); margin-bottom: 0.4rem;
   }
-  .field .req { color: #00C9BB; }
+  .field .req { color: var(--accent); }
   .field input,
   .field textarea {
-    font-family: Georgia, serif;
+    font-family: var(--font-body);
     font-size: 0.9688rem;
-    color: #1C1C1E;
-    background: #F7F7F5;
-    border: 1px solid #E0E0E0;
+    color: var(--ink);
+    background: var(--bg);
+    border: 1px solid var(--hairline);
     border-radius: 5px;
-    padding: 0.72rem 0.85rem;
-    min-height: 46px;
+    padding: 0.85rem 1rem;
+    min-height: 52px;
     width: 100%;
-    transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+    transition: border-color var(--dur-mid) var(--ease), background var(--dur-mid) var(--ease), box-shadow var(--dur-mid) var(--ease);
   }
   .field textarea { min-height: 110px; resize: vertical; line-height: 1.6; }
   .field input::placeholder,
-  .field textarea::placeholder { color: rgba(34,34,34,0.38); }
+  .field textarea::placeholder { color: var(--muted); }
   .field input:hover,
-  .field textarea:hover { border-color: #C9C9C9; }
+  .field textarea:hover { border-color: var(--muted); }
   .field input:focus,
   .field textarea:focus {
     outline: none;
-    background: #FFFFFF;
-    border-color: #00C9BB;
-    box-shadow: 0 0 0 3px rgba(0,201,187,0.16);
+    background: var(--surface);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-soft);
   }
   .field input[aria-invalid="true"],
   .field textarea[aria-invalid="true"] {
@@ -575,7 +574,7 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
     box-shadow: 0 0 0 3px rgba(192,57,43,0.12);
   }
   .field .err {
-    font-family: Georgia, serif; font-size: 0.8125rem; color: #C0392B; margin-top: 0.35rem;
+    font-family: var(--font-body); font-size: 0.8125rem; color: #C0392B; margin-top: 0.35rem;
   }
 
   /* Honeypot — visually hidden */
@@ -585,25 +584,24 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
     margin-top: 1.6rem;
     width: 100%;
     min-height: 52px;
-    font-family: Georgia, serif; font-weight: 700; font-size: 1rem; letter-spacing: 0.01em;
-    color: #1C1C1E; background: #00C9BB;
+    font-family: var(--font-body); font-weight: 700; font-size: 1rem; letter-spacing: 0.01em;
+    color: var(--accent-fg); background: var(--accent);
     border: none; border-radius: 5px; cursor: pointer;
     display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
-    transition: background 0.18s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease;
-    box-shadow: 0 4px 14px rgba(28,28,30,0.18);
+    transition: background 0.18s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1);
   }
-  .form-submit:hover { background: #00dfd0; transform: translateY(-2px); box-shadow: 0 8px 22px rgba(28,28,30,0.26); }
+  .form-submit:hover { background: var(--accent-strong); transform: translateY(-2px); }
   .form-submit:active { transform: translateY(0); }
-  .form-submit:focus-visible { outline: 2px solid #1C1C1E; outline-offset: 3px; }
+  .form-submit:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   .form-submit[disabled] { opacity: 0.6; cursor: progress; transform: none; }
   .form-submit__arrow { transition: transform 0.2s ease; }
   .form-submit:hover .form-submit__arrow { transform: translateX(3px); }
 
   .form-fineprint {
-    font-family: Georgia, serif; font-size: 0.8125rem; color: rgba(34,34,34,0.45);
+    font-family: var(--font-body); font-size: 0.8125rem; color: var(--muted);
     text-align: center; margin-top: 0.95rem; line-height: 1.5;
   }
-  .form-status { font-family: Georgia, serif; font-size: 0.9rem; margin-top: 1rem; text-align: center; }
+  .form-status { font-family: var(--font-body); font-size: 0.9rem; margin-top: 1rem; text-align: center; }
   .form-status--error { color: #C0392B; }
 
   /* Success state */
@@ -611,14 +609,14 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
   .form-success__icon {
     width: 56px; height: 56px; margin: 0 auto 1.1rem;
     display: flex; align-items: center; justify-content: center;
-    color: #00C9BB; background: rgba(0,201,187,0.12); border-radius: 50%;
+    color: var(--accent); background: var(--accent-soft); border-radius: 50%;
   }
   .form-success__h {
-    font-family: Georgia, serif; font-weight: 700; color: #1C1C1E;
+    font-family: var(--font-body); font-weight: 700; color: var(--ink);
     font-size: 1.5rem; letter-spacing: -0.02em; margin-bottom: 0.6rem;
   }
   .form-success__b {
-    font-family: Georgia, serif; font-size: 1rem; color: rgba(34,34,34,0.66);
+    font-family: var(--font-body); font-size: 1rem; color: var(--body);
     line-height: 1.7; max-width: 26rem; margin: 0 auto;
   }
 
@@ -629,14 +627,45 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
 
 <script>
   // Scroll reveal
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  // Scroll reveal. Grouped siblings stagger off --i so cards arrive in
+  // sequence rather than together. The hero carries no .fade-up at all, so it
+  // paints at full opacity on first frame.
+  const reveal = () => {
+    const items = [...document.querySelectorAll('.fade-up')];
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced || !('IntersectionObserver' in window)) {
+      items.forEach(el => el.classList.add('visible'));
+      return;
+    }
+    items.forEach(el => {
+      const sibs = [...(el.parentElement?.children ?? [])].filter(n => n.classList.contains('fade-up'));
+      if (sibs.length > 1) el.style.setProperty('--i', String(sibs.indexOf(el)));
     });
-  }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-  setTimeout(() => document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible')), 80);
+    // Anything already on screen at load is shown immediately, with no
+    // transition, so the first viewport is never caught mid-fade.
+    const vh = window.innerHeight;
+    items.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < vh && r.bottom > 0) { el.style.setProperty('--i', '0'); el.classList.add('instant', 'visible'); }
+    });
+
+    // rootMargin fires the reveal a screen-worth early, so an element is
+    // already at full opacity by the time it is actually scrolled into view.
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        // If it is already well inside the viewport, a fast scroll outran the
+        // observer — skip the transition rather than fade it in late.
+        const r = e.target.getBoundingClientRect();
+        if (r.top < window.innerHeight * 0.75) e.target.classList.add('instant');
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0, rootMargin: '0px 0px 45% 0px' });
+    items.forEach(el => { if (!el.classList.contains('visible')) io.observe(el); });
+  };
+  reveal();
 
   // ── Contact form: validation + Web3Forms submit + success ────
   const form = document.getElementById('contact-form') as HTMLFormElement | null;

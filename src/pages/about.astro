@@ -46,22 +46,21 @@ const schema = graph(
       aria-hidden="true"
     ></div>
 
-    <div class="relative z-10 max-w-site mx-auto px-6 lg:px-10 pb-20 pt-[72px] w-full">
-      <div class="max-w-4xl fade-up">
+    <div class="relative z-10 max-w-site mx-auto px-6 lg:px-10 pb-20 pt-[calc(72px+2.5rem)] w-full">
+      <div class="max-w-4xl">
 
         <p class="page-label mb-6">About StratumCore</p>
         <span class="teal-rule mb-8 block"></span>
 
         <h1
-          class="font-serif font-bold text-white leading-none"
-          style="font-size: clamp(2.2rem, 5vw, 4.75rem); letter-spacing: -0.03em; max-width: 34rem; line-height: 1.05;"
+          class="hero-h1 font-serif font-bold text-white mb-0"
         >
-          StratumCore: mining finance advisory built by someone who's done the job.
+          StratumCore: mining finance advisory built by someone who's done the&nbsp;job.
         </h1>
 
         <p
-          class="font-serif mt-6 leading-relaxed"
-          style="font-size: clamp(0.9375rem, 1.3vw, 1.125rem); color: rgba(255,255,255,0.50); max-width: 38rem; line-height: 1.75;"
+          class="font-sans mt-6 leading-relaxed"
+          style="font-size: clamp(0.9375rem, 1.3vw, 1.125rem); color: var(--on-dark-2); max-width: 38rem; line-height: 1.75;"
         >
           StratumCore is an independent advisory partnership. No junior consultants.
           No templated solutions.
@@ -75,29 +74,35 @@ const schema = graph(
   <!-- ══════════════════════════════════════════════════════════
        2. WEN'S BIO
   ══════════════════════════════════════════════════════════ -->
-  <section class="bg-white py-24 lg:py-32 border-b" style="border-color: #EBEBEB;" aria-label="Wen Khong">
+  <section class="section-light border-b" style="border-color: var(--hairline);" aria-label="Wen Khong">
     <div class="max-w-site mx-auto px-6 lg:px-10">
       <div class="grid lg:grid-cols-5 gap-12 lg:gap-20 items-start">
 
         <!-- Photo — narrower left col -->
         <div class="lg:col-span-2 fade-up">
-          <div class="w-full rounded-sm overflow-hidden relative" style="aspect-ratio: 3/4; max-width: 360px;">
-            <img
-              src="/profile/Wen Khong Profile Pic 3.jpg"
-              alt="Wen Khong, Principal at StratumCore"
-              class="w-full h-full object-cover object-top"
-              loading="eager"
-            />
-            <div class="absolute bottom-0 left-0 w-full h-1" style="background: #00C9BB;"></div>
-          </div>
+          <figure class="portrait">
+            <picture>
+              <source type="image/webp" sizes="(min-width: 1024px) 360px, 100vw"
+                      srcset="/images/portrait-wen-560.webp 560w, /images/portrait-wen-840.webp 840w" />
+              <img
+                src="/images/portrait-wen-560.jpg"
+                srcset="/images/portrait-wen-560.jpg 560w, /images/portrait-wen-840.jpg 840w"
+                sizes="(min-width: 1024px) 360px, 100vw"
+                width="560" height="700"
+                alt="Wen Khong, Principal at StratumCore"
+                loading="eager"
+                decoding="async"
+              />
+            </picture>
+          </figure>
         </div>
 
         <!-- Bio text — wider right col -->
-        <div class="lg:col-span-3 fade-up" style="transition-delay: 80ms;">
+        <div class="lg:col-span-3 fade-up">
 
           <p
-            class="font-serif font-bold mb-2"
-            style="font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: #00C9BB;"
+            class="font-sans font-bold mb-2"
+            style="font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);"
           >
             Principal | StratumCore
           </p>
@@ -110,8 +115,8 @@ const schema = graph(
           </h2>
 
           <div
-            class="font-serif leading-relaxed space-y-5"
-            style="font-size: 1rem; color: rgba(34,34,34,0.72); line-height: 1.85; max-width: 34rem;"
+            class="font-sans leading-relaxed space-y-5"
+            style="font-size: 1rem; color: var(--body); line-height: 1.85; max-width: 34rem;"
           >
             <p>
               Wen is a finance and transformation leader with experience supporting
@@ -141,8 +146,8 @@ const schema = graph(
           <div class="mt-10 flex flex-wrap gap-2">
             {['BHP', 'Wesfarmers', 'BUMA', 'Ernst & Young'].map((org) => (
               <span
-                class="font-serif font-bold"
-                style="font-size: 0.6875rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(34,34,34,0.55); background: #F2F2F2; border: 1px solid #E2E2E2; padding: 0.3rem 0.75rem; border-radius: 2px;"
+                class="font-sans font-bold"
+                style="font-size: 0.6875rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); background: var(--bg-alt); border: 1px solid var(--hairline); padding: 0.3rem 0.75rem; border-radius: 2px;"
               >
                 {org}
               </span>
@@ -158,29 +163,35 @@ const schema = graph(
   <!-- ══════════════════════════════════════════════════════════
        3. CALVIN'S BIO
   ══════════════════════════════════════════════════════════ -->
-  <section class="bg-white py-24 lg:py-32" aria-label="Calvin">
+  <section class="section-light" aria-label="Calvin">
     <div class="max-w-site mx-auto px-6 lg:px-10">
       <div class="grid lg:grid-cols-5 gap-12 lg:gap-20 items-start">
 
         <!-- Photo placeholder — narrower left col -->
         <div class="lg:col-span-2 fade-up">
-          <div class="w-full rounded-sm overflow-hidden relative" style="aspect-ratio: 3/4; max-width: 360px;">
-            <img
-              src="/profile/Calvin Profile picture.jpg"
-              alt="Calvin Yong, Principal at StratumCore"
-              class="w-full h-full object-cover object-top"
-              loading="lazy"
-            />
-            <div class="absolute bottom-0 left-0 w-full h-1" style="background: #00C9BB;"></div>
-          </div>
+          <figure class="portrait">
+            <picture>
+              <source type="image/webp" sizes="(min-width: 1024px) 360px, 100vw"
+                      srcset="/images/portrait-calvin-560.webp 560w, /images/portrait-calvin-840.webp 840w" />
+              <img
+                src="/images/portrait-calvin-560.jpg"
+                srcset="/images/portrait-calvin-560.jpg 560w, /images/portrait-calvin-840.jpg 840w"
+                sizes="(min-width: 1024px) 360px, 100vw"
+                width="560" height="700"
+                alt="Calvin Yong, Principal at StratumCore"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+          </figure>
         </div>
 
         <!-- Bio text — wider right col -->
-        <div class="lg:col-span-3 fade-up" style="transition-delay: 80ms;">
+        <div class="lg:col-span-3 fade-up">
 
           <p
-            class="font-serif font-bold mb-2"
-            style="font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: #00C9BB;"
+            class="font-sans font-bold mb-2"
+            style="font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);"
           >
             Principal | StratumCore
           </p>
@@ -193,8 +204,8 @@ const schema = graph(
           </h2>
 
           <div
-            class="font-serif leading-relaxed space-y-5"
-            style="font-size: 1rem; color: rgba(34,34,34,0.72); line-height: 1.85; max-width: 34rem;"
+            class="font-sans leading-relaxed space-y-5"
+            style="font-size: 1rem; color: var(--body); line-height: 1.85; max-width: 34rem;"
           >
             <p>
               Calvin has extensive experience across commercial strategy, operational
@@ -221,8 +232,8 @@ const schema = graph(
           <div class="mt-10 flex flex-wrap gap-2">
             {['BMA', 'BHP', 'Bankwest', 'CS Gas'].map((org) => (
               <span
-                class="font-serif font-bold"
-                style="font-size: 0.6875rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(34,34,34,0.55); background: #F2F2F2; border: 1px solid #E2E2E2; padding: 0.3rem 0.75rem; border-radius: 2px;"
+                class="font-sans font-bold"
+                style="font-size: 0.6875rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); background: var(--bg-alt); border: 1px solid var(--hairline); padding: 0.3rem 0.75rem; border-radius: 2px;"
               >
                 {org}
               </span>
@@ -238,7 +249,7 @@ const schema = graph(
   <!-- ══════════════════════════════════════════════════════════
        4. WHY STRATUMCORE — Stone bg, three-column
   ══════════════════════════════════════════════════════════ -->
-  <section class="py-24 lg:py-32" style="background: #F2F2F2;" aria-label="Our philosophy">
+  <section class="py-24 lg:py-32" style="background: var(--bg-alt);" aria-label="Our philosophy">
     <div class="max-w-site mx-auto px-6 lg:px-10">
 
       <div class="mb-16 fade-up">
@@ -251,34 +262,34 @@ const schema = graph(
         </h2>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-px" style="background: #DCDCDC;">
+      <div class="grid md:grid-cols-3 gap-px" style="background: var(--hairline);">
 
-        <article class="diff-card bg-stone p-8 lg:p-10 fade-up" style="transition-delay: 0ms;">
-          <div class="mb-5" style="width: 2.5rem; height: 2px; background: #00C9BB; border-radius: 1px;"></div>
+        <article class="diff-card section-alt p-8 lg:p-10 fade-up">
+          <div class="mb-5" style="width: 2.5rem; height: 2px; background: var(--accent); border-radius: 1px;"></div>
           <h3 class="font-serif font-bold text-body mb-3" style="font-size: 1.125rem; letter-spacing: -0.02em; line-height: 1.2;">
             Senior from day one
           </h3>
-          <p class="font-serif leading-relaxed" style="font-size: 0.9375rem; color: rgba(34,34,34,0.62); line-height: 1.75;">
+          <p class="font-sans leading-relaxed" style="font-size: 0.9375rem; color: var(--body); line-height: 1.75;">
             You get Wen, not a graduate with a framework.
           </p>
         </article>
 
-        <article class="diff-card bg-stone p-8 lg:p-10 fade-up" style="transition-delay: 80ms;">
-          <div class="mb-5" style="width: 2.5rem; height: 2px; background: #00C9BB; border-radius: 1px;"></div>
+        <article class="diff-card section-alt p-8 lg:p-10 fade-up">
+          <div class="mb-5" style="width: 2.5rem; height: 2px; background: var(--accent); border-radius: 1px;"></div>
           <h3 class="font-serif font-bold text-body mb-3" style="font-size: 1.125rem; letter-spacing: -0.02em; line-height: 1.2;">
             Independent
           </h3>
-          <p class="font-serif leading-relaxed" style="font-size: 0.9375rem; color: rgba(34,34,34,0.62); line-height: 1.75;">
+          <p class="font-sans leading-relaxed" style="font-size: 0.9375rem; color: var(--body); line-height: 1.75;">
             No conflicts, no product to sell, no firm politics.
           </p>
         </article>
 
-        <article class="diff-card bg-stone p-8 lg:p-10 fade-up" style="transition-delay: 160ms;">
-          <div class="mb-5" style="width: 2.5rem; height: 2px; background: #00C9BB; border-radius: 1px;"></div>
+        <article class="diff-card section-alt p-8 lg:p-10 fade-up">
+          <div class="mb-5" style="width: 2.5rem; height: 2px; background: var(--accent); border-radius: 1px;"></div>
           <h3 class="font-serif font-bold text-body mb-3" style="font-size: 1.125rem; letter-spacing: -0.02em; line-height: 1.2;">
             Sector-specific
           </h3>
-          <p class="font-serif leading-relaxed" style="font-size: 0.9375rem; color: rgba(34,34,34,0.62); line-height: 1.75;">
+          <p class="font-sans leading-relaxed" style="font-size: 0.9375rem; color: var(--body); line-height: 1.75;">
             We know mining finance. We don't need a learning curve at your expense.
           </p>
         </article>
@@ -291,12 +302,12 @@ const schema = graph(
   <!-- ══════════════════════════════════════════════════════════
        5. PARTNERSHIPS — White, prose
   ══════════════════════════════════════════════════════════ -->
-  <section class="bg-white py-24 lg:py-32" aria-label="How we work">
+  <section class="section-light" aria-label="How we work">
     <div class="max-w-site mx-auto px-6 lg:px-10">
       <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
         <div class="fade-up">
-          <p class="page-label mb-4" style="color: #00C9BB;">How we work</p>
+          <p class="page-label mb-4" style="color: var(--accent);">How we work</p>
           <h2
             class="font-serif font-bold text-body"
             style="font-size: clamp(1.75rem, 2.8vw, 2.5rem); letter-spacing: -0.025em; line-height: 1.1; max-width: 22rem;"
@@ -305,10 +316,10 @@ const schema = graph(
           </h2>
         </div>
 
-        <div class="fade-up" style="transition-delay: 80ms;">
+        <div class="fade-up">
           <p
-            class="font-serif leading-relaxed mb-6"
-            style="font-size: 1rem; color: rgba(34,34,34,0.70); line-height: 1.85; max-width: 34rem;"
+            class="font-sans leading-relaxed mb-6"
+            style="font-size: 1rem; color: var(--body); line-height: 1.85; max-width: 34rem;"
           >
             StratumCore operates as a principal-led advisory partnership. For
             engagements that require broader capability, we draw on a trusted
@@ -316,8 +327,8 @@ const schema = graph(
             backgrounds.
           </p>
           <p
-            class="font-serif"
-            style="font-size: 0.875rem; color: rgba(34,34,34,0.40); line-height: 1.7;"
+            class="font-sans"
+            style="font-size: 0.875rem; color: var(--muted); line-height: 1.7;"
           >
             StratumCore is the trading entity of StratumCore Pty Ltd.
             ABN: 61 696 477 406.
@@ -333,35 +344,29 @@ const schema = graph(
        6. CLOSING CTA
   ══════════════════════════════════════════════════════════ -->
   <section
-    class="py-24 lg:py-32 relative overflow-hidden"
+    class="section-alt relative"
     aria-label="Contact"
-    style="background: #00C9BB;"
   >
-    <div
-      class="absolute inset-0 pointer-events-none"
-      style="background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 60px 60px;"
-      aria-hidden="true"
-    ></div>
 
     <div class="relative z-10 max-w-site mx-auto px-6 lg:px-10 text-center fade-up">
       <h2
         class="font-serif font-bold mb-3 mx-auto"
-        style="font-size: clamp(2rem, 4vw, 3.5rem); color: #1C1C1E; letter-spacing: -0.03em; line-height: 1.1;"
+        style="font-size: clamp(2rem, 4vw, 3.5rem); color: var(--ink); letter-spacing: -0.03em; line-height: 1.1;"
       >
         Let's talk.
       </h2>
       <p
-        class="font-serif mb-8 mx-auto"
-        style="font-size: 1.0625rem; color: rgba(28,28,30,0.60); max-width: 28rem; line-height: 1.7;"
+        class="font-sans mb-8 mx-auto"
+        style="font-size: 1.0625rem; color: var(--body); max-width: 28rem; line-height: 1.7;"
       >
         Discovery calls are free, focused, and no obligation.
       </p>
       <a
         href="/#contact"
-        class="font-serif font-bold inline-flex items-center gap-3 px-8 py-4 rounded-sm"
-        style="background: #1C1C1E; color: #FFFFFF; font-size: 0.9375rem; letter-spacing: 0.02em; text-decoration: none; box-shadow: 0 4px 16px rgba(28,28,30,0.2); transition: background 0.18s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease;"
-        onmouseover="this.style.background='#2d2d30'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 24px rgba(28,28,30,0.35)'"
-        onmouseout="this.style.background='#1C1C1E'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 16px rgba(28,28,30,0.2)'"
+        class="font-sans font-bold inline-flex items-center gap-3 px-8 py-4 rounded-sm"
+        style="background: var(--accent); color: var(--accent-fg); font-size: 0.9375rem; letter-spacing: 0.02em; text-decoration: none; transition: background 0.18s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1);"
+        onmouseover="this.style.background=\'var(--accent-strong)\'; this.style.transform=\'translateY(-2px)\'"
+        onmouseout="this.style.background=\'var(--accent)\'; this.style.transform=\'translateY(0)\'"
       >
         Book a call
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -369,8 +374,8 @@ const schema = graph(
         </svg>
       </a>
       <p
-        class="font-serif mt-5"
-        style="font-size: 0.875rem; color: rgba(28,28,30,0.55);"
+        class="font-sans mt-5"
+        style="font-size: 0.875rem; color: var(--muted);"
       >
         wen@stratumcore.com.au &nbsp;·&nbsp; Brisbane, QLD, Australia
       </p>
@@ -387,17 +392,48 @@ const schema = graph(
     transition: border-color 0.22s ease;
   }
   .diff-card:hover {
-    border-top-color: #00C9BB;
+    border-top-color: var(--accent);
   }
 </style>
 
 <script>
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  // Scroll reveal. Grouped siblings stagger off --i so cards arrive in
+  // sequence rather than together. The hero carries no .fade-up at all, so it
+  // paints at full opacity on first frame.
+  const reveal = () => {
+    const items = [...document.querySelectorAll('.fade-up')];
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced || !('IntersectionObserver' in window)) {
+      items.forEach(el => el.classList.add('visible'));
+      return;
+    }
+    items.forEach(el => {
+      const sibs = [...(el.parentElement?.children ?? [])].filter(n => n.classList.contains('fade-up'));
+      if (sibs.length > 1) el.style.setProperty('--i', String(sibs.indexOf(el)));
     });
-  }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-  setTimeout(() => document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible')), 80);
+    // Anything already on screen at load is shown immediately, with no
+    // transition, so the first viewport is never caught mid-fade.
+    const vh = window.innerHeight;
+    items.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < vh && r.bottom > 0) { el.style.setProperty('--i', '0'); el.classList.add('instant', 'visible'); }
+    });
+
+    // rootMargin fires the reveal a screen-worth early, so an element is
+    // already at full opacity by the time it is actually scrolled into view.
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        // If it is already well inside the viewport, a fast scroll outran the
+        // observer — skip the transition rather than fade it in late.
+        const r = e.target.getBoundingClientRect();
+        if (r.top < window.innerHeight * 0.75) e.target.classList.add('instant');
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0, rootMargin: '0px 0px 45% 0px' });
+    items.forEach(el => { if (!el.classList.contains('visible')) io.observe(el); });
+  };
+  reveal();
 </script>

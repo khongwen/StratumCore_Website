@@ -72,29 +72,28 @@ const schema = graph(
       aria-hidden="true"
     ></div>
 
-    <div class="relative z-10 max-w-site mx-auto px-6 lg:px-10 pb-20 pt-[72px] w-full">
-      <div class="max-w-4xl fade-up">
+    <div class="relative z-10 max-w-site mx-auto px-6 lg:px-10 pb-20 pt-[calc(72px+2.5rem)] w-full">
+      <div class="max-w-4xl">
 
         <p class="page-label mb-6">Leadership Development</p>
         <span class="teal-rule mb-8 block"></span>
 
         <h1
-          class="font-serif font-bold text-white leading-none"
-          style="font-size: clamp(2.2rem, 5vw, 4.75rem); letter-spacing: -0.03em; max-width: 36rem; line-height: 1.05;"
+          class="hero-h1 font-serif font-bold text-white mb-0"
         >
-          Leadership development for finance professionals.
+          Leadership development for finance&nbsp;professionals.
         </h1>
 
         <p
-          class="font-serif font-bold mt-6"
-          style="font-size: clamp(1rem, 1.6vw, 1.25rem); color: #00C9BB; letter-spacing: -0.01em;"
+          class="font-sans font-bold mt-8"
+          style="font-size: clamp(1rem, 1.6vw, 1.25rem); color: rgba(255,255,255,0.94); letter-spacing: -0.01em;"
         >
           Beyond technical competence.
         </p>
 
         <p
-          class="font-serif mt-4 leading-relaxed"
-          style="font-size: clamp(0.9375rem, 1.2vw, 1.0625rem); color: rgba(255,255,255,0.50); max-width: 40rem; line-height: 1.75;"
+          class="font-sans mt-4 leading-relaxed"
+          style="font-size: clamp(0.9375rem, 1.2vw, 1.0625rem); color: var(--on-dark-2); max-width: 40rem; line-height: 1.75;"
         >
           Most finance leaders are promoted for being technically excellent. Then
           they're expected to influence strategy, manage stakeholders, and lead
@@ -109,14 +108,14 @@ const schema = graph(
   <!-- ══════════════════════════════════════════════════════════
        2. THE PROBLEM — Bold typographic layout, no cards
   ══════════════════════════════════════════════════════════ -->
-  <section class="bg-white py-24 lg:py-32" aria-label="The gap we close">
+  <section class="section-light" aria-label="The gap we close">
     <div class="max-w-site mx-auto px-6 lg:px-10">
 
       <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
         <!-- Left: label + heading -->
         <div class="fade-up">
-          <p class="page-label mb-5" style="color: #00C9BB;">The gap we close</p>
+          <p class="page-label mb-5" style="color: var(--accent);">The gap we close</p>
           <h2
             class="font-serif font-bold text-body"
             style="font-size: clamp(1.75rem, 3.2vw, 3rem); letter-spacing: -0.03em; line-height: 1.08; max-width: 22rem;"
@@ -126,12 +125,12 @@ const schema = graph(
         </div>
 
         <!-- Right: prose -->
-        <div class="fade-up lg:pt-2" style="transition-delay: 80ms;">
+        <div class="fade-up lg:pt-2">
           <!-- Pull-quote style accent line -->
-          <div class="mb-8" style="width: 3rem; height: 2px; background: #00C9BB; border-radius: 1px;"></div>
+          <div class="mb-8" style="width: 3rem; height: 2px; background: var(--accent); border-radius: 1px;"></div>
           <p
-            class="font-serif leading-relaxed mb-6"
-            style="font-size: clamp(1rem, 1.4vw, 1.125rem); color: rgba(34,34,34,0.75); line-height: 1.85;"
+            class="font-sans leading-relaxed mb-6"
+            style="font-size: clamp(1rem, 1.4vw, 1.125rem); color: var(--body); line-height: 1.85;"
           >
             In most finance teams, the pressure to close the books, hit reporting
             deadlines, and manage variance commentary is relentless. Most teams
@@ -139,8 +138,8 @@ const schema = graph(
             length from the decisions that actually move the business.
           </p>
           <p
-            class="font-serif leading-relaxed"
-            style="font-size: clamp(1rem, 1.4vw, 1.125rem); color: rgba(34,34,34,0.75); line-height: 1.85;"
+            class="font-sans leading-relaxed"
+            style="font-size: clamp(1rem, 1.4vw, 1.125rem); color: var(--body); line-height: 1.85;"
           >
             The gap isn't technical. It's the ability to walk into an operational
             review and change the conversation — to reframe a cost problem as a
@@ -151,7 +150,7 @@ const schema = graph(
           <!-- Emphasis callout -->
           <blockquote
             class="mt-10 pl-6 font-serif font-bold"
-            style="border-left: 3px solid #00C9BB; font-size: clamp(1.1rem, 1.6vw, 1.375rem); color: #1C1C1E; letter-spacing: -0.015em; line-height: 1.4;"
+            style="border-left: 3px solid var(--accent); font-size: clamp(1.1rem, 1.6vw, 1.375rem); color: var(--ink); letter-spacing: -0.015em; line-height: 1.4;"
           >
             "The best finance people don't report on decisions. They're in the room
             when the decision is being made."
@@ -166,7 +165,7 @@ const schema = graph(
   <!-- ══════════════════════════════════════════════════════════
        3. WHAT WE OFFER — Light grey, programme cards
   ══════════════════════════════════════════════════════════ -->
-  <section class="py-24 lg:py-32" style="background: #F2F2F2;" aria-label="Programmes">
+  <section class="py-24 lg:py-32" style="background: var(--bg-alt);" aria-label="Programmes">
     <div class="max-w-site mx-auto px-6 lg:px-10">
 
       <div class="mb-16 fade-up">
@@ -180,10 +179,10 @@ const schema = graph(
       </div>
 
       <!-- Programme cards — 3-column on lg, stacked below -->
-      <div class="grid md:grid-cols-3 gap-px" style="background: #DCDCDC;">
+      <div class="grid md:grid-cols-3 gap-px" style="background: var(--hairline);">
 
         <!-- Card 1: Coaching -->
-        <article class="programme-card bg-white p-8 lg:p-10 flex flex-col fade-up" style="transition-delay: 0ms;">
+        <article class="programme-card bg-white p-8 lg:p-10 flex flex-col fade-up">
           <div
             class="programme-icon mb-6 flex items-center justify-center"
             style="width: 44px; height: 44px; border-radius: 3px; background: rgba(0,201,187,0.10);"
@@ -191,8 +190,8 @@ const schema = graph(
           >
             <!-- Person icon -->
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <circle cx="10" cy="7" r="3.5" stroke="#00C9BB" stroke-width="1.5"/>
-              <path d="M3 18c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="#00C9BB" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="10" cy="7" r="3.5" stroke="var(--accent)" stroke-width="1.5"/>
+              <path d="M3 18c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
           </div>
           <p class="tile-number mb-4">01</p>
@@ -203,8 +202,8 @@ const schema = graph(
             One-on-one executive coaching
           </h3>
           <p
-            class="font-serif leading-relaxed flex-1"
-            style="font-size: 0.9375rem; color: rgba(34,34,34,0.62); line-height: 1.75;"
+            class="font-sans leading-relaxed flex-1"
+            style="font-size: 0.9375rem; color: var(--body); line-height: 1.75;"
           >
             For senior finance leaders navigating complexity, transitions, or new
             roles. Structured over three to six months, with a clear development
@@ -213,7 +212,7 @@ const schema = graph(
         </article>
 
         <!-- Card 2: Workshops -->
-        <article class="programme-card bg-white p-8 lg:p-10 flex flex-col fade-up" style="transition-delay: 80ms;">
+        <article class="programme-card bg-white p-8 lg:p-10 flex flex-col fade-up">
           <div
             class="programme-icon mb-6 flex items-center justify-center"
             style="width: 44px; height: 44px; border-radius: 3px; background: rgba(0,201,187,0.10);"
@@ -221,12 +220,12 @@ const schema = graph(
           >
             <!-- Group icon -->
             <svg width="22" height="20" viewBox="0 0 22 20" fill="none">
-              <circle cx="11" cy="7" r="3" stroke="#00C9BB" stroke-width="1.5"/>
-              <circle cx="4"  cy="7" r="2.5" stroke="#00C9BB" stroke-width="1.5"/>
-              <circle cx="18" cy="7" r="2.5" stroke="#00C9BB" stroke-width="1.5"/>
-              <path d="M1 18c0-2.761 1.343-5 3-5" stroke="#00C9BB" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M21 18c0-2.761-1.343-5-3-5" stroke="#00C9BB" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M5 18c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#00C9BB" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="11" cy="7" r="3" stroke="var(--accent)" stroke-width="1.5"/>
+              <circle cx="4"  cy="7" r="2.5" stroke="var(--accent)" stroke-width="1.5"/>
+              <circle cx="18" cy="7" r="2.5" stroke="var(--accent)" stroke-width="1.5"/>
+              <path d="M1 18c0-2.761 1.343-5 3-5" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M21 18c0-2.761-1.343-5-3-5" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M5 18c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
           </div>
           <p class="tile-number mb-4">02</p>
@@ -237,8 +236,8 @@ const schema = graph(
             Team-based leadership workshops
           </h3>
           <p
-            class="font-serif leading-relaxed flex-1"
-            style="font-size: 0.9375rem; color: rgba(34,34,34,0.62); line-height: 1.75;"
+            class="font-sans leading-relaxed flex-1"
+            style="font-size: 0.9375rem; color: var(--body); line-height: 1.75;"
           >
             Half-day or full-day facilitated sessions on influence, communication,
             and commercial thinking. Designed for finance teams who need to work
@@ -247,7 +246,7 @@ const schema = graph(
         </article>
 
         <!-- Card 3: FBP Academy -->
-        <article class="programme-card bg-white p-8 lg:p-10 flex flex-col fade-up" style="transition-delay: 160ms;">
+        <article class="programme-card bg-white p-8 lg:p-10 flex flex-col fade-up">
           <div
             class="programme-icon mb-6 flex items-center justify-center"
             style="width: 44px; height: 44px; border-radius: 3px; background: rgba(0,201,187,0.10);"
@@ -255,9 +254,9 @@ const schema = graph(
           >
             <!-- Layers/programme icon -->
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M2 5l8-3 8 3-8 3-8-3z" stroke="#00C9BB" stroke-width="1.5" stroke-linejoin="round"/>
-              <path d="M2 10l8 3 8-3" stroke="#00C9BB" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M2 15l8 3 8-3" stroke="#00C9BB" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M2 5l8-3 8 3-8 3-8-3z" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M2 10l8 3 8-3" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M2 15l8 3 8-3" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
           </div>
           <p class="tile-number mb-4">03</p>
@@ -268,8 +267,8 @@ const schema = graph(
             Finance Business Partner Academy
           </h3>
           <p
-            class="font-serif leading-relaxed flex-1 mb-6"
-            style="font-size: 0.9375rem; color: rgba(34,34,34,0.62); line-height: 1.75;"
+            class="font-sans leading-relaxed flex-1 mb-6"
+            style="font-size: 0.9375rem; color: var(--body); line-height: 1.75;"
           >
             The flagship five-module programme that closes the gap between technical
             accounting competence and genuine business partnering — structured,
@@ -277,8 +276,8 @@ const schema = graph(
           </p>
           <a
             href="/finance-business-partner-academy"
-            class="font-serif font-bold inline-flex items-center gap-2 hover:gap-3 mt-auto"
-            style="font-size: 0.875rem; color: #00C9BB; text-decoration: none; letter-spacing: 0.01em; transition: gap 0.2s ease;"
+            class="font-sans font-bold inline-flex items-center gap-2 hover:gap-3 mt-auto"
+            style="font-size: 0.875rem; color: var(--accent); text-decoration: none; letter-spacing: 0.01em; transition: gap 0.2s ease;"
           >
             See full programme details
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -296,8 +295,7 @@ const schema = graph(
        4. WHY IT WORKS — Dark, three-column stat-style
   ══════════════════════════════════════════════════════════ -->
   <section
-    class="hero-dark py-24 lg:py-32 relative overflow-hidden"
-    style="background-color: #1C1C1E; background-image: radial-gradient(ellipse 60% 70% at 50% 110%, rgba(0,201,187,0.05) 0%, transparent 60%);"
+    class="section-alt relative overflow-hidden"
     aria-label="Why it works"
   >
     <div class="max-w-site mx-auto px-6 lg:px-10 relative z-10">
@@ -305,7 +303,7 @@ const schema = graph(
       <div class="mb-16 fade-up">
         <p class="page-label mb-4">Why it works</p>
         <h2
-          class="font-serif font-bold text-white"
+          class="font-serif font-bold text-body"
           style="font-size: clamp(1.75rem, 3vw, 2.75rem); letter-spacing: -0.025em; line-height: 1.1; max-width: 34rem;"
         >
           Built for the real-world pressures finance teams face.
@@ -314,20 +312,20 @@ const schema = graph(
 
       <div class="grid md:grid-cols-3 gap-12 lg:gap-16">
 
-        <div class="why-stat-item fade-up" style="transition-delay: 0ms;">
-          <div class="mb-5" style="width: 3rem; height: 2px; background: rgba(0,201,187,0.50); border-radius: 1px;"></div>
+        <div class="why-stat-item fade-up">
+          <div class="mb-5" style="width: 3rem; height: 2px; background: var(--accent-soft); border-radius: 1px;"></div>
           <p
-            class="font-serif font-bold text-white"
+            class="font-sans font-bold text-body"
             style="font-size: clamp(1.1rem, 1.6vw, 1.375rem); letter-spacing: -0.02em; line-height: 1.35;"
           >
             Delivered in formats that work around busy schedules and distributed teams.
           </p>
         </div>
 
-        <div class="why-stat-item fade-up" style="transition-delay: 90ms;">
-          <div class="mb-5" style="width: 3rem; height: 2px; background: rgba(0,201,187,0.50); border-radius: 1px;"></div>
+        <div class="why-stat-item fade-up">
+          <div class="mb-5" style="width: 3rem; height: 2px; background: var(--accent-soft); border-radius: 1px;"></div>
           <p
-            class="font-serif font-bold text-white"
+            class="font-sans font-bold text-body"
             style="font-size: clamp(1.1rem, 1.6vw, 1.375rem); letter-spacing: -0.02em; line-height: 1.35;"
           >
             Content grounded in real finance scenarios — not generic MBA
@@ -335,10 +333,10 @@ const schema = graph(
           </p>
         </div>
 
-        <div class="why-stat-item fade-up" style="transition-delay: 180ms;">
-          <div class="mb-5" style="width: 3rem; height: 2px; background: rgba(0,201,187,0.50); border-radius: 1px;"></div>
+        <div class="why-stat-item fade-up">
+          <div class="mb-5" style="width: 3rem; height: 2px; background: var(--accent-soft); border-radius: 1px;"></div>
           <p
-            class="font-serif font-bold text-white"
+            class="font-sans font-bold text-body"
             style="font-size: clamp(1.1rem, 1.6vw, 1.375rem); letter-spacing: -0.02em; line-height: 1.35;"
           >
             Facilitator has worked in the roles your leaders hold.
@@ -353,16 +351,16 @@ const schema = graph(
   <!-- ══════════════════════════════════════════════════════════
        4b. FAQ — answer-shaped, drives FAQPage schema
   ══════════════════════════════════════════════════════════ -->
-  <section class="bg-white py-24 lg:py-32" aria-label="Common questions">
+  <section class="section-light" aria-label="Common questions">
     <div class="max-w-site mx-auto px-6 lg:px-10">
-      <p class="page-label mb-12 lg:mb-14 fade-up" style="color:#00C9BB;">Common questions</p>
-      <div class="divide-y" style="border-color:#EBEBEB;">
+      <p class="page-label mb-12 lg:mb-14 fade-up" style="color:var(--accent);">Common questions</p>
+      <div class="divide-y" style="border-color:var(--hairline);">
         {faqs.map((f) => (
           <div class="grid lg:grid-cols-12 gap-4 lg:gap-12 py-9 lg:py-11 fade-up">
             <h2 class="lg:col-span-5 font-serif font-bold text-body" style="font-size: clamp(1.2rem, 1.7vw, 1.55rem); letter-spacing: -0.02em; line-height: 1.25;">
               {f.q}
             </h2>
-            <p class="lg:col-span-7 font-serif" style="font-size: 1.0625rem; color: rgba(34,34,34,0.72); line-height: 1.8;">
+            <p class="lg:col-span-7 font-sans" style="font-size: 1.0625rem; color: var(--body); line-height: 1.8;">
               {f.a}
             </p>
           </div>
@@ -376,29 +374,23 @@ const schema = graph(
        5. CLOSING CTA
   ══════════════════════════════════════════════════════════ -->
   <section
-    class="py-24 lg:py-32 relative overflow-hidden"
+    class="section-alt relative"
     aria-label="Contact"
-    style="background: #00C9BB;"
   >
-    <div
-      class="absolute inset-0 pointer-events-none"
-      style="background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 60px 60px;"
-      aria-hidden="true"
-    ></div>
 
     <div class="relative z-10 max-w-site mx-auto px-6 lg:px-10 text-center fade-up">
       <h2
         class="font-serif font-bold mb-8 mx-auto"
-        style="font-size: clamp(1.75rem, 3.5vw, 3rem); color: #1C1C1E; letter-spacing: -0.025em; line-height: 1.2; max-width: 38rem;"
+        style="font-size: clamp(1.75rem, 3.5vw, 3rem); color: var(--ink); letter-spacing: -0.025em; line-height: 1.2; max-width: 38rem;"
       >
         Find out how we can develop your finance leadership capability.
       </h2>
       <a
         href="/#contact"
-        class="font-serif font-bold inline-flex items-center gap-3 px-8 py-4 rounded-sm"
-        style="background: #1C1C1E; color: #FFFFFF; font-size: 0.9375rem; letter-spacing: 0.02em; text-decoration: none; box-shadow: 0 4px 16px rgba(28,28,30,0.2); transition: background 0.18s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease;"
-        onmouseover="this.style.background='#2d2d30'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 24px rgba(28,28,30,0.35)'"
-        onmouseout="this.style.background='#1C1C1E'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 16px rgba(28,28,30,0.2)'"
+        class="font-sans font-bold inline-flex items-center gap-3 px-8 py-4 rounded-sm"
+        style="background: var(--accent); color: var(--accent-fg); font-size: 0.9375rem; letter-spacing: 0.02em; text-decoration: none; transition: background 0.18s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1);"
+        onmouseover="this.style.background=\'var(--accent-strong)\'; this.style.transform=\'translateY(-2px)\'"
+        onmouseout="this.style.background=\'var(--accent)\'; this.style.transform=\'translateY(0)\'"
       >
         Book a call
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -406,8 +398,8 @@ const schema = graph(
         </svg>
       </a>
       <p
-        class="font-serif mt-5"
-        style="font-size: 0.875rem; color: rgba(28,28,30,0.55);"
+        class="font-sans mt-5"
+        style="font-size: 0.875rem; color: var(--muted);"
       >
         wen@stratumcore.com.au &nbsp;·&nbsp; Brisbane, QLD, Australia
       </p>
@@ -420,12 +412,12 @@ const schema = graph(
 
 <style>
   .tile-number {
-    font-family: Georgia, serif;
+    font-family: var(--font-body);
     font-size: 0.6875rem;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #00C9BB;
+    color: var(--accent);
   }
 
   .programme-card {
@@ -433,17 +425,48 @@ const schema = graph(
     transition: border-color 0.22s ease;
   }
   .programme-card:hover {
-    border-top-color: #00C9BB;
+    border-top-color: var(--accent);
   }
 </style>
 
 <script>
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  // Scroll reveal. Grouped siblings stagger off --i so cards arrive in
+  // sequence rather than together. The hero carries no .fade-up at all, so it
+  // paints at full opacity on first frame.
+  const reveal = () => {
+    const items = [...document.querySelectorAll('.fade-up')];
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced || !('IntersectionObserver' in window)) {
+      items.forEach(el => el.classList.add('visible'));
+      return;
+    }
+    items.forEach(el => {
+      const sibs = [...(el.parentElement?.children ?? [])].filter(n => n.classList.contains('fade-up'));
+      if (sibs.length > 1) el.style.setProperty('--i', String(sibs.indexOf(el)));
     });
-  }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-  setTimeout(() => document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible')), 80);
+    // Anything already on screen at load is shown immediately, with no
+    // transition, so the first viewport is never caught mid-fade.
+    const vh = window.innerHeight;
+    items.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < vh && r.bottom > 0) { el.style.setProperty('--i', '0'); el.classList.add('instant', 'visible'); }
+    });
+
+    // rootMargin fires the reveal a screen-worth early, so an element is
+    // already at full opacity by the time it is actually scrolled into view.
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        // If it is already well inside the viewport, a fast scroll outran the
+        // observer — skip the transition rather than fade it in late.
+        const r = e.target.getBoundingClientRect();
+        if (r.top < window.innerHeight * 0.75) e.target.classList.add('instant');
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0, rootMargin: '0px 0px 45% 0px' });
+    items.forEach(el => { if (!el.classList.contains('visible')) io.observe(el); });
+  };
+  reveal();
 </script>
