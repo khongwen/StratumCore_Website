@@ -5,15 +5,12 @@ import { subscribe } from '../../lib/mailerlite';
 export const prerender = false;
 
 /**
- * Traffic routing for the /toolkit page, keyed off the ?src= query param.
- * The QR code printed on the event card carries ?src=card; anything that
- * finds the page later lands in the organic group.
+ * The /overheads-review capture page. Every signup lands in a single group,
+ * whose MailerLite automation sends exactly one email — the case-study
+ * delivery — and nothing else. Campaign attribution rides along as custom
+ * fields (utm_source / utm_medium / utm_campaign), read from the page URL.
  */
-const SOURCES: Record<string, { group: string; source: string }> = {
-  card: { group: 'commercial-edge-01', source: 'joblin-event-01' },
-};
-
-const FALLBACK = { group: 'toolkit-organic', source: 'toolkit-organic' };
+const GROUP = 'commercial-edge-01';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -37,29 +34,25 @@ export const POST: APIRoute = async ({ request }) => {
   // shape so the bot has nothing to learn from the response.
   if (str(data.botcheck)) return json({ success: true }, 200);
 
-  const name = str(data.name);
   const email = str(data.email).toLowerCase();
 
-  if (!name) return json({ success: false, message: 'Please enter your first name.' }, 400);
   if (!EMAIL_RE.test(email))
     return json({ success: false, message: 'Please enter a valid email address.' }, 400);
 
-  const { group, source } = SOURCES[str(data.src).toLowerCase()] ?? FALLBACK;
+  // UTM attribution from the page URL; anything missing defaults to 'direct'.
+  const utm = {
+    source: str(data.utm_source) || 'direct',
+    medium: str(data.utm_medium) || 'direct',
+    campaign: str(data.utm_campaign) || 'direct',
+  };
 
   try {
-    await subscribe({
-      email,
-      name,
-      company: str(data.company),
-      role: str(data.role),
-      group,
-      source,
-    });
+    await subscribe({ email, group: GROUP, utm });
   } catch (err) {
     // Log the real reason server-side; keep the visitor-facing message generic.
     console.error('MailerLite subscribe failed:', err);
     return json(
-      { success: false, message: 'We could not send the toolkit just then. Please try again.' },
+      { success: false, message: 'We could not send the file just then. Please try again.' },
       502,
     );
   }

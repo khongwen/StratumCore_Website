@@ -23,20 +23,21 @@ const API = 'https://connect.mailerlite.com/api';
  * custom field by that name with a 422.
  */
 const CUSTOM_FIELDS = [
-  { key: 'company',       name: 'Company',       type: 'text' },
-  { key: 'role',          name: 'Role',          type: 'text' },
-  { key: 'signup_source', name: 'Signup source', type: 'text' },
+  { key: 'utm_source',   name: 'UTM source',   type: 'text' },
+  { key: 'utm_medium',   name: 'UTM medium',   type: 'text' },
+  { key: 'utm_campaign', name: 'UTM campaign', type: 'text' },
 ] as const;
 
 export type SubscribePayload = {
   email: string;
-  name: string;
-  company?: string;
-  role?: string;
   /** Group name, e.g. 'commercial-edge-01' */
   group: string;
-  /** Value for the `source` custom field, e.g. 'joblin-event-01' */
-  source: string;
+  /** Campaign attribution from the page URL; each defaults to 'direct'. */
+  utm: {
+    source: string;
+    medium: string;
+    campaign: string;
+  };
 };
 
 const groupIdCache = new Map<string, string>();
@@ -138,10 +139,9 @@ export async function subscribe(payload: SubscribePayload): Promise<void> {
     body: JSON.stringify({
       email: payload.email,
       fields: {
-        name: payload.name,
-        company: payload.company || null,
-        role: payload.role || null,
-        signup_source: payload.source,
+        utm_source: payload.utm.source,
+        utm_medium: payload.utm.medium,
+        utm_campaign: payload.utm.campaign,
       },
       groups: [groupId],
       status: 'active', // single opt-in — no confirmation email, instant delivery

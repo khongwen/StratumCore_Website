@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+# Email-only delivery — the case-study PDF is not linked and must not be indexed.
+Disallow: /files/
 
 Sitemap: https://www.stratumcore.com.au/sitemap-index.xml
