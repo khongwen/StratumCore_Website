@@ -1,0 +1,232 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const updated = '8 September 2026';
+---
+
+<BaseLayout
+  title="Terms of use and engagement terms — StratumCore"
+  description="Terms of use for www.stratumcore.com.au and the engagement terms that apply to StratumCore Pty Ltd advisory services, including the cost diagnostic guarantee conditions."
+  canonical="https://www.stratumcore.com.au/terms"
+>
+  <Nav />
+
+  <main class="terms">
+    <div class="wrap">
+
+      <header class="ph">
+        <p class="page-label">Legal</p>
+        <h1>Terms of use and engagement terms</h1>
+        <span class="teal-rule" aria-hidden="true"></span>
+        <p class="meta">
+          StratumCore Pty Ltd &middot; ABN 61&nbsp;696&nbsp;477&nbsp;406<br />
+          Last updated {updated}
+        </p>
+      </header>
+
+      <div class="prose">
+        <p class="lead">
+          These terms apply to your use of www.stratumcore.com.au (the site), operated by
+          StratumCore Pty Ltd (ABN 61&nbsp;696&nbsp;477&nbsp;406) (StratumCore, we, us). By
+          using the site you agree to these terms.
+        </p>
+
+        <h2>General information only</h2>
+        <p>
+          The content on this site is general information about our services and our views
+          on finance, cost and performance in asset-intensive industries. It is not
+          financial product advice, tax advice, legal advice or advice on any particular
+          investment, transaction or decision. It does not take into account the
+          circumstances of any particular business. Nothing on this site creates an adviser
+          or client relationship between you and StratumCore.
+        </p>
+
+        <h2>No reliance without an engagement</h2>
+        <p>
+          We provide advice only under a written engagement letter that sets out the scope
+          of work, the fees and the terms that apply. Any figures, ranges or outcomes
+          described on this site, including savings ranges discussed in an initial call, are
+          indicative only and are not a promise of results for your business. Do not act on
+          anything on this site without obtaining advice specific to your circumstances.
+        </p>
+
+        <h2 id="guarantee">Cost diagnostic guarantee</h2>
+        <p>
+          Where we state that a cost diagnostic is free if we do not identify at least
+          $50,000 in addressable savings, the following conditions apply:
+        </p>
+        <ol>
+          <li>
+            Savings are measured as annualised addressable savings, being the annual value
+            of cost or productivity initiatives that StratumCore identifies as capable of
+            being implemented by the client, as assessed by StratumCore acting reasonably.
+          </li>
+          <li>
+            If the threshold is not met, StratumCore&rsquo;s professional fees for the
+            diagnostic are waived or refunded. Disbursements, including travel,
+            accommodation and third-party data costs, remain payable.
+          </li>
+          <li>
+            The guarantee applies only where the client has provided the agreed data set,
+            site access and stakeholder availability within the timeline set out in the
+            engagement letter.
+          </li>
+          <li>
+            The guarantee lapses if the scope of the diagnostic is reduced, paused or
+            terminated by the client before completion.
+          </li>
+          <li>
+            The engagement letter for each diagnostic prevails over this summary to the
+            extent of any inconsistency.
+          </li>
+        </ol>
+
+        <h2>Liability</h2>
+        <p>
+          To the extent permitted by law, StratumCore excludes all liability for any loss or
+          damage arising from your use of, or reliance on, the content of this site. Where
+          liability cannot be excluded, it is limited, at our option, to the resupply of the
+          relevant services or the cost of resupply. Nothing in these terms excludes,
+          restricts or modifies any consumer guarantee or other right under the Australian
+          Consumer Law that cannot lawfully be excluded.
+        </p>
+
+        <h2>Intellectual property</h2>
+        <p>
+          All content on this site, including text, frameworks, diagrams, images and the
+          StratumCore name and logo, is owned by or licensed to StratumCore Pty Ltd. You may
+          view and print pages for your own business evaluation of our services. You may not
+          otherwise copy, reproduce, distribute or create derivative works from the content
+          without our written permission.
+        </p>
+
+        <h2>Third-party links</h2>
+        <p>
+          The site may link to third-party sites. We do not control and are not responsible
+          for their content or their privacy practices.
+        </p>
+
+        <h2>Privacy</h2>
+        <p>
+          Our handling of personal information is described in our
+          <a href="/privacy/">Privacy Policy</a>.
+        </p>
+
+        <h2>Changes</h2>
+        <p>
+          We may update these terms at any time by publishing a revised version on this site.
+        </p>
+
+        <h2>Governing law</h2>
+        <p>
+          These terms are governed by the laws of Queensland, Australia, and you submit to
+          the non-exclusive jurisdiction of the courts of Queensland.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          StratumCore Pty Ltd, Brisbane, Queensland.
+          <a href="mailto:wen@stratumcore.com.au">wen@stratumcore.com.au</a>
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .terms {
+    background-color: var(--bg);
+    padding-top: calc(var(--nav-height) + clamp(2.5rem, 7vw, 4.5rem));
+    padding-bottom: var(--section-y);
+  }
+  .wrap {
+    max-width: 44rem;
+    margin: 0 auto;
+    padding-inline: var(--s-5);
+  }
+
+  /* ── Page header ── */
+  .ph h1 {
+    color: var(--head-on-light);
+    font-size: clamp(2.2rem, 6vw, 3.25rem);
+    margin: var(--s-3) 0 0;
+  }
+  .ph .teal-rule { margin: var(--s-5) 0; }
+  .ph .meta {
+    font-family: var(--font-body);
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  /* ── Prose ── */
+  .prose > * + * { margin-top: var(--s-4); }
+  .prose p,
+  .prose li {
+    color: var(--body);
+    font-size: 1.0625rem;
+    line-height: var(--lh-body);
+    max-width: none;
+  }
+  .prose .lead {
+    color: var(--ink);
+    font-size: 1.1875rem;
+    line-height: 1.5;
+  }
+  .prose h2 {
+    color: var(--head-on-light);
+    font-size: clamp(1.35rem, 3.2vw, 1.65rem);
+    margin-top: var(--s-8);
+    margin-bottom: var(--s-4);
+    /* Clears the fixed nav when the #guarantee link jumps to this heading. */
+    scroll-margin-top: calc(var(--nav-height) + var(--s-5));
+  }
+  .prose strong { color: var(--ink); font-weight: 600; }
+  .prose em { font-style: italic; }
+
+  .prose a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+    transition: color var(--dur-fast) var(--ease);
+  }
+  .prose a:hover { color: var(--accent-strong); }
+  .prose a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Numbered conditions. The accent carries the number, as the dot does for
+     the bulleted lists on the privacy policy. */
+  .prose ol {
+    list-style: none;
+    padding-left: 0;
+    counter-reset: cond;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+  }
+  .prose ol li {
+    position: relative;
+    padding-left: 2rem;
+    counter-increment: cond;
+  }
+  .prose ol li::before {
+    content: counter(cond) '.';
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    color: var(--accent);
+  }
+</style>
