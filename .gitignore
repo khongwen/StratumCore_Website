@@ -20,3 +20,8 @@ public/*.txt
 !public/llms.txt
 !public/llms-full.txt
 !public/robots.txt
+
+# astro-indexnow change-detection cache. Vercel builds from a clean checkout,
+# so this is always local-only; every deploy submits the full URL set, which is
+# what we want while the site is being discovered.
+.astro-indexnow-cache.json
