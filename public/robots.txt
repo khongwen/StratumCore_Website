@@ -3,4 +3,46 @@ Allow: /
 # Email-only delivery — the case-study PDF is not linked and must not be indexed.
 Disallow: /files/
 
+# AI retrieval and agent crawlers (citation in live answers)
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /files/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /files/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /files/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /files/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /files/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /files/
+
+User-agent: bingbot
+Allow: /
+Disallow: /files/
+
+User-agent: Googlebot
+Allow: /
+Disallow: /files/
+
+# Training-only crawlers (no effect on citations). Allowed for now.
+User-agent: GPTBot
+Allow: /
+Disallow: /files/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /files/
+
 Sitemap: https://www.stratumcore.com.au/sitemap-index.xml
