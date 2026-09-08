@@ -39,6 +39,26 @@ const tiles = [
 
 const faqs = [
   {
+    q: 'What size of business is this for?',
+    a: 'Businesses that have grown past the point where the owner or one finance person can see everything. Most clients are mining and civil contractors and mining services businesses between $20 million and $200 million in revenue.',
+  },
+  {
+    q: 'What are the signs we need better financial controls?',
+    a: 'Spend approved on trust rather than against a budget, month-end reporting arriving late or not at all, decisions bottlenecking through one or two people, and no real-time view of committed spend. If two of those apply, the controls are behind the business.',
+  },
+  {
+    q: 'Is this the same as bookkeeping or tax accounting?',
+    a: 'No. We do not prepare tax returns, BAS or statutory accounts. We design the controls, reporting, delegations and planning rhythm, and we work alongside your existing accountant or bookkeeper.',
+  },
+  {
+    q: 'Can you act as a fractional financial controller?',
+    a: 'Yes. Where a business needs senior finance leadership before it can justify a full-time hire, we provide a fractional financial controller or CFO on an agreed number of days per month.',
+  },
+  {
+    q: 'How long does an engagement run?',
+    a: 'A controls and governance build typically runs eight to twelve weeks. Fractional roles are usually six to twelve months with a monthly review.',
+  },
+  {
     q: 'What is financial control and governance advisory?',
     a: 'It is the work of putting the right controls, reporting and decision rights in place so a business can scale without losing visibility or control. StratumCore helps fast-grown businesses get a real handle on operational spend, clear visibility into performance, and the policies and processes that remove bottlenecks. We stay involved so the changes land and hold.',
   },
@@ -281,9 +301,9 @@ const schema = graph(
   <!-- ══════════════════════════════════════════════════════════
        4b. FAQ — answer-shaped, drives FAQPage schema
   ══════════════════════════════════════════════════════════ -->
-  <section class="section-light" aria-label="Common questions">
+  <section class="section-light" aria-label="Questions we get asked">
     <div class="max-w-site mx-auto px-6 lg:px-10">
-      <p class="page-label mb-12 lg:mb-14 fade-up" style="color:var(--accent);">Common questions</p>
+      <p class="page-label mb-12 lg:mb-14 fade-up" style="color:var(--accent);">Questions we get asked</p>
       <div class="divide-y" style="border-color:var(--hairline);">
         {faqs.map((f) => (
           <div class="grid lg:grid-cols-12 gap-4 lg:gap-12 py-9 lg:py-11 fade-up">

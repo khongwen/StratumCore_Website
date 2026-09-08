@@ -33,6 +33,18 @@ const modules = [
 ];
 const faqs = [
   {
+    q: 'Who is the Academy for?',
+    a: 'Finance managers and analysts stepping into business partner roles, and CFOs who want their team to influence decisions rather than report on them. It is not industry-specific.',
+  },
+  {
+    q: 'How is it delivered?',
+    a: 'Five modules delivered as an in-house cohort for one organisation, an open cohort mixing organisations, or standalone modules. Sessions use case-method teaching built on real business scenarios.',
+  },
+  {
+    q: 'Is it accredited?',
+    a: 'No. It is a practical, non-accredited programme. Participants receive a certificate of completion.',
+  },
+  {
     q: 'How do I train my finance team to become finance business partners?',
     a: 'The Finance Business Partner Academy is a structured five-module programme that closes the gap between technical accounting competence and genuine business partnering. It covers financial storytelling, influencing without authority, value driver trees, diagnostic problem solving, and planning and execution. It is built for finance teams in any industry.',
   },
@@ -360,9 +372,9 @@ const schema = graph(
   <!-- ══════════════════════════════════════════════════════════
        4b. FAQ — answer-shaped, drives FAQPage schema
   ══════════════════════════════════════════════════════════ -->
-  <section class="py-24 lg:py-32" style="background: var(--bg-alt);" aria-label="Common questions">
+  <section class="py-24 lg:py-32" style="background: var(--bg-alt);" aria-label="Questions we get asked">
     <div class="max-w-site mx-auto px-6 lg:px-10">
-      <p class="page-label mb-12 lg:mb-14 fade-up" style="color:var(--accent);">Common questions</p>
+      <p class="page-label mb-12 lg:mb-14 fade-up" style="color:var(--accent);">Questions we get asked</p>
       <div class="divide-y" style="border-color:var(--hairline);">
         {faqs.map((f) => (
           <div class="grid lg:grid-cols-12 gap-4 lg:gap-12 py-9 lg:py-11 fade-up">

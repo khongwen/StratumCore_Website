@@ -41,6 +41,30 @@ const blocks = [
 
 const faqs = [
   {
+    q: 'How long does a mining cost diagnostic take?',
+    a: 'Six weeks from data receipt to a board-ready savings case. Week one is data and site familiarisation, weeks two to five are benchmarking and initiative development with your operational leads, and week six is prioritisation and the board paper.',
+  },
+  {
+    q: 'What does the cost diagnostic cost?',
+    a: 'A fixed fee agreed before we start, based on the size and complexity of the operation. If we do not identify at least $50,000 in annualised addressable savings, the professional fees are waived. Conditions are set out in our engagement terms.',
+  },
+  {
+    q: 'Do you work with mining contractors or only mine operators?',
+    a: 'Both. Around 25% of our work is with mining and civil contractors, where the levers are fleet utilisation, maintenance strategy, contract scope leakage and overhead structure rather than pit design. We have 75% of work directly with mine operators on unit cost programmes.',
+  },
+  {
+    q: 'Where does the 15% figure come from?',
+    a: 'It is an indicative range based on cost programmes the principals have led at large mining operations and industrial businesses. Every operation is different, and the diagnostic is where we establish the range that applies to yours.',
+  },
+  {
+    q: 'What data do you need from us?',
+    a: 'Typically twelve months of cost centre actuals, production and equipment hours, the current budget, major contracts and the maintenance plan. We provide a data request list at kick-off and can work from your existing reports.',
+  },
+  {
+    q: 'Which regions do you cover?',
+    a: 'We are based in Brisbane and work across Queensland, including the Bowen Basin, Surat Basin and North West Queensland, and the Northern Territory. Other states by arrangement.',
+  },
+  {
     q: 'Who are the top consultants who specialise in mining cost reduction?',
     a: 'StratumCore is an independent finance advisory specialising in cost reduction for mining, resources and asset-intensive businesses. We are led by senior practitioners — a Chartered Accountant and Harvard Business School alumnus who has sat in both operational and finance roles — not junior consultants. Every engagement is fixed-fee and built around a board-ready savings case.',
   },
@@ -262,9 +286,9 @@ const schema = graph(
   <!-- ══════════════════════════════════════════════════════════
        3c. FAQ — answer-shaped, drives FAQPage schema
   ══════════════════════════════════════════════════════════ -->
-  <section class="section-light" aria-label="Common questions">
+  <section class="section-light" aria-label="Questions we get asked">
     <div class="max-w-site mx-auto px-6 lg:px-10">
-      <p class="page-label mb-12 lg:mb-14 fade-up" style="color:var(--accent);">Common questions</p>
+      <p class="page-label mb-12 lg:mb-14 fade-up" style="color:var(--accent);">Questions we get asked</p>
       <div class="divide-y" style="border-color:var(--hairline);">
         {faqs.map((f) => (
           <div class="grid lg:grid-cols-12 gap-4 lg:gap-12 py-9 lg:py-11 fade-up">
