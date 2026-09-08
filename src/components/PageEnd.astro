@@ -1,0 +1,30 @@
+---
+/**
+ * The quiet strip that closes every page, directly above the footer.
+ *
+ * It carries two things: any footnote the page needs (passed as slot content,
+ * e.g. the note behind the 15%+ range), and the review line — when the page
+ * last changed and who is answerable for it. Both are the same small muted
+ * voice, so they share one hairline-topped block rather than stacking two.
+ *
+ * `tone` matches the background of the section above it so the strip reads as
+ * the tail of that section, not as a new band.
+ */
+interface Props {
+  /** "September 2026" — from reviewedFor() in lib/gitdate.mjs. */
+  reviewed: string;
+  /** Background token of the preceding section. */
+  tone?: 'bg' | 'bg-alt';
+}
+
+const { reviewed, tone = 'bg' } = Astro.props;
+---
+
+<aside class="page-notes" style={`background: var(--${tone});`} aria-label="Page notes">
+  <div class="max-w-site mx-auto px-6 lg:px-10">
+    <div class="page-notes__rule">
+      <slot />
+      <p class="page-notes__meta">Last reviewed {reviewed}. Author: Wen Khong CA.</p>
+    </div>
+  </div>
+</aside>

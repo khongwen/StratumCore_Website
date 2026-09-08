@@ -2,7 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import { graph, organization, founder, service, faqPage, breadcrumb, ORG_ID } from '../lib/seo';
+import PageEnd from '../components/PageEnd.astro';
+import { reviewedFor } from '../lib/gitdate.mjs';
+import { graph, organization, founder, service, faqPage, breadcrumb, webPage, ORG_ID } from '../lib/seo';
 
 const modules = [
   {
@@ -68,10 +70,16 @@ const course = {
   description: 'A five-module programme for finance professionals in any industry. Covers financial storytelling, influencing, value driver trees, diagnostic problem solving, and planning.',
   provider: { '@id': ORG_ID },
   educationalLevel: 'Professional development',
-  url: 'https://www.stratumcore.com.au/finance-business-partner-academy',
+  url: 'https://www.stratumcore.com.au/finance-business-partner-academy/',
 };
 
+const title = "Finance Business Partner Academy | StratumCore";
+const description = "A five-module FBP programme built for finance teams in any industry. Financial storytelling, influencing, value drivers, and commercial problem solving.";
+const canonical = "https://www.stratumcore.com.au/finance-business-partner-academy/";
+const reviewed = reviewedFor('src/pages/finance-business-partner-academy.astro');
+
 const schema = graph(
+  webPage({ url: canonical, name: title, description, dateModified: reviewed.iso }),
   organization,
   founder,
   course,
@@ -84,16 +92,16 @@ const schema = graph(
   faqPage(faqs),
   breadcrumb([
     { name: 'Home',                            url: 'https://www.stratumcore.com.au/' },
-    { name: 'Finance Team Building',           url: 'https://www.stratumcore.com.au/finance-team-building' },
-    { name: 'Finance Business Partner Academy', url: 'https://www.stratumcore.com.au/finance-business-partner-academy' },
+    { name: 'Finance Team Building',           url: 'https://www.stratumcore.com.au/finance-team-building/' },
+    { name: 'Finance Business Partner Academy', url: 'https://www.stratumcore.com.au/finance-business-partner-academy/' },
   ]),
 );
 ---
 
 <BaseLayout
-  title="Finance Business Partner Academy | StratumCore"
-  description="A five-module FBP programme built for finance teams in any industry. Financial storytelling, influencing, value drivers, and commercial problem solving."
-  canonical="https://www.stratumcore.com.au/finance-business-partner-academy/"
+  title={title}
+  description={description}
+  canonical={canonical}
   ogImage="https://www.stratumcore.com.au/og-image-training.png"
   ogImageAlt="Finance Business Partner Academy — StratumCore"
   schema={schema}
@@ -426,6 +434,8 @@ const schema = graph(
       </p>
     </div>
   </section>
+
+  <PageEnd reviewed={reviewed.label} tone="bg-alt" />
 
   <Footer />
 

@@ -2,7 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import { graph, organization, founder, service, faqPage, breadcrumb } from '../lib/seo';
+import PageEnd from '../components/PageEnd.astro';
+import { reviewedFor } from '../lib/gitdate.mjs';
+import { graph, organization, founder, service, faqPage, webPage, breadcrumb } from '../lib/seo';
 
 const tiles = [
   {
@@ -76,7 +78,13 @@ const faqs = [
   },
 ];
 
+const title = "Financial Control & Governance — Scale Without Bottlenecks | StratumCore";
+const description = "Grown fast? We help businesses get control of operational spend, clear visibility into financial performance, and the policies and governance needed to scale without bottlenecks.";
+const canonical = "https://www.stratumcore.com.au/financial-control-governance/";
+const reviewed = reviewedFor('src/pages/financial-control-governance.astro');
+
 const schema = graph(
+  webPage({ url: canonical, name: title, description, dateModified: reviewed.iso }),
   organization,
   founder,
   service({
@@ -88,16 +96,16 @@ const schema = graph(
   faqPage(faqs),
   breadcrumb([
     { name: 'Home',                           url: 'https://www.stratumcore.com.au/' },
-    { name: 'Corporate Advisory',             url: 'https://www.stratumcore.com.au/corporate-advisory' },
-    { name: 'Financial Control & Governance', url: 'https://www.stratumcore.com.au/financial-control-governance' },
+    { name: 'Corporate Advisory',             url: 'https://www.stratumcore.com.au/corporate-advisory/' },
+    { name: 'Financial Control & Governance', url: 'https://www.stratumcore.com.au/financial-control-governance/' },
   ]),
 );
 ---
 
 <BaseLayout
-  title="Financial Control & Governance — Scale Without Bottlenecks | StratumCore"
-  description="Grown fast? We help businesses get control of operational spend, clear visibility into financial performance, and the policies and governance needed to scale without bottlenecks."
-  canonical="https://www.stratumcore.com.au/financial-control-governance/"
+  title={title}
+  description={description}
+  canonical={canonical}
   ogImageAlt="Financial Control & Governance — StratumCore"
   schema={schema}
 >
@@ -355,6 +363,8 @@ const schema = graph(
       </p>
     </div>
   </section>
+
+  <PageEnd reviewed={reviewed.label} tone="bg-alt" />
 
   <Footer />
 

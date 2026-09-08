@@ -710,6 +710,9 @@ p, li, dd, blockquote, figcaption {
   line-height: 1.7;
   max-width: 46rem;
 }
+/* The review line sits a step quieter than a footnote, and last. */
+.page-notes__meta { font-size: 0.8125rem; }
+.page-notes p + .page-notes__meta { margin-top: var(--s-3); }
 
 /* ─── Body buttons ───────────────────────────────────────────────── */
 .btn-primary {

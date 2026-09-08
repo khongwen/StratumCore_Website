@@ -2,22 +2,36 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import { graph, organization, founder, breadcrumb } from '../lib/seo';
+import PageEnd from '../components/PageEnd.astro';
+import { reviewedFor } from '../lib/gitdate.mjs';
+import { graph, organization, founder, service, webPage, breadcrumb } from '../lib/seo';
+
+const title = "Corporate Advisory — Cost Reduction & Financial Control | StratumCore";
+const description = "Senior, independent corporate advisory for mining, resources and asset-intensive businesses. Two focused streams: cost reduction and financial control & governance.";
+const canonical = "https://www.stratumcore.com.au/corporate-advisory/";
+const reviewed = reviewedFor('src/pages/corporate-advisory.astro');
 
 const schema = graph(
+  webPage({ url: canonical, name: title, description, dateModified: reviewed.iso }),
   organization,
   founder,
+  service({
+    id: 'https://www.stratumcore.com.au/corporate-advisory/#service',
+    name: 'Corporate Advisory',
+    serviceType: 'Corporate advisory',
+    description: 'Senior, independent corporate advisory for mining, resources and asset-intensive businesses. Two focused streams: cost reduction and financial control and governance.',
+  }),
   breadcrumb([
     { name: 'Home',               url: 'https://www.stratumcore.com.au/' },
-    { name: 'Corporate Advisory', url: 'https://www.stratumcore.com.au/corporate-advisory' },
+    { name: 'Corporate Advisory', url: 'https://www.stratumcore.com.au/corporate-advisory/' },
   ]),
 );
 ---
 
 <BaseLayout
-  title="Corporate Advisory — Cost Reduction & Financial Control | StratumCore"
-  description="Senior, independent corporate advisory for mining, resources and asset-intensive businesses. Two focused streams: cost reduction and financial control & governance."
-  canonical="https://www.stratumcore.com.au/corporate-advisory/"
+  title={title}
+  description={description}
+  canonical={canonical}
   ogImageAlt="Corporate Advisory — StratumCore"
   schema={schema}
 >
@@ -363,16 +377,12 @@ const schema = graph(
   </section>
 
   <!-- Note on the 15%+ range marked above -->
-  <aside class="page-notes" style="background: var(--bg-alt);" aria-label="Notes">
-    <div class="max-w-site mx-auto px-6 lg:px-10">
-      <div class="page-notes__rule">
-        <p id="fn-15">
-          <span aria-hidden="true">*&nbsp;</span>Indicative range based on the principals&rsquo;
-          prior programmes. Outcomes depend on the operation and are assessed in the diagnostic.
-        </p>
-      </div>
-    </div>
-  </aside>
+  <PageEnd reviewed={reviewed.label} tone="bg-alt">
+    <p id="fn-15">
+      <span aria-hidden="true">*&nbsp;</span>Indicative range based on the principals&rsquo;
+      prior programmes. Outcomes depend on the operation and are assessed in the diagnostic.
+    </p>
+  </PageEnd>
 
   <Footer />
 

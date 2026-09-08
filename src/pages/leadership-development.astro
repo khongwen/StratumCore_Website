@@ -2,7 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import { graph, organization, founder, service, faqPage, breadcrumb } from '../lib/seo';
+import PageEnd from '../components/PageEnd.astro';
+import { reviewedFor } from '../lib/gitdate.mjs';
+import { graph, organization, founder, service, faqPage, webPage, breadcrumb } from '../lib/seo';
 
 const faqs = [
   {
@@ -23,7 +25,13 @@ const faqs = [
   },
 ];
 
+const title = "Leadership Development for Finance Leaders | StratumCore";
+const description = "Practical leadership programmes for finance leaders in any industry. Build influence, drive decisions, and step beyond the scorekeeper role.";
+const canonical = "https://www.stratumcore.com.au/leadership-development/";
+const reviewed = reviewedFor('src/pages/leadership-development.astro');
+
 const schema = graph(
+  webPage({ url: canonical, name: title, description, dateModified: reviewed.iso }),
   organization,
   founder,
   service({
@@ -35,16 +43,16 @@ const schema = graph(
   faqPage(faqs),
   breadcrumb([
     { name: 'Home',                  url: 'https://www.stratumcore.com.au/' },
-    { name: 'Finance Team Building', url: 'https://www.stratumcore.com.au/finance-team-building' },
-    { name: 'Leadership Development', url: 'https://www.stratumcore.com.au/leadership-development' },
+    { name: 'Finance Team Building', url: 'https://www.stratumcore.com.au/finance-team-building/' },
+    { name: 'Leadership Development', url: 'https://www.stratumcore.com.au/leadership-development/' },
   ]),
 );
 ---
 
 <BaseLayout
-  title="Leadership Development for Finance Leaders | StratumCore"
-  description="Practical leadership programmes for finance leaders in any industry. Build influence, drive decisions, and step beyond the scorekeeper role."
-  canonical="https://www.stratumcore.com.au/leadership-development/"
+  title={title}
+  description={description}
+  canonical={canonical}
   ogImageAlt="Leadership Development — StratumCore"
   schema={schema}
 >
@@ -405,6 +413,8 @@ const schema = graph(
       </p>
     </div>
   </section>
+
+  <PageEnd reviewed={reviewed.label} tone="bg-alt" />
 
   <Footer />
 

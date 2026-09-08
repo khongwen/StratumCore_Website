@@ -2,15 +2,20 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import { graph, organization, founder, coPrincipal, breadcrumb } from '../lib/seo';
+import PageEnd from '../components/PageEnd.astro';
+import { reviewedFor } from '../lib/gitdate.mjs';
+import { graph, organization, founder, coPrincipal, webPage } from '../lib/seo';
+
+const title = "Mining Finance & Cost Reduction Advisory | StratumCore";
+const description = "StratumCore delivers senior, independent advisory for mining and asset-intensive businesses — cost reduction, financial control and governance, and finance team building. No juniors.";
+const canonical = "https://www.stratumcore.com.au/";
+const reviewed = reviewedFor('src/pages/index.astro');
 
 const schema = graph(
+  webPage({ url: canonical, name: title, description, dateModified: reviewed.iso }),
   organization,
   founder,
   coPrincipal,
-  breadcrumb([
-    { name: 'Home', url: 'https://www.stratumcore.com.au/' },
-  ]),
 );
 
 // Web3Forms access key (same key used in the redesign contact form)
@@ -18,9 +23,9 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
 ---
 
 <BaseLayout
-  title="Mining Finance & Cost Reduction Advisory | StratumCore"
-  description="StratumCore delivers senior, independent advisory for mining and asset-intensive businesses — cost reduction, financial control and governance, and finance team building. No juniors."
-  canonical="https://www.stratumcore.com.au/"
+  title={title}
+  description={description}
+  canonical={canonical}
   ogImage="https://www.stratumcore.com.au/og-image-home.png"
   ogImageAlt="StratumCore — Finance & Leadership Consulting, Brisbane"
   schema={schema}
@@ -505,16 +510,12 @@ const WEB3FORMS_ACCESS_KEY = "8274a80a-9baa-44f7-978c-3226595639e5";
   </section>
 
   <!-- Note on the 15%+ range marked above -->
-  <aside class="page-notes" style="background: var(--bg);" aria-label="Notes">
-    <div class="max-w-site mx-auto px-6 lg:px-10">
-      <div class="page-notes__rule">
-        <p id="fn-15">
-          <span aria-hidden="true">*&nbsp;</span>Indicative range based on the principals&rsquo;
-          prior programmes. Outcomes depend on the operation and are assessed in the diagnostic.
-        </p>
-      </div>
-    </div>
-  </aside>
+  <PageEnd reviewed={reviewed.label} tone="bg">
+    <p id="fn-15">
+      <span aria-hidden="true">*&nbsp;</span>Indicative range based on the principals&rsquo;
+      prior programmes. Outcomes depend on the operation and are assessed in the diagnostic.
+    </p>
+  </PageEnd>
 
   <Footer />
 

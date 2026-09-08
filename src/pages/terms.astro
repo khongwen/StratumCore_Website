@@ -2,14 +2,33 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import PageEnd from '../components/PageEnd.astro';
+import { reviewedFor } from '../lib/gitdate.mjs';
+import { graph, organization, founder, webPage, breadcrumb } from '../lib/seo';
 
 const updated = '8 September 2026';
+const title = "Terms of use and engagement terms — StratumCore";
+const description = "Terms of use for www.stratumcore.com.au and the engagement terms that apply to StratumCore Pty Ltd advisory services, including the cost diagnostic guarantee conditions.";
+const canonical = "https://www.stratumcore.com.au/terms/";
+const reviewed = reviewedFor('src/pages/terms.astro');
+
+const schema = graph(
+  organization,
+  founder,
+  webPage({ url: canonical, name: title, description, dateModified: reviewed.iso }),
+  breadcrumb([
+    { name: 'Home', url: 'https://www.stratumcore.com.au/' },
+    { name: "Terms", url: canonical },
+  ]),
+);
+
 ---
 
 <BaseLayout
-  title="Terms of use and engagement terms — StratumCore"
-  description="Terms of use for www.stratumcore.com.au and the engagement terms that apply to StratumCore Pty Ltd advisory services, including the cost diagnostic guarantee conditions."
-  canonical="https://www.stratumcore.com.au/terms/"
+  title={title}
+  description={description}
+  canonical={canonical}
+  schema={schema}
 >
   <Nav />
 
@@ -134,6 +153,8 @@ const updated = '8 September 2026';
 
     </div>
   </main>
+
+  <PageEnd reviewed={reviewed.label} tone="bg" />
 
   <Footer />
 </BaseLayout>

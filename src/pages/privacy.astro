@@ -2,14 +2,33 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import PageEnd from '../components/PageEnd.astro';
+import { reviewedFor } from '../lib/gitdate.mjs';
+import { graph, organization, founder, webPage, breadcrumb } from '../lib/seo';
 
 const updated = '8 September 2026';
+const title = "Privacy policy — StratumCore";
+const description = "How StratumCore Pty Ltd collects, uses, shares and protects personal information across our website, events, marketing and client engagements.";
+const canonical = "https://www.stratumcore.com.au/privacy/";
+const reviewed = reviewedFor('src/pages/privacy.astro');
+
+const schema = graph(
+  organization,
+  founder,
+  webPage({ url: canonical, name: title, description, dateModified: reviewed.iso }),
+  breadcrumb([
+    { name: 'Home', url: 'https://www.stratumcore.com.au/' },
+    { name: "Privacy policy", url: canonical },
+  ]),
+);
+
 ---
 
 <BaseLayout
-  title="Privacy policy — StratumCore"
-  description="How StratumCore Pty Ltd collects, uses, shares and protects personal information across our website, events, marketing and client engagements."
-  canonical="https://www.stratumcore.com.au/privacy/"
+  title={title}
+  description={description}
+  canonical={canonical}
+  schema={schema}
 >
   <Nav />
 
@@ -212,6 +231,8 @@ const updated = '8 September 2026';
 
     </div>
   </main>
+
+  <PageEnd reviewed={reviewed.label} tone="bg" />
 
   <Footer />
 </BaseLayout>

@@ -2,22 +2,36 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import { graph, organization, founder, breadcrumb } from '../lib/seo';
+import PageEnd from '../components/PageEnd.astro';
+import { reviewedFor } from '../lib/gitdate.mjs';
+import { graph, organization, founder, service, webPage, breadcrumb } from '../lib/seo';
+
+const title = "Finance Team Building — Leadership Development & FBP Academy | StratumCore";
+const description = "Build a finance team that drives decisions. Leadership development and the Finance Business Partner Academy — practical programmes for finance leaders in any industry.";
+const canonical = "https://www.stratumcore.com.au/finance-team-building/";
+const reviewed = reviewedFor('src/pages/finance-team-building.astro');
 
 const schema = graph(
+  webPage({ url: canonical, name: title, description, dateModified: reviewed.iso }),
   organization,
   founder,
+  service({
+    id: 'https://www.stratumcore.com.au/finance-team-building/#service',
+    name: 'Finance Team Building',
+    serviceType: 'Finance team training',
+    description: 'Leadership development and the Finance Business Partner Academy: practical programmes that build a finance team which drives decisions rather than reports on them.',
+  }),
   breadcrumb([
     { name: 'Home',                 url: 'https://www.stratumcore.com.au/' },
-    { name: 'Finance Team Building', url: 'https://www.stratumcore.com.au/finance-team-building' },
+    { name: 'Finance Team Building', url: 'https://www.stratumcore.com.au/finance-team-building/' },
   ]),
 );
 ---
 
 <BaseLayout
-  title="Finance Team Building — Leadership Development & FBP Academy | StratumCore"
-  description="Build a finance team that drives decisions. Leadership development and the Finance Business Partner Academy — practical programmes for finance leaders in any industry."
-  canonical="https://www.stratumcore.com.au/finance-team-building/"
+  title={title}
+  description={description}
+  canonical={canonical}
   ogImage="https://www.stratumcore.com.au/og-image-training.png"
   ogImageAlt="Finance Team Building — StratumCore"
   schema={schema}
@@ -307,6 +321,8 @@ const schema = graph(
       </p>
     </div>
   </section>
+
+  <PageEnd reviewed={reviewed.label} tone="bg-alt" />
 
   <Footer />
 

@@ -2,7 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import { graph, organization, founder, coPrincipal, faqPage, breadcrumb } from '../lib/seo';
+import PageEnd from '../components/PageEnd.astro';
+import { reviewedFor } from '../lib/gitdate.mjs';
+import { graph, organization, founder, coPrincipal, faqPage, webPage, breadcrumb } from '../lib/seo';
 
 const faqs = [
   {
@@ -19,22 +21,28 @@ const faqs = [
   },
 ];
 
+const title = "About StratumCore | Senior Mining Finance Advisory";
+const description = "StratumCore is led by Wen Khong, a senior finance executive with 20+ years at BHP, Wesfarmers, and BUMA. Independent advisory for the resources sector.";
+const canonical = "https://www.stratumcore.com.au/about/";
+const reviewed = reviewedFor('src/pages/about.astro');
+
 const schema = graph(
+  webPage({ url: canonical, name: title, description, dateModified: reviewed.iso }),
   organization,
   founder,
   coPrincipal,
   faqPage(faqs),
   breadcrumb([
     { name: 'Home',  url: 'https://www.stratumcore.com.au/' },
-    { name: 'About', url: 'https://www.stratumcore.com.au/about' },
+    { name: 'About', url: 'https://www.stratumcore.com.au/about/' },
   ]),
 );
 ---
 
 <BaseLayout
-  title="About StratumCore | Senior Mining Finance Advisory"
-  description="StratumCore is led by Wen Khong, a senior finance executive with 20+ years at BHP, Wesfarmers, and BUMA. Independent advisory for the resources sector."
-  canonical="https://www.stratumcore.com.au/about/"
+  title={title}
+  description={description}
+  canonical={canonical}
   ogImageAlt="About StratumCore"
   schema={schema}
 >
@@ -426,6 +434,8 @@ const schema = graph(
       </p>
     </div>
   </section>
+
+  <PageEnd reviewed={reviewed.label} tone="bg-alt" />
 
   <Footer />
 
