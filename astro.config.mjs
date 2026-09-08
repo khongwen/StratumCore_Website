@@ -31,11 +31,11 @@ export default defineConfig({
   // opt out with `export const prerender = false` (currently just
   // /api/subscribe) are deployed as serverless functions.
   output: 'static',
-  // One canonical URL shape for every page. Astro compiles this into a 308 in
-  // the Vercel route table, so /cost-reduction resolves to /cost-reduction/
-  // rather than both forms serving 200. Paths with a file extension
-  // (robots.txt, the sitemaps, BingSiteAuth.xml) are exempt.
-  trailingSlash: 'always',
+  // NOTE: do not set trailingSlash: 'always'. Astro compiles it into a 308 that
+  // sits ABOVE the redirects below and matches every extensionless path, so
+  // /t, /toolkit and /finance-consulting stop resolving. /t is on printed QR
+  // codes. One URL shape is instead enforced by the canonical tag, the sitemap
+  // and the internal links, which all use the trailing-slash form.
   adapter: vercel(),
   integrations: [
     tailwind(),
