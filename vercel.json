@@ -1,0 +1,4 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "git fetch --unshallow --quiet 2>/dev/null || true; npm run build"
+}
