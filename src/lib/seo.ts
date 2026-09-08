@@ -66,12 +66,12 @@ export const founder = {
   url: `${SITE}/about`,
 };
 
-/** Co-principal — Calvin Yong. */
+/** Consulting principal — Calvin Yong, on selected engagements. */
 export const coPrincipal = {
   '@type': 'Person',
   '@id': COPRINCIPAL_ID,
   name: 'Calvin Yong',
-  jobTitle: 'Principal',
+  jobTitle: 'Consulting Principal',
   worksFor: { '@id': ORG_ID },
   alumniOf: ['BMA', 'BHP', 'Bankwest', 'CS Gas', 'The University of Queensland'],
   hasCredential: [
