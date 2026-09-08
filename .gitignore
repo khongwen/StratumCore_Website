@@ -11,3 +11,12 @@ linkedin-logo.png
 !.env.example
 .vercel/
 .cdp-profile*/
+.vercel
+.env*
+
+# IndexNow verification file, written into public/ at build time from
+# INDEXNOW_KEY. The key is a Vercel environment variable, not repo content.
+public/*.txt
+!public/llms.txt
+!public/llms-full.txt
+!public/robots.txt
