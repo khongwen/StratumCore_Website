@@ -684,8 +684,8 @@ p, li, dd, blockquote, figcaption {
   font-size: 0.58em;
   font-weight: 400;
   line-height: 0;
-  vertical-align: super;
-  margin-left: 0.08em;
+  vertical-align: 0.55em;   /* just clear of the cap line, not floating */
+  margin-left: 0.06em;
 }
 .fn-marker a {
   color: inherit;
