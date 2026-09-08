@@ -35,6 +35,12 @@ const {
        the preload scanner picks them up before the stylesheet resolves. -->
   <slot name="head" />
 
+  <!-- Icons. The SVG scales to any size; the .ico covers older browsers and
+       crawlers that ignore the link and request /favicon.ico directly. -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
   <!-- SEO -->
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />

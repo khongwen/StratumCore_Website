@@ -44,19 +44,19 @@ const start = (p) => pathname.startsWith(p);
         </button>
 
         <div class="dropdown-menu" role="menu">
-          <a href="/cost-reduction"
+          <a href="/cost-reduction/"
              class={`dropdown-link${start('/cost-reduction') ? ' is-active' : ''}`}
              role="menuitem">Cost Reduction</a>
-          <a href="/financial-control-governance"
+          <a href="/financial-control-governance/"
              class={`dropdown-link${start('/financial-control-governance') ? ' is-active' : ''}`}
              role="menuitem">Financial Control</a>
-          <a href="/finance-team-building"
+          <a href="/finance-team-building/"
              class={`dropdown-link${(start('/finance-team-building') || start('/leadership-development') || start('/finance-business-partner-academy')) ? ' is-active' : ''}`}
              role="menuitem">Finance Team Building</a>
         </div>
       </div>
 
-      <a href="/about" class={`nav-link${isAbout ? ' is-active' : ''}`}>About</a>
+      <a href="/about/" class={`nav-link${isAbout ? ' is-active' : ''}`}>About</a>
 
     </nav>
 
@@ -88,12 +88,12 @@ const start = (p) => pathname.startsWith(p);
       </svg>
     </button>
     <div class="mob-submenu hidden">
-      <a href="/cost-reduction">Cost Reduction</a>
-      <a href="/financial-control-governance">Financial Control</a>
-      <a href="/finance-team-building">Finance Team Building</a>
+      <a href="/cost-reduction/">Cost Reduction</a>
+      <a href="/financial-control-governance/">Financial Control</a>
+      <a href="/finance-team-building/">Finance Team Building</a>
     </div>
 
-    <a href="/about" class={`mob-nav-link${isAbout ? ' is-active' : ''}`}>About</a>
+    <a href="/about/" class={`mob-nav-link${isAbout ? ' is-active' : ''}`}>About</a>
 
     <div class="mob-cta-wrap">
       <a href="/#contact" class="btn-book-call block text-center">Book a Call</a>

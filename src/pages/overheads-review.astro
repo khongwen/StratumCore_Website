@@ -71,7 +71,7 @@ import Footer from '../components/Footer.astro';
             One email, one file. No newsletter &mdash; the email that delivers this
             file is the only automated email you&rsquo;ll ever get from us. Your details
             are handled per our
-            <a href="/privacy" target="_blank" rel="noopener noreferrer">privacy&nbsp;policy</a>.
+            <a href="/privacy/" target="_blank" rel="noopener noreferrer">privacy&nbsp;policy</a>.
           </p>
 
           <p class="status" id="form-error" role="alert" hidden></p>
@@ -390,7 +390,7 @@ import Footer from '../components/Footer.astro';
       labelEl.textContent = 'Sending…';
 
       try {
-        const res = await fetch('/api/subscribe', {
+        const res = await fetch('/api/subscribe/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
